@@ -1,5 +1,6 @@
 mt_backend_url = "http://localhost:8000";
-
+const current = new Date();
+const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;//mysql insert date format
 
 
 function showLoader(){   
@@ -13,8 +14,10 @@ function hideLoader(){
 
 function initPage(){
     hideLoader();
-    sessionSetting(sessionStorage); 
-    
+    sessionSetting(sessionStorage);  
+  // if($("#logemail").val().length > 0 && $("#logpassword").val().length > 0){
+  //     $("#rememberme").checked = true;
+  //   }
 // ----------multiplefile-upload---------
 
     $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw(false);   
@@ -69,12 +72,74 @@ function initPage(){
       });
      
 
+//REMENER ME
+
+  // if (localStorage.checkbox && localStorage.checkbox !== "") {
+  //   $("#rememberme").setAttribute("checked", "checked");
+  //   $("#logemail").val(localStorage.username);
+  // } else {
+  //   $("#rememberme").removeAttribute("checked");
+  //   $("#logemail").val("");
+  // }
+  
+  // // function lsRememberMe() {
+  // $("#rememberme").click(function(){
+  //   if ( $("#rememberme").checked && $("#logemail").val() !== "") {
+  //     localStorage.username = $("#logemail").val() ;
+  //     localStorage.checkbox = $("#rememberme").val();
+  //   } else {
+  //     localStorage.username = "";
+  //     localStorage.checkbox = "";
+  //   }
+  // });
+
 
 
 }
  
 $(function() {
 
+
+  $(document).on("change","#investorRange", function() {
+  var slider = document.getElementById("investorRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+  });
+
+  $('[type=checkbox],[type=radio]').click(function() {
+    if ($(this).is(":checked") == true) {
+        $(this).val('yes');
+    } else {
+        $(this).val('no');
+    }
+});
+
+
+
+  $(document).on("click","a", function() {
+    // event.preventDefault(); 
+
+
+    // setTimeout(window.location.reload(false), 1000);
+
+
+    
+  });
+
+  
+  $(document).on("click","a#openChooseStartup", function() {
+    // event.preventDefault(); 
+
+    ChooseStartupModel();
+    // setTimeout(window.location.reload(false), 1000);
+
+
+    
+  });
 
   $(document).on("change",".uploadFile", function() 
   {
@@ -113,6 +178,25 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
       }
   });
 
+  $(document).on("change","#uploadanalystics", function() 
+  { 
+      var uploadFile = $(this);
+      var files = !!this.files ? this.files : [];
+      if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+      if (/^image/.test( files[0].type)){ // only image file
+          var reader = new FileReader(); // instance of the FileReader
+          reader.readAsDataURL(files[0]); // read the local file
+          reader.onloadend = function(){ // set image data as background of div
+              //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+              $("#analyticsCollOne").find('.analysticimage-preview').css("background-image", "");  
+              $("#analyticsCollOne").find(".analysticimagelbel").find("span").text("Upload a Profile")
+
+$("#analyticsCollOne").find('.analysticimage-preview').css("background-image", "url("+this.result+")");
+$("#analyticsCollOne").find(".analysticimagelbel").find("span").text("Reupload a Profile")
+
+}
+      }
+  });
 
   
   $(document).on("change","#campressvideo,#campbanvideo,#createpitchvideo,#solutionvideo,#ptproductvideo,#pttransvideo,#ptbsmodelvideo,#ptcompvideo,#ptcustvideo,#ptusagevideo,#ptvisionvideo,#ptpotretvideo", function() 
@@ -147,6 +231,39 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
      
     });
 
+
+
+    $("#caminvestAddmem").click(function(){
+      var divIter = $(this).attr("data-attr-id");
+      var count = $(".campinvestmem").length ; 
+        console.log("inside"+count)
+        $(this).closest(".col-md-12").before("<div class='col-md-12 campinvestmem' id='campinvestDivisionIter"+(Number(count)+1)+"' >"+$("div[id=campinvestDivisionIter]").html()+"</div>"); 
+        var iterid = "#campinvestDivisionIter"+(Number(count)+1)
+        $(iterid).find("input,select,textarea").val("").attr("value","");
+        $(iterid).find('.imagePreview').css("background", "url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg)");
+        $(iterid).find(".imagePreview").closest(".imgUp").find("label").css("visibility","visible");
+        $(iterid).find(".spanbgcircle").html(Number(count)+1); 
+        $(iterid).find("input[id=camivstsno]").val(Number(count)+1); 
+        $(iterid).find(".imagePreview").attr("id","No"+Number(count)+1); 
+        $(iterid).find(".imagePreview").closest(".imgUp").find(".uploadFile").attr("data-attr",Number(count)+1); 
+       
+      });
+
+
+      $("#camfaqAddmem").click(function(){
+        var divIter = $(this).attr("data-attr-id");
+        var count = $(".campfaqmem").length ; 
+          console.log("inside"+count)
+          $(this).closest(".col-md-12").before("<div class='col-md-12 campfaqmem' id='campfaqDivisionIter"+(Number(count)+1)+"' >"+$("div[id=campfaqDivisionIter]").html()+"</div>"); 
+          var iterid = "#campfaqDivisionIter"+(Number(count)+1)
+          $(iterid).find("input,select,textarea").val("").attr("value","");
+          $(iterid).find(".spanbgcircle").html(Number(count)+1); 
+          $(iterid).find("input[id=camfaqsno]").val(Number(count)+1);  
+        });
+  
+  
+
+
       $(".logout").click(function(){
         sessionStorage.removeItem('key');
         sessionStorage.clear();
@@ -172,7 +289,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
       });
 
     
-      $("#tmfblink,#tminstalink,#tmlinklink,#ciLinkedInLink,#rsfounderurl1,#rsfounderurl2,#ciCompanyWebsite,#ciFacebookLink,#ciInstagramLink").change(function(){
+      $(".link,#caminvinstalink,#caminvlinklink,#tmfblink,#tminstalink,#tmlinklink,#ciLinkedInLink,#rsfounderurl1,#rsfounderurl2,#ciCompanyWebsite,#ciFacebookLink,#ciInstagramLink").change(function(){
         var fieldval = $(this); 
         validURL(fieldval); 
       });
@@ -215,13 +332,32 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
 
 
 }); 
+
+
+function genRandomCode() {
+  var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var passwordLength = 12;
+  var password = "";
+for (var i = 0; i <= passwordLength; i++) {
+ var randomNumber = Math.floor(Math.random() * chars.length);
+ password += chars.substring(randomNumber, randomNumber +1);
+}
+  return password;
+}
+
  function sessionSetting(sessionStorage){
-    var emailVal = sessionStorage.getItem("sessEmail");
-    var Firstnameval = sessionStorage.getItem("sessFirstname");
-    var Roleval = sessionStorage.getItem("sessRole");
-    var userId = sessionStorage.getItem("sessUserId");
-    var userModule = sessionStorage.getItem("sessModule");
-    console.log("Session setting"+emailVal);
+    // sessionStorage.setItem("campUniqueId",window.genRandomCode());
+  
+
+    var emailVal      = sessionStorage.getItem("sessEmail");
+    var Firstnameval  = sessionStorage.getItem("sessFirstname");
+    var Roleval       = sessionStorage.getItem("sessRole");
+    var userId        = sessionStorage.getItem("sessUserId");
+    var userModule    = sessionStorage.getItem("sessModule"); 
+    var campModule    = sessionStorage.getItem("campUniqueId");
+    
+    console.log("Session setting"+campModule);
+
     if(emailVal == null){
       showAlert("Please Login","/Login");
       sessionStorage.setItem("sessEmail","");
@@ -239,7 +375,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
         $("#mtuser_module").val(userModule);
         $("#mtuser_email").val(emailVal);
         $("#mtuser_fname").val(Firstnameval);
-        
+        // $("#campModule").val(campModule);
 // console.log("inside"+userId)
         $(".profile_header").css("display","none");
         $(".profile_header2").css("display","block");
@@ -253,7 +389,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
         $("#mtuser_role").val("");
         $("#mtuser_module").val("");
         $("#mtuser_email").val("");
-        $("#mtuser_fname").val("");
+        $("#mtuser_fname").val(""); 
         $(".profile_header").css("display","block");
         $(".profile_header2").css("display","none");
     }
@@ -271,7 +407,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
  /** EMPTY VALIDATION LENGTH OR VALUE OF ANY FIELD */
  function isEmpty(strVal) 
 { 
-   if ((strVal.length==0) || (strVal == null)) 
+   if ((strVal.length==0) || (strVal == null) || (strVal == undefined) || (strVal == "undefined")) 
    {
       return true;
    }
@@ -448,3 +584,84 @@ function showAlert(content,redirect) {
 
 /**File upload */
 
+
+function ChooseStartupModel() {
+  hideLoader();
+    $("#chooseStartupSecdiv").modal('show');
+    $('#chooseStartupSecdiv').modal({
+          backdrop: 'static',
+          keyboard: false,
+          show:true,
+        });
+    
+    $('#chooseStartupSecdiv').on('shown.bs.modal', function() { 
+        
+          $(this).find(".modal-title").text("Notification");
+          $(this).find(".modal-footer").find("button:eq(0)").unbind();
+          $(this).find(".modal-footer").find("button:eq(0)").click(function (){  
+            
+              $('#chooseStartupSecdiv').modal('hide');   
+              // if(!isEmpty(redirect)){
+                var data = {
+
+                  "ID": null,
+                  "MTUSER_ID":$("#mtuser_id").val(),
+                  "EMAIL": $("#mtuser_email").val(),
+                  "MODULE": $("#mtuser_module").val(),
+                  "INV_CHOOSE_SECTOR": $("#mtuser_module").val(),
+                  "STATUS": "Active",
+                  "COMMENTS": "TEST", 
+                  "DESCRIPTION":"Logged User",
+                  "CREATED_USER": convertDate(date),
+                  "CREATED_DATE": $("#mtuser_fname").val(),
+                  "MODIFIED_USER": convertDate(date),
+                  "MODIFIED_DATE": $("#mtuser_fname").val(),  
+                }
+
+ console.log(data)
+
+                $.ajax({
+                  type : "POST",
+                  url : mt_backend_url+"/api/Choose_Sector",
+                  dataType: "json",
+                  async : true,
+			            cache:false,
+                  success : function (data) {
+                          //  $('#first_name').text( data[0].first_name);
+                          //  $('#last_name').text( data[0].last_name);
+                          //  $('#age').text( data[0].age);
+                          //  $('#gender').text( data[0].gender);
+                          
+                window.location.href = "/Investors_Details";//to redirect to normal links
+                         }
+                      });
+
+
+              // }
+             
+          });
+          $(this).find(".modal-footer").find("button:eq(1)").click(function (){ 
+            $('#chooseStartupSecdiv').modal('hide');   
+          });
+
+           
+
+        }); 
+          
+}
+
+
+function convertDate(date){
+
+  const str = date;
+  
+  const [month, day, year] = str.split('/');
+  
+  
+  console.log(month); // 👉️ 09
+  console.log(day); // 👉️ 24
+  console.log(year); // 👉️ 2022
+  return (year+"/"+month+"/"+day);
+  
+      
+  }

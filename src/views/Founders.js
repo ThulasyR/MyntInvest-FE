@@ -19,7 +19,7 @@ const Founders = () => {
      <Founders_Tiles topDivider/>
      <Founders_Calender/>
      <Founders_Process/>
-     <Founders_Raising/>
+     {/* <Founders_Raising/> */}
      <Investors_Manager split/>
      <Accord/>
     </>

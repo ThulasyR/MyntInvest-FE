@@ -15,6 +15,11 @@ const Color = {
     color:"grey"
 }
 
+const extractFilename = (path) => {
+  const pathArray = path.split("/");
+  const lastIndex = pathArray.length - 1;
+  return pathArray[lastIndex].replace(/\.[^/.]+$/, "");
+};
 
 
 const Startup_Dashboard = ({
@@ -33,6 +38,8 @@ const tilesClasses = classNames(
 'tiles-wrap',
 pushLeft && 'push-left'
 ); 
+
+
 /*Company information*/
 var companyAllDets=[]; 
 var cdquerySet = "/company_info?EMAIL="+sessionStorage.getItem("sessEmail");
@@ -130,9 +137,112 @@ DataService.findByTitle(cdquerySet)
 
 
 
+ 
+/*Campaign information*/
+var campaignAllDets=[]; 
+var bannerUnique="";
+var bannerImg ="";
+var bannerName ="";
+var pressImg="";
+var pressHeader="";
+var pressBody="";
+var pressImg="";
+var growthPer="";
+var teaminfo=[];
+var memName=[];
+var memDesc=[];
+var memPosition=[];
+
+var campaignquerySet = "/campaignAllDets?EMAIL="+sessionStorage.getItem("sessEmail");
+DataService.findByTitle(campaignquerySet)
+.then(response => {
+ 
+  campaignAllDets = response.data;
+  console.log(campaignAllDets);
+
+ 
+  $.each(campaignAllDets, function (index, value) { 
+
+
+    if(value.length == 0){
+
+      $(".campaignset").html("");
+      $(".addnewcampaign").css("display","block");
+
+
+    }else{
+
+
+      if(index == "CAMPAIGN_BANNER"){
+        $.each(value, function (cb, value) { 
+          bannerImg =window.mt_backend_url+value.CAM_BAN_IMAGE; 
+          bannerUnique=value.MODULE;
+          
+        }); 
+      }
+      if(index == "CAMPAIGN_PRESS"){ 
+        $.each(value, function (cb, cbvalue) {
+        pressHeader=cbvalue.CAMP_PRESS_HEADER;
+        pressBody=cbvalue.CAMP_PRESS_BODY; 
+        pressImg=window.mt_backend_url+cbvalue.CAMP_PRESS_IMAGE; 
+      }); 
+      }
+      if(index == "CAMPAIGN_INVEST"){
+        $.each(value, function (cb, invalue) {
+          memName.push(invalue.CINV_MEMBER_NAME+"&nbsp;&nbsp;"+invalue.CINV_MEMBER_POSITION); 
+          memDesc.push('<span class="spanbg para bg-pinklight">'+invalue.CINV_BIO+'</span>&nbsp;'); 
+        }); 
+      }
+  
+  
+      if(index == "COMPANY_INFO"){
+        $.each(value, function (campany, infovalue) {
+          bannerName = infovalue.LEGAL_NAME;
+        }); 
+      }
+      if(index == "TEAM_INFO"){
+        $.each(value, function (campany, teamvalue) {
+          teaminfo.push(teamvalue.TEAM_BIO);
+        }); 
+      }
+
+      if(index == "CAMPAIGN_ANALYTICS"){
+        $.each(value, function (an, ianltvalue) {
+          growthPer = ianltvalue.ANLYSTICS_GROWTHPROFIT;
+        }); 
+      }
+  
+  
+      $(".addnewcampaign").css("display","none");
+      $(".campaignset").html('<a href="/Campaign"><div class="card ">'+
+      // '<div class="card-header text-right"><a href="/Campaign"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a>'+
+      // '<a href="/CampaigndeleteAll?MODULE='+bannerUnique+'"><button class="btn btn-danger"  data-attr="+value.ID+" ><i class="fa fa-trash"></i></button></a></div>'+
+      '<img src="'+bannerImg+'" class="card-img-top" alt="..."/>'+
+      '<div class="card-body">'+
+      '<h5 class="card-title cardtitle ">'+
+      '<div style="font-size:14px" class="row d-flex align-items-center">'+
+      '<img  class="image--cover align-middle" src="'+bannerImg+'" />&nbsp; '+bannerName+
+      '</div></h5>'+
+      '<p align="left" class="para">'+teaminfo[0]+'</p>'+
+      '<h6 align="left"><small  class="text-green font12">'+growthPer+'% of total goal raised</small> </h6>'+
+      '<h6 align="left"><small  class="text-secondary font12">'+memName+'</small></h6>'+memDesc.join("")+'&nbsp;'+
+      '</div>'+
+      '</div></a>');
+   
+    }
+    });
+
+
+ 
+
+   })
+   .catch(e => {
+     console.log(e);
+   });
+  
+     
 return (
-    
-             
+ 
         <div className="row text-center">
   
                <div className="row">
@@ -150,10 +260,10 @@ return (
                     </ol>
                   </nav>
                 </div>
-                        <h3 align="left"  style={{marginTop:100}}>Raise with MyntInvest</h3>
+                        <h3 align="left" >Raise with MyntInvest</h3>
                         <p className="para"
                           align="left" style={Color}>We collect and determine the purposes and means of the processing of certainin formation that may also receive,and process Personal Information controlled and stored by third parties with your consent </p>
-                     <div className="col-md-12">
+                     <div className="col-md-12 bg-white p-3">
                      
                       <div className="row">
                       <div className="col-md-6">
@@ -306,7 +416,7 @@ return (
                     <div className="row mt-3"> 
                     <h3 align="left" >Your Campaign</h3>
                     <div className="row">
-                    <div className="col-md-5">
+                    <div className="col-md-5 addnewcampaign" >
                           <div className="card " style={{height:"541px"}}>
                             <div className="card-body mt-5 mb-5"> 
                            <p class=" lightext mt-5 mb-5">
@@ -325,23 +435,27 @@ return (
 
 
 
-          <div className="col-md-5"> 
-                          <div className="card ">
+          <div className="col-md-5 campaignset"> 
+          {/* <div className="card ">
                           <img src={require('./../../assets/images/Strategy.jpg')} class="card-img-top" alt="..."/>
-                            <div className="card-body"> 
-                            <h5 className="card-title cardtitle "> 
+                            <div className="card-body">
+                            <h5 className="card-title cardtitle ">
                             <div class="row d-flex align-items-center">
                             <img  className="image--cover align-middle" src={require('./../../assets/images/Strategy.jpg')} />&nbsp;
-                               Lambs  
+                               Lambs 
                                 </div></h5>
-                           
                     <p align="left" class="para">Apparel that boosts your immune health, cognition, recovery, and sleep</p>
                    <h6 align="left"><small  class="text-green font12">25.07% of total goal raised</small> </h6>
                    <h6 align="left"><small  class="text-secondary font12">Santa Monica, CA</small></h6>
                    <span className="spanbg para bg-yellowlight">B2C</span>&nbsp;
                    <span className="spanbg para bg-pinklight">HEALTH & WELLNESS</span>
                             </div>
-                          </div>
+                          </div> */}
+        
+
+
+          
+              
           </div>
           </div>
                       </div> 

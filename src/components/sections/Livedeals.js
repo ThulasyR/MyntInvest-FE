@@ -6,6 +6,9 @@ import Image from '../elements/Image';
 import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 import Input from '../elements/Input';
+import '../Css/styles.css';
+import $ from 'jquery';
+import DataService from '../../service/DataService'; 
 const propTypes = {
   ...SectionTilesProps.types
 }
@@ -13,6 +16,151 @@ const propTypes = {
 const defaultProps = {
   ...SectionTilesProps.defaults
 }
+
+const extractFilename = (path) => {
+  const pathArray = path.split("/");
+  const lastIndex = pathArray.length - 1;
+  return pathArray[lastIndex].replace(/\.[^/.]+$/, "");
+};
+
+
+ 
+/*Campaign information*/
+
+var campaignAllDets=[]; 
+var bannerUnique="";
+var bannerImg =[];
+var bannerName =[];
+var pressImg="";
+var pressHeader="";
+var pressBody="";
+var pressImg="";
+var growthPer=[];
+var teaminfo=[];
+var memName=[];
+var memDesc=[];
+var memPosition=[];
+var original =[];
+var output=[];
+var campaignquerySet = "/campaignAllDets";
+DataService.findByTitle(campaignquerySet)
+.then(response => {
+ 
+  campaignAllDets = response.data;
+  console.log(campaignAllDets);
+
+ 
+  $.each(campaignAllDets, function (index, value) { 
+
+
+    if(value.length == 0){
+      $(".campaignDealsArrange").html("");
+      // $(".addnewcampaign").css("display","block");
+    } else{
+
+
+      if(index == "CAMPAIGN_BANNER"){
+          var uniqueEmail =[];
+        $.each(value, function (cb, value) {
+        
+          if(!uniqueEmail.includes(value.EMAIL)){
+            uniqueEmail.push(value.EMAIL);
+          }
+          bannerImg.push(window.mt_backend_url+value.CAM_BAN_IMAGE); 
+          bannerUnique=value.MODULE;
+          original.push(value.EMAIL);
+        }); 
+      }
+      if(index == "CAMPAIGN_PRESS"){ 
+        $.each(value, function (cb, cbvalue) {
+        pressHeader=cbvalue.CAMP_PRESS_HEADER;
+        pressBody=cbvalue.CAMP_PRESS_BODY; 
+        pressImg=window.mt_backend_url+cbvalue.CAMP_PRESS_IMAGE; 
+      }); 
+      }
+      if(index == "CAMPAIGN_INVEST"){
+        var uniqueEmail =[];
+        $.each(value, function (cb, invalue) { 
+         
+          if(!uniqueEmail.includes(invalue.EMAIL)){
+            uniqueEmail.push(invalue.EMAIL);
+            memName.push(invalue.CINV_MEMBER_NAME+"&nbsp;,&nbsp;"+invalue.CINV_MEMBER_POSITION); 
+            memDesc.push('<span class="spanbg para bg-pinklight">'+invalue.CINV_BIO+'</span>&nbsp;'); 
+       
+           }
+
+          
+           }); 
+      }
+  
+  
+      if(index == "COMPANY_INFO"){
+        $.each(value, function (campany, infovalue) {
+          bannerName.push(infovalue.LEGAL_NAME);
+        }); 
+      }
+      if(index == "TEAM_INFO"){
+        var uniqueEmail =[];
+        $.each(value, function (campany, teamvalue) {
+         
+          if(!uniqueEmail.includes(teamvalue.EMAIL)){
+            uniqueEmail.push(teamvalue.EMAIL);
+            teaminfo.push(teamvalue.TEAM_BIO);
+          }
+          
+        }); 
+      }
+
+      if(index == "CAMPAIGN_ANALYTICS"){
+        $.each(value, function (an, ianltvalue) {
+          var valuei ="0"; 
+           if(!window.isEmpty(ianltvalue.ANLYSTICS_GROWTHPROFIT)){
+            growthPer.push(ianltvalue.ANLYSTICS_GROWTHPROFIT); 
+           }  
+         
+           growthPer.push(valuei);
+          //  alert(growthPer)
+          
+        }); 
+      }
+  
+
+      // $(".addnewcampaign").css("display","none");
+      
+   
+    }
+    });
+
+
+// alert(uniqueEmail);
+    for (let iterval in original){
+      // alert(teaminfo)
+      $(".campaignDealsArrange").append('<div class=" col-md-4"  ><div class="card"><a href="/Campaign">'+
+        // '<div className="card-header text-right"><a href="/Campaign"><button className="btn btn-warning"><i className="fa fa-edit"></i></button></a>'+
+        // '<a href="/CampaigndeleteAll?MODULE='+bannerUnique+'"><button className="btn btn-danger"  data-attr="+value.ID+" ><i className="fa fa-trash"></i></button></a></div>'+
+        '<img src="'+bannerImg[iterval]+'" class="card-img-top" alt="..." style="height: 40vh;"/>'+
+        '<div class="card-body">'+
+        '<h5 class="card-title"  style="height: 10vh;">'+
+        '<div  class="text-center">'+
+        ''+bannerName[iterval]+
+        '</div></h5>'+
+        '<p align="center" class="font16" style="height: 10vh;">'+teaminfo[iterval]+'</p>'+
+        '<h6 align="center"><small  class="text-green text-center font12">'+ growthPer[iterval]+'% of total goal raised</small> </h6>'+
+        '<h6 align="center" class="font20"><small  class="text-secondary  text-center  font20">'+memName[iterval]+'</small></h6>'+memDesc[iterval]+'&nbsp;'+
+        '</div></a>'+
+        '</div></div>');
+    }
+      
+ 
+
+   })
+   .catch(e => {
+     console.log(e);
+   });
+  
+
+
+
 const Livedeals = ({
   className,
   topOuterDivider,
@@ -55,307 +203,146 @@ const Livedeals = ({
       {...props}
       className={outerClasses}
     >
-      <div className="container">
-        &nbsp;
-        <div className={innerClasses}>
-          <SectionHeader data={sectionHeader} className="center-content" />
-          <div className="features-tiles-item-content">
-                  <h2 className="mt-0 mb-8">
+        <div className="container mt-5">
+      <div className="card border-0 mt-5">
+            <div className="card-body">
+            <h2 className="mt-0 mb-8">
                   Live Deals
                     </h2>
-                  <p className="m-0 text-sm" style={{color:"black"}}>
-                    All Regulation Crowdfunding Deals Are Highly Vetted <br/> By <span style={{color:"#23b347"}}>Our Investment Team.</span>
-                  </p>
-                </div> &nbsp;
-                <div className={tilesClasses}>
-                    <div className="col-md-4" style={{paddingTop:20}}>
-                     <Input id="newsletter" type="email" style={{backgroundColor:"white",textColor:"white"}} label="Subscribe" labelHidden hasIcon="right" placeholder="Enter The Keyword Here">
-                         <svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M9 5H1c-.6 0-1 .4-1 1s.4 1 1 1h8v5l7-6-7-6v5z" fill="#376DF9" />
-                          </svg>
-                        </Input>
-                  </div>
-                  
-                  <div className="col-md-4" style={{paddingTop:20}} >
-                  
-                  <label>
-                    <select style={{width: 310,height: 40,fontSize:20,color:"grey",backgroundColor:"white"}}>
-                        <option value="grapefruit"> Filters</option>
-                        <option value="lime">Most Transaction</option>
-                        <option value="coconut">Closing Soon</option>
-                        
-                    </select>
-                    </label>
-                  </div>
-                  
-                  
-                <div className="col-md-4" style={{paddingTop:20}}>
-                <label >Sort By :&nbsp;
-                    <select  style={{backgroundColor:"white",width: 250,height: 40,fontSize:20,color:"grey"}}><p>22</p>
-                        <option value="Most Funded"> Most Funded</option>
-                        <option value="Most Transaction">Most Transaction</option>
-                        <option value="Closing Soon">Closing Soon</option>
-                       
-                    </select>
-                    </label>
-                    </div>
-                 </div>&nbsp;
+                    <p className="para"> All Regulation Crowdfunding Deals Are Highly Vetted <br/> By <span style={{color:"#23b347"}}>Our Investment Team.</span>
+               </p>
 
 
+
+               <form className="row col-md-12">
+  <div className="col-md-4">
+  <div className="input-group mb-3">
+  <input type="text" className="form-control" placeholder="Enter the Keyword Here" aria-label="Recipient's username" 
+  aria-describedby="button-addon2"/>
+  <button className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="fa fa-arrow-right"></i></button>
+</div>
+  </div>
+  <div className="col-md-4">
+  <select className="form-control   form-select-md"  >
+  <option value="" selected>Filters</option> 
+                        <option value="MT">Most Transaction</option>
+                        <option value="CS">Closing Soon</option>
+</select>
+  </div>
+  <div className="col-md-4"><div className="mb-3 row">
+  <label for="staticEmail" className="col-md-4 text-right">Sort By:</label>
+    <div className="col-md-8">
+    <select className="form-control form-select-md"  >
+  <option value="MF" selected>Most Funded</option> 
+                        <option value="MT">Most Transaction</option>
+                        <option value="CS">Closing Soon</option>
+</select>
+    </div></div>
+  </div>
+ 
+</form>
+
+
+
+
+
+<div className="row col-md-12">
+
+  <div className="row campaignDealsArrange">
+    </div>
+  </div> 
+
+  <div className="row mt-2  d-flex justify-content-center ">
+    <div className="card border-0" style={{width: "18rem",textAlign:"center"}}>
+  <div className="card-body ">
+    <h5 className="card-title text-center"><span className="card-title text-center">Runnners</span></h5>
+    <h6 className="card-subtitle mb-2 text-muted text-center">Connecting outstanding operation talent with the most inclusive companies</h6>
+    {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+    <button type="button" className="btn btn-success">MAX</button>
+    {/* <a href="#" className="card-link">Another link</a> */}
+    <table className="table table-borderedless">
+      <tr className="">
+        <td className="text-success p-4"><b>$25,000,000</b> valuation cap</td>
+      </tr>
+      <tr className="p-5">
+        <td className="p-3"><b>$100 min.</b>investment</td>
+      </tr>
+      <tr className="p-5">
+        <td className="p-3"><b>446</b> Investors</td>
+      </tr>
+      <tr className="p-5">
+        <td className="p-3"><b>$266,978</b> raised</td>
+      </tr> 
+    </table>
+  </div>
+</div>
+    </div>
+
+
+
+    <div className="row mt-2  d-flex justify-content-center ">
+    <div className="card border-0"   style={{background:"#e9ecef"}}>
+  <div className="card-body row ">
+<div  className="col-md-8">
+  <h1 class="card-title">Become an Investor!</h1>
+    <p class="card-text">Invest in private Startup for a chance
+to earn a return.</p>
+</div>
+<div  className="col-md-4">
+<div className="input-group mt-5">
+  <input type="text" className="form-control" placeholder="Enter the Keyword Here" aria-label="Recipient's username" 
+  aria-describedby="button-addon2"/>
+  <button className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="fa fa-arrow-right"></i></button>
+</div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div className="row mt-2">
+<div className="card border-0 mt-5">
+            <div className="card-body">
+            <h2 className="mt-0 mb-8">
+            Funded Companies
+                    </h2>
+                    <p className="para"> 90% Of Republic Campaigns Have Been Successfully Funded</p>
                 
 
-          <div className={tilesClasses}>
+  </div>
+  </div>
+  </div>
+  
 
-            <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card1.jpg')}
-                      alt="Features tile icon 01"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Ember Fund
-                    </h4>
-                  <p className="m-0 text-sm">
-                       We've Built your Crypto portfolio for you.
-                    </p><br/>
-                    <span style={{color:"grey",paddingRight:0}}>Los Angeles,CA</span>
-                <ButtonGroup>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"white",borderRadius:8,color:"orange",fontSize:13}} wideMobile href="#0">
-                    FINTECH & FINANCE
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
+
+
+  <div className="row col-md-12">
+
+<div className="row campaignDealsArrange">
+  </div>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
             </div>
-
-            <div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card2.gif')}
-                      alt="Features tile icon 02"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Realm Real Estate
-                    </h4>
-                  <p className="m-0 text-sm">
-                    Apparel thats boosts your immune health,cognition,recovery and sleep.
-                    </p><br/>
-                    <span style={{color:"grey",paddingRight:0}}>Santa Monica,CA</span>
-                <ButtonGroup>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"#AAB7B8",borderRadius:8,color:"white",fontSize:13}} wideMobile href="#0">
-                    HEALTH & WELLNESS
-                    </Button>
-                    <Button tag="a" color="secondary" style={{backgroundColor:"white",borderRadius:8,color:"orange",fontSize:13}} wideMobile href="#0">
-                    B2C
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
-            </div>
-
-            <div className="tiles-item reveal-from-bottom" data-reveal-delay="400">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card3.jpg')}
-                      alt="Features tile icon 03"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    kigns Crowd
-                    </h4>
-                  <p className="m-0 text-sm">
-                  Apparel thats boosts your immune health,cognition,recovery and sleep.
-                    </p><br/>
-                    
-                    <span style={{color:"grey"}}>Santa Monica,CA</span>
-                <ButtonGroup>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"#D5F5E3",borderRadius:8,color:"green",fontSize:13}} wideMobile href="#0">
-                    GAMING
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
-            </div>
-
-            <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card4.jpg')}
-                      alt="Features tile icon 04"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    BoxabI
-                    </h4>
-                  <p className="m-0 text-sm">
-                  We've Built your Crypto portfolio for you
-                    </p><br/>
-                    <span style={{color:"grey",paddingRight:0}}>Los Angeles,CA</span>
-                <ButtonGroup>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"white",borderRadius:8,color:"orange",fontSize:13}} wideMobile href="#0">
-                    FINTECH & FINANCE
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
-            </div>
-
-            <div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card6.jpg')}
-                      alt="Features tile icon 05"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Lambs
-                    </h4>
-                  <p className="m-0 text-sm">
-                  Apparel thats boosts your immune health,cognition,recovery and sleep.
-                    </p><br/>
-                    <span style={{color:"grey",paddingRight:0}}>Santa Monica,CA</span>
-                <ButtonGroup>
-                <Button tag="a" color="secondary" style={{backgroundColor:"white",borderRadius:8,color:"orange",fontSize:13}} wideMobile href="#0">
-                    B2C
-                    </Button>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"#FADBD8",borderRadius:8,color:"RED",fontSize:13}} wideMobile href="#0">
-                    HEALTH & WELLNESS
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
-            </div>
-
-            <div className="tiles-item reveal-from-bottom" data-reveal-delay="400">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                <h4 className="mt-0 mb-8">
-                    Runnners
-                    </h4>
-                 
-                </div>
-                <div className="features-tiles-item-content">
-                
-                  <span className="m-0 text-sm">
-                     Connecting outstanding operation talent with the most inclusive companies
-                    </span>
-                  
-                <ButtonGroup>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"#2ECC71 ",borderRadius:8,color:"white",fontSize:13}} wideMobile href="#0">
-                    MAX
-                    </Button><span style={{color:"#2ECC71 "}}><strong>$25,000,000</strong> valuation cap</span>
-                </ButtonGroup> <hr/>
-                <span><strong>$100 min.</strong>investment</span><hr/>
-                <span><strong>446</strong> Investors</span><hr/>
-                <span><strong>$266,978 </strong>raised</span>
-                </div>
-              </div>
-            </div>
-
-            <div className={tilesClasses}>
-            <div className="tiles-item reveal-from-bottom" data-reveal-delay="400" >
-              <div className="tiles-item-inner" >
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card7.jpg')}
-                      alt="Features tile icon 07"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Arwork
-                    </h4>
-                  <p className="m-0 text-sm">
-                    Apparel thats boosts your immune health,cognition,recovery and sleep.
-                    </p><br/>
-                    <span style={{color:"grey",paddingRight:0}} >Santa Monica,CA</span>
-                <ButtonGroup>
-                <Button tag="a" color="secondary" style={{backgroundColor:"white",borderRadius:8,color:"orange",fontSize:13}} wideMobile href="#0">
-                    B2C
-                    </Button>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"#FADBD8",borderRadius:8,color:"RED",fontSize:13}} wideMobile href="#0">
-                    HEALTH & WELLNESS
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
-            </div>
-
-            <div className="tiles-item reveal-from-bottom" data-reveal-delay="400">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/card8.png')}
-                      alt="Features tile icon 08"
-                      width={500}
-                      height={500} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Grit BXNG
-                    </h4>
-                  <p className="m-0 text-sm">
-                    We've built your crypto portfolio for you.
-                    </p><br/>
-                    <span style={{color:"grey",paddingRight:0}}>Los Angeles,CA</span>
-                <ButtonGroup>
-                  <Button tag="a" color="secondary" style={{backgroundColor:"#D5F5E3",borderRadius:8,color:"green",fontSize:13}} wideMobile href="#0">
-                    WOMEN FOUNDERS
-                    </Button>
-                </ButtonGroup>
-                </div>
-              </div>
-            </div>
-           </div>
-
-          </div>
-        </div>
+          </div> 
+         
       </div>
-      <div className={tilesClasses}>
-      <div className="reveal-from-bottom" data-reveal-delay="600" >
-                <ButtonGroup>
-                  <Button tag="a" color="primary" style={{borderRadius:8,color:"white"}} wideMobile href="#0">
-                    View All Companies (69)
-                    </Button>
-                </ButtonGroup>
-              </div></div>
+      
     </section>
   );
 }
-
-Livedeals.propTypes = propTypes;
-Livedeals.defaultProps = defaultProps;
+ 
 
 export default Livedeals;

@@ -3,14 +3,23 @@ import classNames from 'classnames';
 import Button from '../elements/Button';
 import Image from "../elements/Image";
 import '../Css/styles.css';
+import $ from 'jquery';
+import DataService from '../../service/DataService'; 
+import '../Css/styles.css';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
 
 import {
   Card,
   CardHeader,
     
 } from "@material-ui/core";
+
+const extractFilename = (path) => {
+  const pathArray = path.split("/");
+  const lastIndex = pathArray.length - 1;
+  return pathArray[lastIndex].replace(/\.[^/.]+$/, "");
+};
+
 
 
 const Investors_Dashboards = ({
@@ -38,7 +47,7 @@ pushLeft && 'push-left'
 
 return (
 
-    <body>
+    <div className="container bg-white">
     
              
         <div className="row" >
@@ -46,147 +55,207 @@ return (
                <div className="row">
                <div className="col-md-1"></div>
                <div className="col-md-11">
-               <div className="m-5 p-4">
+               <div className="">
                <div className="row">
-               <div className="row" >
+                 
+               <div className="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb arr-right">
+                      <li className="breadcrumb-item text-sm" aria-current="page" style={{color:"Grey"}}>Investor</li>
+                      <li className="breadcrumb-item text-sm active" aria-current="page" style={{color:'#23b347'}}>Dashboard</li>
+                      <li className="breadcrumb-item text-sm text-dark active"><a className="opacity-5 text-dark" href="/Portfolio">Portfolio</a></li>
+                      <li className="breadcrumb-item text-sm text-dark active"><a className="opacity-5 text-dark" href="/Investors_Analystics">Analystics</a></li>
+                    </ol>
+                  </nav>
+                </div>
+ 
 
-               <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb arr-right">
-                              <li class="breadcrumb-item text-sm" aria-current="page" style={{color:"Grey"}}>Investor</li>
-                              <li class="breadcrumb-item text-sm active" aria-current="page" style={{color:'#23b347'}}>Dashboard</li>
-                              <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="/Portfolio">Portfolio</a></li>
-                              <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="/Investors_Analystics">Analystics</a></li>
-                            </ol>
-                          </nav>
-
-
-
-                
-                
-              </div>              
               </div>
               
               <br/>
               <br/>
               <div className="row">
-                 <h4><strong>Overview</strong>&nbsp;<p style={{fontSize:10,}}>Goog Morning Laura</p></h4>
-              </div>
+              <h3 align="left" >Overview</h3>
+                        <p className="para"
+                          align="left" > 
+                          Good Morning  
+                          <b className="font16 text-success"> {sessionStorage.getItem("sessFirstname")}</b>
+                           </p>
+                   
+ 
+              </div>{/**Row end */}
+
+              <div className="row mt-3">
+              <div className=" col-md-5">
+              <div className="card light-blue" style={{borderLeft: "4px solid #00648b"}}>
+  <div className="card-body">
+    <h6 className="text-muted  font14">Total Investment Value</h6>
+    <p className="card-text b font20"><i className="fa fa-rupee"></i>&nbsp;21.,500.00</p>
+    {/* <a href="#" className="card-link">Card link</a>
+    <a href="#" className="card-link">Another link</a> */}
+  </div>
+  </div>
+</div>{/**card Row end */}
+<div className=" col-md-5">
+<div className="card bg-pinklight" style={{borderLeft: "4px solid rgb(139 44 139)"}}>
+  <div className="card-body">
+  <h6 className="text-muted  font14">Startups Invested</h6>
+    <p className="card-text b font20">25</p>
+    {/* <a href="#" className="card-link">Card link</a>
+    <a href="#" className="card-link">Another link</a> */}
+  </div>
+</div>{/**card Row end */}
+</div>
+<div className=" col-md-2">
+<div className="card light-violet">
+  <div className="card-body">
+  <h6 className="text-muted  font14 text-center">View All Investment</h6>
+  <p className="card-text text-center b font14"><i className="fa fa-arrow-right"></i></p>
+    {/* <p className="card-text text-center b font14">
+</p> */}
+    {/* <a href="#" className="card-link">Card link</a>
+    <a href="#" className="card-link">Another link</a> */}
+  </div>
+  </div>
+</div>{/**card Row end */}
+
+                </div>{/**Row end */}
 
 
-              <br/>
-              <div className="row">
-                     <Card style={{backgroundColor:"#E9F7EF",width:350,height:150,borderRadius:15,marginTop:10}}>
-                        <div className="row">
-                             <div className="col-md-12" align="left" style={{paddingTop:18}}> <p style={{fontSize:12}}>Total Investment value</p>
-                                <strong style={{color:"black"}}>$21.,500.00</strong>
-                              </div>          
-                         
-                        </div>
-                        </Card>&nbsp;
-
-                        
-                        <Card style={{backgroundColor:"#FDF2E9",width:360,height:150,borderRadius:15,marginTop:10}}>
-                        <div className="row"><div className="col-md-12" align="left" style={{paddingTop:18}}> <p style={{fontSize:12}}>Startups Invested</p>
-                        <strong style={{color:"black"}}>25</strong></div>          
-                        </div>
-                        </Card>&nbsp;
 
 
-                        <Card style={{backgroundColor:"#F2F3F4",width:260,height:150,borderRadius:15,marginTop:10}}>
-                        <div className="row">
-                          <div className="col-md-12" align="center" style={{paddingTop:18}}> <p style={{fontSize:12}}>View All</p>
-                        <strong style={{color:"black"}}>Investment</strong></div>          
-                        </div>
-                        </Card>
-              </div>
 
-              <br/>
-              <br/>
-              <div className="row">
+                <div className="row mt-3">
+              <h3 align="left" >Complete Your Profile</h3>
+                        <p className="para text-secondary b"
+                          align="left" > 
+                          Complete your profile to start investing!
+                           </p>
+                   
+ 
+              </div>{/**Row end */}
+
+
+
+
+
               
-                    <h3 align="left">Complete Your Profile <br/><span style={{fontSize:15,color:"grey"}}>Complete your profile to start investing! </span></h3>
-                  
-              </div>
+              <div className="row mt-3">
+              <div className=" col-md-6">
+                <a id="openChooseStartup" >
+              <div className="card bg-pinklight">
+  <div className="card-body"> 
+    <div className="row ">
+                          <div className="col-md-8"> 
+                          <h3 className="">KYC</h3>
+                            </div>
+                            <div className="col-md-4 pt-4"> 
+                            <a   className="companysts" >
+                            <button type="button" class="btn btn-danger btn-sm" >PENDING</button>
+                              </a>
+                            </div>
+                            <p className="card-text para" align="left" >
+                               Complete your online KYC to start investing keep your PAN card handy!
+                               </p>
+                         </div>
+  </div>
+  </div></a>
+</div>{/**card Row end */}
+<div className=" col-md-6">
+<a href="/Payment_Details">
+<div className="card light-blue">
+<div className="card-body"> 
+    <div className="row ">
+                          <div className="col-md-8"> 
+                          <h3 className="">Payment Details</h3>
+                            </div>
+                            <div className="col-md-4 pt-4"> 
+                            <a href="/Payment_Details" className="companysts" >
+                            <button type="button" class="btn btn-danger btn-sm" >PENDING</button>
+                              </a>
+                            </div>
+                            <p className="card-text para" align="left" > Complete your Payment Details
+                            &nbsp;<br/>&nbsp;</p>
+                         </div>
+  </div>
+</div>{/**card Row end */}
+</a>
+</div>
+ 
 
-              <br/>
-              <div className="row">
-                     <Card style={{backgroundColor:"#FDF2E9",width:450,height:200,borderRadius:15}}>
-                        <div className="row">
-                             <div className="col-md-7" align="left" style={{paddingTop:18}}> <strong>KYC</strong>
-                                <p style={{fontSize:12,color:"grey"}}>Complete your online KYC to start investing keep your PAN card handy!</p>
-                              </div>          
-                        <div className="col-md-4" align="center">
-                        <Button tag="a" color="secondary" style={{backgroundColor:"red",borderRadius:10,marginTop:10}}  wideMobile href="/Investors_Details" className='text-white'>
-                        PENDING
-                        </Button>
-                        </div> 
-                        </div>
-                        </Card>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>{/**Row end */}
 
-                        
-                        <Card style={{backgroundColor:"whitesmoke",width:450,height:200,borderRadius:15}}>
-                        <div className="row"><div className="col-md-6" align="left" style={{paddingTop:18}}> <strong>Payment Details</strong>
-                        <p style={{fontSize:12,color:"grey"}}>Complete your Payment Detailse</p></div>          
-                        <div className="col-md-6" align="center">
-                        <Button tag="a" color="secondary" style={{backgroundColor:"red",borderRadius:10,marginTop:10}}  className='text-white'wideMobile href="/Payment_Details">
-                        PENDING
-                        </Button>
-                        </div> 
-                        </div>
-                        </Card>
 
-              </div>
 
-                        <br/>
-                        <div className="row">
-                        <h3>Our Community</h3>
-                        </div>
 
-                        <br/>
-                        <br/>
-                        <div className={tilesClasses}>
-                               <Card  style={{backgroundColor:"white",width:'auto',height:'auto'}}>
-                                  <CardHeader
-                                          avatar={ <Image
+
+                <div className="row mt-3">
+              <h3 align="left" >Our Community</h3>
+                        {/* <p className="para text-secondary b"
+                          align="left" > 
+                          Complete your profile to start investing!
+                           </p> */}
+
+<div className=" d-flex justify-content-center">
+                           <div className=" col-md-8 p-2" style={{border:"1px solid #e7e5e5"}}>
+                           <div className=" d-flex align-items-center">
+  <div className="flex-shrink-0">
+  <Image
                                              src={require('./../../assets/images/inv1.jpg')}
                                              alt="Features tile icon 01"
                                              width={80}
-                                             height={80} />}
-                                             title="Gerald Becker"
-                                             subheader="2 months ago"
-        
-                                       />&nbsp;
-                                      <p style={{color:"grey",fontSize:12}} align='center'>&nbsp;Recommendation oj jeff Brown in Day One newsletter. The concept is so good that it's obvious to me that this is a very good investment.Go Team!!&nbsp;</p>
-                                     </Card>
-                           </div>
+                                             height={80} />
+  </div>
+  <div className="flex-grow-1 ms-3">
+    <h5>Gerald Becker<br/><span className="para text-muted">2 months ago</span></h5> 
+  </div>
+</div>
+<p className="para"> Recommendation oj jeff Brown in Day One newsletter. 
+     The concept is so good that it's obvious to me that this is a very good
+      investment.Go Team!! </p>
+</div>
+                            </div>{/**END */}
 
-                           <br/>
-                           <br/>
-                           <div className={tilesClasses}>
-                              <Card  style={{backgroundColor:"white",width:'auto',height:'auto'}}>
-                                   <CardHeader
-                                      avatar={ <Image
-                                        src={require('./../../assets/images/inv2.webp')}
-                                        alt="Features tile icon 01"
-                                        width={80}
-                                        height={80} />}
-                                      title="Gerald Becker"
-                                      subheader="2 months ago"
-        
-                                     />&nbsp;
-                                    <p style={{color:"grey",fontSize:12}} align='center'>&nbsp;Recommendation oj jeff Brown in Day One newsletter. The concept is so good that it's obvious to me that this is a very good investment.Go Team!!&nbsp;</p>
-                                 </Card>
-                             </div>
 
-                             <br/>
-                             <div className='row'>
-                                  <div className="reveal-from-bottom" data-reveal-delay="600" align="Center">
-                                      <Button tag="a" color="primary" style={{borderRadius:8,color:"white",width:'auto'}} wideMobile href="">
-                                       View More
-                                      </Button>
-                                    </div>
 
-                              </div>
+
+                            <div className="mt-5 d-flex justify-content-center">
+                           <div className=" col-md-8 p-2" style={{border:"1px solid #e7e5e5"}}>
+                           <div className=" d-flex align-items-center">
+  <div className="flex-shrink-0">
+  <Image
+                                             src={require('./../../assets/images/inv2.webp')}
+                                             alt="Features tile icon 01"
+                                             width={80}
+                                             height={80} />
+  </div>
+  <div className="flex-grow-1 ms-3">
+    <h5>Johnathan<br/><span className="para text-muted">2 months ago</span></h5> 
+  </div>
+</div>
+<p className="para"> Recommendation oj jeff Brown in Day One newsletter. 
+The concept is so good that it's obvious to me that this
+ is a very good investment.Go Team!! </p>
+</div>
+</div>{/**END */}
+
+
+
+
+                   
+ 
+              </div>{/**Row end */}
+
+
+
+              <div className='row mt-5 mb-5'>
+              <div className="col-12">
+                  <div className="d-flex justify-content-center">
+                      <button type="button" className="btn btn-success btn-sm col-md-4"  >View All</button>
+                     </div>
+                     </div>
+                </div>
+ 
 
 
               
@@ -204,7 +273,7 @@ return (
               </div>
 
 
-    </body>          
+    </div>          
               
 
               

@@ -111,7 +111,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Deals" onClick={closeMenu} className="headermenu">Deals</Link>
+                      <Link to="/Deals" className="headermenu">Deals</Link>
                     </li>
                   </ul>
                   <ul className={
@@ -203,7 +203,9 @@ const Header = ({
   <input type="hidden"  id="mtuser_email"/>
   <input type="hidden"  id="mtuser_fname"/>
   <input type="hidden"  id="user_mobileno"/>
- 
+  <input type="hidden"  id="campUniqueId"/>
+
+  
             </>}
         </div>
       </div>

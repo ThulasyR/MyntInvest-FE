@@ -49,31 +49,32 @@ const Deals_Community= ({
       className={outerClasses}
     >
       <div className="container">&nbsp;
-        <div
-          className={innerClasses} style={{backgroundColor:"#F2F3F4"}}
-        >
-          <div className="cta-slogan">
-            <h1 className="m-0" >
-              Convert your<br/><span style={{color:"#2ECC71"}}>Community</span> Into Capital</h1><br/>
-              <span>Raise Up To $5 Million From 1M+ People While Growing Your Brand <br/> And Engaging Your Community</span>
-             &nbsp;
-              <div className="reveal-from-bottom" data-reveal-delay="600" style={{paddingTop:30}} >
-                <ButtonGroup>
-                  <Button tag="a" color="primary" style={{borderRadius:8,color:"white"}} wideMobile href="/Raise">
-                    Apply to Raise
-                    </Button>
-                </ButtonGroup>
-              </div>
-          </div>
-          <div className="cta-action"> 
-          <Image
+
+
+      
+    <div className="row mt-2  d-flex justify-content-center ">
+    <div className="card border-0"   style={{background:"#e9ecef"}}>
+  <div className="card-body row ">
+<div  className="col-md-8">
+  <h1 class="card-title">Convert your<br/>
+  <span style={{color:"#2ECC71"}}>Community</span> Into Capital
+  </h1>
+    <p class="card-text">Raise Up To $5 Million From 1M+ People While Growing Your Brand
+And Engaging Your Community </p>
+</div>
+<div  className="col-md-4">
+<Image
                       src={require('./../../assets/images/Mixed.jpg')}
                       alt="Features tile icon 01"
                       width={300}
                       height={300}
                      />
-          </div>
-        </div>
+  </div>
+</div>
+</div>
+</div>
+
+         
       </div>
     </section>
   );

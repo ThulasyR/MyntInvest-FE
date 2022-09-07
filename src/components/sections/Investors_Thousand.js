@@ -30,7 +30,7 @@ const Investors_Thousand = ({
     topOuterDivider && 'has-top-divider',
     bottomOuterDivider && 'has-bottom-divider',
     hasBgColor && 'has-bg-color',
-    invertColor && 'invert-color',
+    invertColor && 'invert-color',' bg-white',
     className
   );
 
@@ -56,18 +56,26 @@ const Investors_Thousand = ({
       className={outerClasses}
     >
       <div className="container">
-        <div className={innerClasses}>&nbsp;
-        <h1 align="center">Join Thousands Of <span className="secondary">Investors</span></h1>
-         <SectionHeader data={sectionHeader} className="center-content" />
-         <div className="reveal-from-bottom" data-reveal-delay="600" align="center">
-                  <Button tag="a" color="primary" style={{borderRadius:15,color:"white",}} wideMobile href="/Signup">
-                    Become an Investors
-                    </Button>
-              </div>&nbsp;
-                <div align="center"><span>Investments Are Risky And May Result In Total Loss Of Capital.<u>Learn More</u></span>
-                </div> &nbsp;
-            </div>
-            <div className={tilesClasses}>
+
+
+      <div className="col-md-12 pt-5">
+      <h1 align="center">Join Thousands Of <span className="secondary">Investors</span></h1>
+      <p  className="text-center">Individual And Institutional Investors.Invest $10-$100,000 Per Deal on MynInvest</p>
+
+          <div className="row d-flex justify-content-center">
+          <a href="#"  className="row d-flex justify-content-center text-center">
+            <button type="button" class="btn btn-success btn-sm font14 col-md-4" >
+              <b>Become an Investors</b>
+            </button>
+          </a>
+          
+          <p className="text-center"><br/><br/>Investments Are Risky And May Result In Total Loss Of Capital.&nbsp;
+          <a href="#" className="alert-link"><u>Learn More</u></a></p>
+          </div>
+
+
+
+          <div className="row d-flex justify-content-center">
           <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
                 <div className="features-tiles-item-header">
@@ -132,8 +140,11 @@ const Investors_Thousand = ({
                 </div>
               </div>
             </div>
-            
-            </div>
+
+          </div>
+ 
+      
+      </div> 
           </div>
     </section>
   );

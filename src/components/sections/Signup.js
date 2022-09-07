@@ -143,7 +143,7 @@ class Registration extends React.Component {
           
         });  
 
-        window.showAlert("User Successfully inserted!!!!","/Login");
+        window.showAlert("User Successfully Registered!!!!","/Login");
         
       })
       .catch(e => {

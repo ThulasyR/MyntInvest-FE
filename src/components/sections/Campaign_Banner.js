@@ -59,6 +59,7 @@ class Campaign_Banner extends React.Component {
 
 
   retrieveAllCamBan() {
+   
     var querySet = "/campban?EMAIL=" + sessionStorage.getItem("sessEmail");
     console.log(querySet);
     DataService.findByTitle(querySet)
@@ -71,9 +72,12 @@ class Campaign_Banner extends React.Component {
   
 
         $("#CampBanform #campbanid").attr("value", value.ID).val(value.ID);
-           $("#CampBanform #campbanimage").closest(".imgUp").find('.imagePreview').css("background-image", "url("+window.mt_backend_url+value.CAM_BAN_IMAGE+")");
+        $("#CampBanform #campUniqueId").attr("value", value.MODULE).val(value.MODULE);
+        $("#CampBanform #campbanimage").closest(".imgUp").find('.imagePreview').css("background-image", "url("+window.mt_backend_url+value.CAM_BAN_IMAGE+")");
         $("#CampBanform #campbanimage").closest("label").css("visibility","hidden");
-          if(value.CAM_BAN_VIDEO.length > 0){ 
+        
+        
+        if(value.CAM_BAN_VIDEO.length > 0){ 
           $("#CampBanform #campbanvideo").closest("div").html("<p>Download file: <a class='text-primary' target='_blank' href="+window.mt_backend_url+value.CAM_BAN_VIDEO+">"+extractFilename(value.CAM_BAN_VIDEO)+"</a></p>");
         }else{
           $("#CampBanform #campbanvideo").closest("div").html('<input type="file" id="campbanvideo" name="campbanvideo" className="form-control"  multiple />');
@@ -105,8 +109,8 @@ class Campaign_Banner extends React.Component {
         let cambanformData = new FormData();  
         cambanformData.append("ID",Number($("#CampBanform #campbanid").val()));
         cambanformData.append("MTUSER_ID",$("#mtuser_id").val());
-        cambanformData.append("EMAIL",$("#mtuser_email").val()); 
-        cambanformData.append("MODULE",$("#mtuser_module").val());
+        cambanformData.append("EMAIL",$("#mtuser_email").val());  
+        
         cambanformData.append("STATUS","Active");
         cambanformData.append("COMMENTS", "TEST");
         cambanformData.append("DESCRIPTION", "TEST");
@@ -119,8 +123,14 @@ class Campaign_Banner extends React.Component {
         if (window.isEmpty($("#CampBanform #campbanid").val())) {
           cambanformData.append("CAM_BAN_IMAGE", $("#CampBanform #campbanimage")[0].files[0],$("#CampBanform #campbanimage")[0].files[0].name);
           cambanformData.append("CAM_BAN_VIDEO", $("#CampBanform #campbanvideo")[0].files[0],$("#CampBanform #campbanvideo")[0].files[0].name);
-          
+          var genCode = window.genRandomCode(); 
+          cambanformData.append("MODULE",genCode);
+          sessionStorage.setItem("sessionCampaign",genCode)
+          $("#CampBanform #campUniqueId").val(genCode);
+        }else{
+          cambanformData.append("MODULE",$("#CampBanform #campUniqueId").val());
         }
+       
 
         // console.log(rsformData);
 
@@ -232,6 +242,9 @@ return (
    
 
 <input type="hidden" id="campbanid" name="campbanid"/>
+<input type="hidden" id="campUniqueId" name="campUniqueId"/>
+
+
   <div className="col-md-8 mb-3 mt-3">
     <div className="row mb-3">
     <div className="col-md-8">

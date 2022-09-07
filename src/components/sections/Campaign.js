@@ -35,13 +35,35 @@ var campaignbannerAllDets=[];
 var cambanquerySet = "/campban?EMAIL="+sessionStorage.getItem("sessEmail");
 DataService.findByTitle(cambanquerySet)
 .then(response => {
-  campaignbannerAllDets = response.data 
-   
-
- if(campaignbannerAllDets.length >0 ){
+  campaignbannerAllDets = response.data   
+ if(campaignbannerAllDets.length >0 ){  
+  $.each(campaignbannerAllDets, function (index, value) {
+    $("#campUniqueId").attr("value", value.MODULE).val(value.MODULE);
+  });
+ 
   $(".campaignbannersts").html('<button type="button" class="btn btn-success btn-sm" >COMPLETED</button>')
  }else{
   $(".campaignbannersts").html('<button type="button" class="btn btn-danger btn-sm" >PENDING</button>')
+ }  
+   })
+   .catch(e => {
+     console.log(e);
+   });
+
+
+
+/*Campaign information*/
+var campaignInvestAllDets=[]; 
+var caminvquerySet = "/caminvest?EMAIL="+sessionStorage.getItem("sessEmail");
+DataService.findByTitle(caminvquerySet)
+.then(response => {
+  campaignInvestAllDets = response.data 
+   
+
+ if(campaignInvestAllDets.length >0 ){
+  $(".campaigninveststs").html('<button type="button" class="btn btn-success btn-sm" >COMPLETED</button>')
+ }else{
+  $(".campaigninveststs").html('<button type="button" class="btn btn-danger btn-sm" >PENDING</button>')
  } 
  
    })
@@ -51,6 +73,28 @@ DataService.findByTitle(cambanquerySet)
 
 
 
+/*Campaign information*/
+var campaignFaqAllDets=[]; 
+var camfaqquerySet = "/camfaq?EMAIL="+sessionStorage.getItem("sessEmail");
+DataService.findByTitle(camfaqquerySet)
+.then(response => {
+  campaignFaqAllDets = response.data 
+   
+
+ if(campaignFaqAllDets.length >0 ){
+  $(".campaignfaq").html('<button type="button" class="btn btn-success btn-sm" >COMPLETED</button>')
+ }else{
+  $(".campaignfaq").html('<button type="button" class="btn btn-danger btn-sm" >PENDING</button>')
+ } 
+ 
+   })
+   .catch(e => {
+     console.log(e);
+   });
+
+
+
+   /*Campai
 
    /*Campaign information*/
 var campressAllDets=[]; 
@@ -98,10 +142,10 @@ return (
                   </nav>
                 </div>
    
-                     <div className="col-md-12">
-                    <div className="row mt-3">
+                <div className="col-md-12 bg-white p-3">
+                    <div className="row">
                     <div className="col-md-6">
-                    <h3 align="left" style={{marginTop:50}}>&nbsp;</h3>
+                     
                           <div className="card bg-yellowlight">
                           <div className="card-body"> 
                             <h5 className="card-title cardtitle">Banner (Video/Photo)</h5>
@@ -127,7 +171,7 @@ return (
 
 
           <div className="col-md-6">
-                    <h3 align="left" style={{marginTop:50}}>&nbsp;</h3>
+                    
                           <div className="card bg-pink">
                             <div className="card-body"> 
                             <h5 className="card-title cardtitle">Investors</h5>
@@ -136,8 +180,8 @@ return (
                           <p className="card-text para " align="left" >  Tell us a who are the Top investors are</p>
                             </div>
                             <div className="col-md-4"> 
-                            <a href="/Campaign_Investors">
-                            <button type="button" className="btn btn-danger btn-sm" >PENDING</button>
+                            <a href="/Campaign_Investors"  className="campaigninveststs">
+                            {/* <button type="button" className="btn btn-danger btn-sm" >PENDING</button> */}
                             </a>
                             </div>
                             </div> 
@@ -150,17 +194,17 @@ return (
                       
                       <div className="row mt-3">
                       <div className="col-md-6">
-                    <h3 align="left" style={{marginTop:50}}>&nbsp;</h3>
+                    
                           <div className="card bg-pink">
                             <div className="card-body"> 
                             <h5 className="card-title cardtitle">FAQs</h5>
                             <div className="row ">
                           <div className="col-md-8 pt-3"> 
-                          <p className="card-text para " align="left" >  Help investors understand your weven better</p>
+                          <p className="card-text para " align="left" >  Help investors understand your even better</p>
                             </div>
                             <div className="col-md-4"> 
-                            <a href="/Campaign_FAQ">
-                            <button type="button" className="btn btn-danger btn-sm">PENDING</button>
+                            <a href="/Campaign_FAQ" className='campaignfaq'>
+                            {/* <button type="button" className="btn btn-danger btn-sm">PENDING</button> */}
                             </a>
                             </div>
                             </div> 
@@ -173,7 +217,7 @@ return (
 
 
           <div className="col-md-6">
-                    <h3 align="left" style={{marginTop:50}}>&nbsp;</h3>
+                    
                           <div className="card bg-pink">
                             <div className="card-body"> 
                             <h5 className="card-title cardtitle">Press</h5>

@@ -67,7 +67,8 @@ class Team_Info extends React.Component {
        $.each(this.state.teaminfoAllDets, function (index, value) {
          
         if(index != 0){
-          $("#teaminfoAddmem").click(); 
+          // $("#teaminfoAddmem").click(); 
+          $("#teaminfoAddmem").trigger('click');
         }
   //  var mobile = value.ID;
   //  sessionStorage.setItem("mobile", mobile);
@@ -220,9 +221,20 @@ validateTeamInfo(){
           // errors["tmteambio"] = "Please Enter Your Team Bio ";
           $($("#TeamInfoform #tmteambio")[index]).parent().find("div").html("Please Enter Your Team Bio");
         }
-      });
+
+
+        if(window.isEmpty($($("#TeamInfoform #teaminfoid")[index]).val())){  
+        if (!Number($($("#TeamInfoform #tmuploadprofile")[index]).get(0).files.length)  > 0) {
+          isValid = false;
+          // errors["tmuploadprofile"] = "Please Upload Image";
+          $($("#TeamInfoform #tmuploadprofile")[index]).parent().find("div").html("Please Upload Image");
+          $("#TeamInfoform #tmuploadprofile").focus();
+        }
       
-     
+      }
+
+
+      }); 
        
       this.setState({
         errors: errors

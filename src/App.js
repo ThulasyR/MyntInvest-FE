@@ -27,6 +27,7 @@ import Private_Deals from './views/Private_Deals';
 //Investors
 import Investor_Signup from './components/sections/Investor_Signup';
 import Investors_Terms from './components/sections/Investors_Terms';
+import Invest_Now from './components/sections/Invest_Now';
 import Investors_Dashboard from './components/sections/Investors_Dashboards';
 import Portfolio from './components/sections/Portfolio';
 import Investors_Analytics from './components/sections/Investors_Analystics';
@@ -34,6 +35,7 @@ import Investors_Details from './components/sections/Investors_Details';
 import Investors_Verification from './components/sections/Investors_Verification';
 import Pancard_Details from './components/sections/Pancard_Details';
 import Payment_Details from './components/sections/Payment_Details';
+import Inv_Signup from './components/sections/Inv_Signup';
 
 //Startup
 import Startup_Login from './components/sections/Startup_Login';
@@ -131,6 +133,7 @@ const App = () => {
           <AppRoute exact path="/Founders" component={Founders} layout={LayoutDefault} />
           <AppRoute exact path="/Learn" component={Learn} layout={LayoutDefault} />
           <AppRoute exact path="/How_It_Works" component={How_It_Works} layout={LayoutDefault} />
+          
           <AppRoute exact path="/Private_Deals" component={Private_Deals} layout={LayoutDefault} />
           <AppRoute exact path="/Risks" component={Risks} layout={LayoutDefault} /> 
           <AppRoute exact path="/Terms_Condition" component={Terms_Condition} layout={LayoutDefault} /> 
@@ -138,6 +141,7 @@ const App = () => {
           <AppRoute exact path="/Login" component={Login} layout={LayoutDefault} />
           <AppRoute exact path="/Investor_Signup" component={Investor_Signup} layout={LayoutDefault} />
           <AppRoute exact path="/Investors_Terms" component={Investors_Terms} layout={LayoutDefault} />
+          <AppRoute exact path="/Invest_Now" component={Invest_Now} layout={LayoutDefault} /> 
           <AppRoute exact path="/Investors_Dashboard" component={Investors_Dashboard} layout={LayoutDefault} />
           <AppRoute exact path="/Portfolio" component={Portfolio} layout={LayoutDefault} />
           <AppRoute exact path="/Investors_Analystics" component={Investors_Analytics} layout={LayoutDefault} />
@@ -156,6 +160,8 @@ const App = () => {
           <AppRoute exact path="/Analystics" component={Analystics} layout={LayoutDefault} />
           <AppRoute exact path="/Analystics_Chart" component={Analystics_Chart} layout={LayoutDefault} />
           
+          <AppRoute exact path="/Inv_Signup" component={Inv_Signup} layout={LayoutDefault} />
+         
           <AppRoute exact path="/Signup" component={Signup} layout={LayoutDefault} />
           <AppRoute exact path="/Startup_Login" component={Startup_Login} layout={LayoutDefault} />
           <AppRoute exact path="/Startup_Dashboard" component={Startup_Dashboard} layout={LayoutDefault} />

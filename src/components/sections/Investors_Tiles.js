@@ -33,7 +33,7 @@ const Investors_Tiles = ({
     topOuterDivider && 'has-top-divider',
     bottomOuterDivider && 'has-bottom-divider',
     hasBgColor && 'has-bg-color',
-    invertColor && 'invert-color',
+    invertColor && 'invert-color',' bg-white',
     className
   );
 
@@ -60,133 +60,129 @@ const Investors_Tiles = ({
       {...props}
       className={outerClasses}
     >
-      <div className="container">
-        <div className={innerClasses}>
-          <SectionHeader data={sectionHeader} className="center-content" />
-          <div className={splitClasses}>
+      <div className="container"> 
+      <div className="row d-flex justify-content-center investorpage">
+    <div className="card border-0 mt-5"  >
+  <div className="card-body  ">
+    <div className="row">
+<div  className="col-md-6">
+<h1 class="card-title">Open Deals</h1>
+<p class="card-text font20">Come on board with our angel investors and their community. Start investing with as little as ₹10,000 and earn a part of the next big thing.
+</p>
+<p class="font16">View Live Deals to start investing today
+</p>
+<p>
+<a href="#"><button type="button" class="btn btn-light text-success btn-sm font14" >
+  <b>VIEW ALL</b></button></a>
+               
+  </p>
 
-            <div className="split-item">
-              <div className="split-item-content center-content-mobile reveal-from-right" data-reveal-container=".split-item">
-                <h3 className="mt-0 mb-12">
-                 Open Deals
-                  </h3>
-                <p className="m-0">
-                Come on board with our angel investors and their community. Start investing with as little as ₹10,000 and earn a part of the next big thing.</p> <br/>
-                <p>View Live Deals to start investing today</p>
-                <div className="reveal-from-bottom" data-reveal-delay="600">
-                <ButtonGroup>
-                  <Button tag="a" color="primary"  style={{borderRadius:8,backgroundColor:"#f9faf9",color:"#2ECC71 "}} wideMobile href="/Deals">
-                  View All  
-                    </Button>
-                </ButtonGroup>
-                 </div>
-                 </div>
-                
-              <div className={
-                classNames(
-                  'split-item-image center-content-mobile reveal-from-bottom',
-                  imageFill && 'split-item-image-fill'
-                )}
-                data-reveal-container=".split-item">
-                <Image
-                  src={require('./../../assets/images/Investors1.png')}
-                  alt="Features split 02"
-                  width={300}
-                  height={300} />
-              </div>
-            </div>
+</div>
+<div  className="col-md-6 investWid">
+ 
+<div class="card profile-card-4 w-100" >
+  {/* <img src="..." class="card-img-top" alt="..."/> */}
+  <marquee  direction="up"  loop="true" scrollamount="10">
+  <div class="card-body ">
 
-            <div className="split-item">
-              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-                <h3 className="mt-0 mb-12">
-                Invest With Ease Within Seconds
-                  </h3>
-                <p className="m-0">
-                Discover game changing startups, sign your documents and diversify your portfolio at our one stop shop seamlessly.  </p><br/>
-                <p>Start investing today!</p>
-                <div className="reveal-from-bottom" data-reveal-delay="600">
-                <ButtonGroup>
-                  <Button tag="a" color="primary"  style={{borderRadius:8,backgroundColor:"#f9faf9",color:"#2ECC71 "}} wideMobile href="/Login">
-                  Get Started  
-                    </Button>
-                </ButtonGroup>
-                 </div>
-             </div>
-              <div className={
-                classNames(
-                  'split-item-image center-content-mobile reveal-from-bottom',
-                  imageFill && 'split-item-image-fill'
-                )}
-                data-reveal-container=".split-item">
-                <Image
-                  src={require('./../../assets/images/Investors2.png')}
-                  alt="Features split 03"
-                  width={300}
-                  height={300} />
-              </div>
-            </div>
+  <div class="d-flex align-items-center">
+  <div class="flex-shrink-0">
+    <img src={require('./../../assets/images/1.png')} alt="..."/>
+  </div>
+  <div class="flex-grow-1 ms-3" >
+    <h5 style={{lineHeight: "0px"}}>Galaxy Card</h5>
+     <p className="para">The instant Digital Card for Bharat</p>
+  </div>
+  
+  </div>
+{/*  card body */}
 
-            <div className="split-item">
-              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-                <h3 className="mt-0 mb-12">
-                 Monitor Your Investments
-                  </h3>
-                <p className="m-0">
-                MxI's analytics section will help you track all your key performance indicators in one place. Go to your Dashboard to get started.</p>
-                <div className="reveal-from-bottom" data-reveal-delay="600">
-                <ButtonGroup>
-                  <Button tag="a" color="primary"  style={{borderRadius:8,backgroundColor:"#f9faf9",color:"#2ECC71 "}} wideMobile href="/Login">
-                  Get Started  
-                    </Button>
-                </ButtonGroup>
-                 </div>
-              </div>
-              <div className={
-                classNames(
-                  'split-item-image center-content-mobile reveal-from-bottom',
-                  imageFill && 'split-item-image-fill'
-                )}
-                data-reveal-container=".split-item">
-                <Image
-                  src={require('./../../assets/images/Investors3.png')}
-                  alt="Features split 01"
-                  width={300}
-                  height={300} />
-              </div>
-            </div>
+     
+      
 
-            
-            <div className="split-item">
-              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-                <h3 className="mt-0 mb-12">
-                Learn & Join Our Community 
-                  </h3>
-                <p className="m-0">
-                At MxI, we've built our Community such that you can interact and connect with fellow investors, founders, VC's before investing.</p>
-                <div className="reveal-from-bottom" data-reveal-delay="600">
-                <ButtonGroup>
-                  <Button tag="a" color="primary" style={{borderRadius:8,backgroundColor:"#f9faf9",color:"#2ECC71 "}} wideMobile href="/Login">
-                  Join Community Now   
-                    </Button>
-                </ButtonGroup>
-                 </div>
-              </div>
-              <div className={
-                classNames(
-                  'split-item-image center-content-mobile reveal-from-bottom',
-                  imageFill && 'split-item-image-fill'
-                )}
-                data-reveal-container=".split-item">
-                <Image
-                  src={require('./../../assets/images/Investors4.png')}
-                  alt="Features split 01"
-                  width={528}
-                  height={396} />
-              </div>
-            </div>
+<div class=" flex-shrink-0"> 
+    <div  className="row"> 
+    <table className="table table-borderless table-hover table-sm" border="0">
+      <tbody>
+        <tr className="border-0 para"><td colspan="2">&nbsp;</td>
+        <td className="text-muted">Raised</td><td className="text-muted">Closes in</td></tr>
+        <tr className="border-0 para"><td><span className="btn btn-sm bg-light font12"> CREDIT CARDS </span></td>
+        <td><span className="btn btn-sm bg-light font12"> FINTECH </span></td>
+        <td><b>36.82%</b></td>
+        <td><b>14 days</b></td></tr>
+        </tbody>
+      </table>  
+    </div>
+    </div>
+  </div>
+{/* card end */}
 
-          </div>
-        </div>
+<hr/>
+
+<div class="card-body ">
+  <div class="d-flex align-items-center">
+  <div class="flex-shrink-0">
+    <img src={require('./../../assets/images/2.png')} alt="..."/>
+  </div>
+  <div class="flex-grow-1 ms-3" >
+    <h5 style={{lineHeight: "0px"}}>nStore</h5>
+     <p className="para">Connecting Communities through Commerce</p>
+  </div>
+  
+  </div>
+{/*  card body */}
+
+     
+      
+
+<div class=" flex-shrink-0"> 
+    <div  className="row"> 
+    <table className="table table-borderless table-hover table-sm" border="0">
+      <tbody>
+        <tr className="border-0 para"><td colspan="2">&nbsp;</td>
+        <td className="text-muted">Raised</td><td className="text-muted">Closes in</td></tr>
+        <tr className="border-0 para">
+          <td><span className="btn btn-sm bg-light font12">RETAIL TECHNOLOGIES</span></td>
+        <td><span className="btn btn-sm bg-light font12"> COMMUNITIES </span></td>
+        <td><b>22.12%</b></td>
+        <td><b>8 days</b></td></tr>
+        </tbody>
+      </table>  
+    </div>
+    </div>
+  </div>
+{/* card end */}
+</marquee>
+<hr/>
+
+<div className="row col-md-12 d-flex justify-content-center m-2">
+<a href="#" class="card-link text-center  mb-2 font14">View All&nbsp;<i className="fa fa-arrow-right"></i></a>
+  </div>
+
+ 
+
+
+</div> 
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+           
       </div>
     </section>
   );

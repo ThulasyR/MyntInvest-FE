@@ -61,6 +61,9 @@ class Campaign_Press extends React.Component {
 
 
   retrieveAllCamPress() {
+    // var sessionCampaign = sessionStorage.getItem("sessionCampaign");
+    // console.log("sessionCampaign"+sessionCampaign)
+
     var querySet = "/campress?EMAIL=" + sessionStorage.getItem("sessEmail");
     console.log(querySet);
     DataService.findByTitle(querySet)
@@ -71,6 +74,7 @@ class Campaign_Press extends React.Component {
 
          $.each(this.state.campressAllDets, function (index, value) {
   
+   
 
         $("#CampPressform #campressid").attr("value", value.ID).val(value.ID);
         $("#CampPressform #campressheader").attr("value", value.CAMP_PRESS_HEADER).val(value.CAMP_PRESS_HEADER);
@@ -118,7 +122,7 @@ class Campaign_Press extends React.Component {
         camppressformData.append("ID",Number($("#CampPressform #campressid").val()));
         camppressformData.append("MTUSER_ID",$("#mtuser_id").val());
         camppressformData.append("EMAIL",$("#mtuser_email").val()); 
-        camppressformData.append("MODULE",$("#mtuser_module").val());
+        camppressformData.append("MODULE",sessionStorage.getItem("sessionCampaign"));
         camppressformData.append("CAMP_PRESS_HEADER",$("#CampPressform #campressheader").val());
         camppressformData.append("CAMP_PRESS_BODY",$("#CampPressform").find("label[for=campressbody]").closest("div").find("div").find("span").text());
         camppressformData.append("STATUS","Active");

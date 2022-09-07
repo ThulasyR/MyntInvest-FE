@@ -12,10 +12,10 @@ const Deals = () => {
 
   return (
     <>
-      <Deals_Navbar/>
+      {/* <Deals_Navbar/> */}
       <Livedeals />&nbsp;
-      <Deals_Cta split/>
-      <Funded_Company />
+      {/* <Deals_Cta split/>
+      <Funded_Company /> */}
     </>
   );
 }
