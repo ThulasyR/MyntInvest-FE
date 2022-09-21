@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { useLocation, Switch } from 'react-router-dom';
-
+// import { Helmet } from "react-helmet"
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
-import ReactGA from 'react-ga';  
+import ReactGA from 'react-ga'; 
+import $ from 'jquery';
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault'; 
 
@@ -36,6 +37,16 @@ import Investors_Verification from './components/sections/Investors_Verification
 import Pancard_Details from './components/sections/Pancard_Details';
 import Payment_Details from './components/sections/Payment_Details';
 import Inv_Signup from './components/sections/Inv_Signup';
+import Deals_Realm  from './components/sections/Deals_Realm';
+import Deals_Community from './components/sections/Deals_Community';
+import Deals_About from './components/sections/Deals_About';
+import Deals_Company from './components/sections/Deals_Company';
+import Deals_Cta from './components/sections/Deals_Cta';
+import Deals_Press from './components/sections/Deals_Press';
+import Deals_Review from './components/sections/Deals_Review';
+import Deals_Sta from './components/sections/Deals_Sta';
+import Deals_Team from './components/sections/Deals_Team';
+import Investor_Realestate from './components/sections/Investor_Realestate';
 
 //Startup
 import Startup_Login from './components/sections/Startup_Login';
@@ -100,12 +111,14 @@ import Admin_Solution from './components/sections/Admin_Solution';
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
-const $ = window.$;
+// const $ = window.$;
 const trackPage = page => {
   ReactGA.set({ page });
   ReactGA.pageview(page);
 };
 
+
+ 
 const App = () => {
 
   const childRef = useRef();
@@ -124,6 +137,19 @@ const App = () => {
       ref={childRef}
       children={() => (
         <Switch>
+          
+    {/* <Helmet> */}
+      
+  {/* <script   type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+ 
+   
+  <script   type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script   type="text/javascript" src='//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
+   
+  <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> */}
+   {/* <script  type="text/javascript" src="./assets/js./ocommon.js"></script>    */}
+      {/* </Helmet> */}
+
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute exact path="/Deals" component={Deals} layout={LayoutDefault} />
           <AppRoute exact path="/Pitch" component={Pitch} layout={LayoutDefault} />
@@ -133,6 +159,18 @@ const App = () => {
           <AppRoute exact path="/Founders" component={Founders} layout={LayoutDefault} />
           <AppRoute exact path="/Learn" component={Learn} layout={LayoutDefault} />
           <AppRoute exact path="/How_It_Works" component={How_It_Works} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Community" component={Deals_Community} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_About" component={Deals_About} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Company" component={Deals_Company} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Cta" component={Deals_Cta} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Press" component={Deals_Press} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Review" component={Deals_Review} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Sta" component={Deals_Sta} layout={LayoutDefault} />
+          <AppRoute exact path="/Deals_Team" component={Deals_Team} layout={LayoutDefault} />
+          
+          
+          <AppRoute exact path="/Deals_Realm/:id" component={Deals_Realm} layout={LayoutDefault} />
+          
           
           <AppRoute exact path="/Private_Deals" component={Private_Deals} layout={LayoutDefault} />
           <AppRoute exact path="/Risks" component={Risks} layout={LayoutDefault} /> 
@@ -210,8 +248,8 @@ const App = () => {
           <AppRoute exact path="/Admin_Tractioninfo" component={Admin_Tractioinfo} layout={LayoutDefault}/>
           <AppRoute exact path="/Admin_Productinfo" component={Admin_Produtioninfo} layout={LayoutDefault}/>
           <AppRoute exact path="/Admin_Solution" component={Admin_Solution} layout={LayoutDefault}/>
-  
-
+   
+ 
         </Switch>
       )} />
   );

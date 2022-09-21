@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import Logo from './partials/Logo';
 
 const propTypes = {
@@ -111,7 +111,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Deals" className="headermenu">Deals</Link>
+                      <NavLink to="/Deals" className="headermenu reload">Deals</NavLink>
                     </li>
                   </ul>
                   <ul className={
@@ -120,7 +120,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Investors" onClick={closeMenu} className="headermenu">Investors</Link>
+                      <NavLink to="/Investors" onClick={closeMenu} className="headermenu reload">Investors</NavLink>
                     </li>
                   </ul>
                   <ul className={
@@ -129,7 +129,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Founders" onClick={closeMenu} className="headermenu">Founders</Link>
+                      <NavLink to="/Founders" onClick={closeMenu} className="headermenu reload">Founders</NavLink>
                     </li>
                   </ul>
                   <ul className={
@@ -138,7 +138,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Learn" onClick={closeMenu} className="headermenu">Learn</Link>
+                      <NavLink to="/Learn" onClick={closeMenu} className="headermenu reload">Learn</NavLink>
                     </li>
                   </ul>
                   <ul className={
@@ -147,7 +147,7 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Private_Deals" onClick={closeMenu} className="headermenu">Private Deals</Link>
+                      <NavLink to="/Private_Deals" onClick={closeMenu} className="headermenu reload">Private Deals</NavLink>
                     </li>
                   </ul>
                   
@@ -157,9 +157,9 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="/Login" onClick={closeMenu}>
-                        <button className="btn btn-default btn-sm headermenu" >
-                          Log in</button></Link>
+                      <NavLink to="/Login" onClick={closeMenu}>
+                        <button className="btn btn-default btn-sm headermenu " >
+                          Log in</button></NavLink>
                     </li>
                   </ul>
                   {!hideSignin &&
@@ -167,10 +167,10 @@ const Header = ({
                       className="list-reset header-nav-right profile_header"
                     >
                       <li>
-                        <Link to="/Signup"  onClick={closeMenu}>
+                        <NavLink to="/Signup"  onClick={closeMenu}>
                           <button className="btn btn-success btn-sm headermenu text-white" >
                           Sign up</button> 
-                        </Link>
+                        </NavLink>
                       </li>
                     </ul>}
                     

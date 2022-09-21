@@ -67,7 +67,7 @@ class Campaign_FAQ extends React.Component {
          
         if(index != 0){
           $("#camfaqAddmem").click(); 
-          $("#camfaqAddmem").trigger('click');
+          // $("#camfaqAddmem").trigger('click');
         } 
           $($("#CamFaqform #campfaqid")[index]).attr("value",value.ID).val(value.ID);
           $($("#CamFaqform #spantCFAQestsno")[index]).attr("value",value.CFAQ_SNO).val(value.CFAQ_SNO);

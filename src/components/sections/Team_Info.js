@@ -67,8 +67,8 @@ class Team_Info extends React.Component {
        $.each(this.state.teaminfoAllDets, function (index, value) {
          
         if(index != 0){
-          // $("#teaminfoAddmem").click(); 
-          $("#teaminfoAddmem").trigger('click');
+          $("#teaminfoAddmem").click(); 
+          // $("#teaminfoAddmem").trigger('click');
         }
   //  var mobile = value.ID;
   //  sessionStorage.setItem("mobile", mobile);

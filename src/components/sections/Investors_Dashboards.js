@@ -20,7 +20,41 @@ const extractFilename = (path) => {
   return pathArray[lastIndex].replace(/\.[^/.]+$/, "");
 };
 
+/*Company information*/
+var kycAllDets=[]; 
+var cdquerySet = "/investordetails?EMAIL="+sessionStorage.getItem("sessEmail");
+DataService.findByTitle(cdquerySet)
+.then(response => {
+  kycAllDets = response.data 
+if(kycAllDets.length > 0 ){
+  $.each(kycAllDets, function (index, value) {
+    console.log("kyc"+value.INV_MOBILE_NUMBER.length );
+    if(value.INV_MOBILE_NUMBER.length > 0){
+      $(".kycsts").html('<button type="button" class="btn btn-success btn-sm" id="cpcompleted">COMPLETED</button>')
+    }else{
+      $(".kycsts").html('<button type="button" class="btn btn-danger btn-sm" id="cppending">PENDING</button>')
+    }
 
+
+    if(value.INV_BANKACCNO.length > 0){
+      $(".paymentsts").html('<button type="button" class="btn btn-success btn-sm" id="cpcompleted">COMPLETED</button>')
+    }else{
+      $(".paymentsts").html('<button type="button" class="btn btn-danger btn-sm" id="cppending">PENDING</button>')
+    }
+
+
+
+  });
+}else{
+  $(".kycsts").html('<button type="button" class="btn btn-danger btn-sm" id="cppending">PENDING</button>')
+  $(".paymentsts").html('<button type="button" class="btn btn-danger btn-sm" id="cppending">PENDING</button>')
+    
+}
+ 
+}) 
+   .catch(e => {
+     console.log(e);
+   });
 
 const Investors_Dashboards = ({
     className,
@@ -150,7 +184,8 @@ return (
                           <h3 className="">KYC</h3>
                             </div>
                             <div className="col-md-4 pt-4"> 
-                            <a   className="companysts" >
+                            <a   className="kycsts">
+                           
                             <button type="button" class="btn btn-danger btn-sm" >PENDING</button>
                               </a>
                             </div>
@@ -162,7 +197,7 @@ return (
   </div></a>
 </div>{/**card Row end */}
 <div className=" col-md-6">
-<a href="/Payment_Details">
+<a href="/Investors_Details">
 <div className="card light-blue">
 <div className="card-body"> 
     <div className="row ">
@@ -170,7 +205,7 @@ return (
                           <h3 className="">Payment Details</h3>
                             </div>
                             <div className="col-md-4 pt-4"> 
-                            <a href="/Payment_Details" className="companysts" >
+                            <a   className="paymentsts" >
                             <button type="button" class="btn btn-danger btn-sm" >PENDING</button>
                               </a>
                             </div>

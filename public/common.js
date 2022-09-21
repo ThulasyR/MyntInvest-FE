@@ -1,4 +1,4 @@
-mt_backend_url = "http://localhost:8000";
+mt_backend_url = "http://ec2-3-110-136-186.ap-south-1.compute.amazonaws.com:8000";
 const current = new Date();
 const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;//mysql insert date format
 
@@ -14,6 +14,7 @@ function hideLoader(){
 
 function initPage(){
     hideLoader();
+    // alert("inside");
     sessionSetting(sessionStorage);  
   // if($("#logemail").val().length > 0 && $("#logpassword").val().length > 0){
   //     $("#rememberme").checked = true;
@@ -120,11 +121,11 @@ slider.oninput = function() {
 
 
 
-  $(document).on("click","a", function() {
+  $(document).on("click",".reload", function() {
     // event.preventDefault(); 
 
 
-    // setTimeout(window.location.reload(false), 1000);
+    setTimeout(window.location.reload(false), 1000);
 
 
     
@@ -140,6 +141,16 @@ slider.oninput = function() {
 
     
   });
+  $(document).on("click","#btnOpenWishListInvest", function() {
+    // event.preventDefault(); 
+
+    OpenWishListInvest();
+    // setTimeout(window.location.reload(false), 1000);
+
+
+    
+  });
+  // btnOpenWishListInvest
 
   $(document).on("change",".uploadFile", function() 
   {
@@ -295,10 +306,62 @@ $("#analyticsCollOne").find(".analysticimagelbel").find("span").text("Reupload a
       });
 
 
-      $("#ciDate").change(function(){
+      $("#ciDate,#DateOfBirth").change(function(){
         var fieldval = $(this); 
         isDate(fieldval); 
      });
+
+
+     $('.mobilenumberval').change(function (e) {    
+    
+      var numbers = /^[0-9]+$/;
+      if($(this).val().match(numbers))
+      { 
+        console.log($(this).val().length)
+          if(Number($(this).val().length) == 10){ 
+              return true;
+          }else{
+            showAlert('Invalid Mobile Number');
+            $(this).val("");
+            $(this).focus();
+          return false;
+          }
+      }
+      else
+      {
+        showAlert('Please input numeric characters only');
+        $(this).val("");
+        $(this).focus();
+      return false;
+      }                        
+
+  });    
+
+
+  $(".pan").change(function () {      
+    var inputvalues = $(this).val();      
+      var regex = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;    
+      if(!regex.test(inputvalues)){      
+      $(".pan").val("");    
+      showAlert("Invalid PAN no");    
+      return regex.test(inputvalues);    
+      }    
+    });    
+    $(".numberOnly").change(function () {   
+    
+      var numbers = /^[0-9]+$/;
+      if($(this).val().match(numbers))
+      {    return true; 
+      }
+      else
+      {
+        showAlert('Please input numeric characters only');
+        $(this).val("");
+        $(this).focus();
+      return false;
+      }     
+  });
+    
 
 
    $("#btnrsprivateroundno").on("click",function(){
@@ -331,7 +394,114 @@ $("#analyticsCollOne").find(".analysticimagelbel").find("span").text("Reupload a
       });
 
 
+
+      $("input:checkbox[name=chooseSector]").on("click", function() {
+	
+        chkedJSONCollection(this, 'choosesectorhid');
+      });
+      
+
+
+
+      
+
+
+          //Widget 
+
+
+          var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+        var current = 1;
+        var steps = $("fieldset").length;
+
+        setProgressBar(current);
+
+        $(".next").click(function(){
+          // function nextWidgetClass(elm){
+
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+        //show the next fieldset
+        next_fs.show();
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+        step: function(now) {
+        // for making fielset appear animation
+        opacity = 1 - now;
+
+        current_fs.css({
+        'display': 'none',
+        'position': 'relative'
+        });
+        next_fs.css({'opacity': opacity});
+        },
+        duration: 500
+        });
+        setProgressBar(++current);
+        });
+      // }
+
+        $(".previous").click(function(){
+
+        current_fs = $(this).parent();
+        previous_fs = $(this).parent().prev();
+
+        //Remove class active
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+        //show the previous fieldset
+        previous_fs.show();
+
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+        step: function(now) {
+        // for making fielset appear animation
+        opacity = 1 - now;
+
+        current_fs.css({
+        'display': 'none',
+        'position': 'relative'
+        });
+        previous_fs.css({'opacity': opacity});
+        },
+        duration: 500
+        });
+        setProgressBar(--current);
+        });
+
+        function setProgressBar(curStep){
+        var percent = parseFloat(100 / steps) * curStep;
+        percent = percent.toFixed();
+        $(".progress-bar")
+        .css("width",percent+"%")
+        }
+
+        $(".submit").click(function(){
+        return false;
+        })
+
+
+
+
+
 }); 
+
+function chkedJSONCollection(chkbox, hiddenObj) {
+	var hiddenObjval = $("#" + hiddenObj); 
+	var jsonVal = JSON.parse(isEmpty(hiddenObjval.val()) ? "{}" : hiddenObjval
+			.val());
+	var ischecked = $(chkbox).is(":checked");
+	var checkedVal = $(chkbox).attr("data-attr");
+
+	var resObj = jsonVal;
+	resObj[checkedVal] = (ischecked == true ? "Y" : "N");
+	hiddenObjval.val(JSON.stringify(resObj)); 
+}
+
 
 
 function genRandomCode() {
@@ -597,49 +767,118 @@ function ChooseStartupModel() {
     $('#chooseStartupSecdiv').on('shown.bs.modal', function() { 
         
           $(this).find(".modal-title").text("Notification");
+          var dataAttr =$("input:checkbox[name=chooseSector]").map(function() {
+            return $(this).attr("data-attr");
+          }).get();
+
+          $.ajax({
+            type : "GET",
+            url : mt_backend_url+"/api/Choose_Sector?EMAIL="+$("#mtuser_email").val(),
+            dataType: "json",
+            async : true,
+            cache:false, 
+            success : function (data) {
+              // console.log(data);
+              // var jsnRslt=JSON.parse(data); 
+              $.each(data,function(i,obj){
+                // console.log(obj.INV_CHOOSE_SECTOR)
+                $("#secid").val(obj.ID);
+                $("#choosesectorhid").val(obj.INV_CHOOSE_SECTOR); 
+                var jsonObject = $.parseJSON(obj.INV_CHOOSE_SECTOR);
+                  $.each(jsonObject, function (i, obj) {  
+                    $.each(dataAttr, function (j, obj2) { 
+                      if(i == obj2){ 
+                        if(obj == "Y"){
+                          $("input:checkbox[data-attr="+obj2+"]").val(obj).click();
+                        }else{
+                          $("input:checkbox[data-attr="+obj2+"]").val(obj);
+                        }
+                      }
+                     });
+
+
+
+
+                      
+                  });
+
+                
+              });
+                    //  $('#first_name').text( data[0].first_name);
+                    //  $('#last_name').text( data[0].last_name);
+                    //  $('#age').text( data[0].age);
+                    //  $('#gender').text( data[0].gender);
+                    
+          // window.location.href = "/Investors_Details";//to redirect to normal links
+                   }
+                });
+
+
           $(this).find(".modal-footer").find("button:eq(0)").unbind();
           $(this).find(".modal-footer").find("button:eq(0)").click(function (){  
             
               $('#chooseStartupSecdiv').modal('hide');   
               // if(!isEmpty(redirect)){
-                var data = {
+                var data =  JSON.stringify({
 
-                  "ID": null,
+                  "ID": Number($("#secid").val()),
                   "MTUSER_ID":$("#mtuser_id").val(),
                   "EMAIL": $("#mtuser_email").val(),
                   "MODULE": $("#mtuser_module").val(),
-                  "INV_CHOOSE_SECTOR": $("#mtuser_module").val(),
+                  "INV_CHOOSE_SECTOR": $("#choosesectorhid").val(),
                   "STATUS": "Active",
                   "COMMENTS": "TEST", 
                   "DESCRIPTION":"Logged User",
-                  "CREATED_USER": convertDate(date),
-                  "CREATED_DATE": $("#mtuser_fname").val(),
-                  "MODIFIED_USER": convertDate(date),
-                  "MODIFIED_DATE": $("#mtuser_fname").val(),  
+                  "CREATED_USER": $("#mtuser_fname").val() ,
+                  "CREATED_DATE":  todayDate(),
+                  "MODIFIED_USER": $("#mtuser_fname").val(),
+                  "MODIFIED_DATE":  todayDate(), 
+                })
+
+  
+                if(isEmpty($("#secid").val())){
+                  $.ajax({
+                    type : "POST",
+                    url : mt_backend_url+"/api/Choose_Sector",
+                    dataType: "json",
+                    async : true,
+                    cache:false,
+                    data:data,
+                    success : function (data) {
+                            //  $('#first_name').text( data[0].first_name);
+                            //  $('#last_name').text( data[0].last_name);
+                            //  $('#age').text( data[0].age);
+                            //  $('#gender').text( data[0].gender);
+                            
+                  window.location.href = "/Investors_Details";//to redirect to normal links
+                           }
+                        });
+  
+  
+                // }
+               
+            
+              }
+              else
+              {
+                  $.ajax({
+                    type : "PUT",
+                    url : mt_backend_url+"/api/Choose_Sector/"+$("#secid").val(),
+                    dataType: "json",
+                    async : true,
+                    cache:false,
+                    data:data,
+                    success : function (data) {
+                             window.location.href = "/Investors_Details";//to redirect to normal links
+                           }
+                        });
+  
+  
                 }
-
- console.log(data)
-
-                $.ajax({
-                  type : "POST",
-                  url : mt_backend_url+"/api/Choose_Sector",
-                  dataType: "json",
-                  async : true,
-			            cache:false,
-                  success : function (data) {
-                          //  $('#first_name').text( data[0].first_name);
-                          //  $('#last_name').text( data[0].last_name);
-                          //  $('#age').text( data[0].age);
-                          //  $('#gender').text( data[0].gender);
-                          
-                window.location.href = "/Investors_Details";//to redirect to normal links
-                         }
-                      });
-
-
-              // }
-             
-          });
+               
+            });
+                 
+          
           $(this).find(".modal-footer").find("button:eq(1)").click(function (){ 
             $('#chooseStartupSecdiv').modal('hide');   
           });
@@ -651,17 +890,43 @@ function ChooseStartupModel() {
 }
 
 
-function convertDate(date){
+function OpenWishListInvest(){
+  hideLoader();
+  $("#OpenWishListInvestdiv").modal('show');
+  $('#OpenWishListInvestdiv').modal({
+        backdrop: 'static',
+        keyboard: false,
+        show:true,
+      });
+  
+  $('#OpenWishListInvestdiv').on('shown.bs.modal', function() { 
+      
+        $(this).find(".modal-title").text("Notification");
+        $(this).find(".modal-header").find("h3").text("Invest on "+$("span[id=brelmid]").text());
+        $(this).find(".modal-footer").find("button:eq(0)").unbind();
+        
+        $(this).find(".modal-footer").find("button:eq(0)").click(function (){ 
+          $('#OpenWishListInvestdiv').modal('hide');   
+        });
 
-  const str = date;
+        $(this).find(".modal-footer").find("button:eq(1)").click(function (){ 
+          $('#OpenWishListInvestdiv').modal('hide');   
+        });
+  });
+}
+
+function todayDate(){
   
-  const [month, day, year] = str.split('/');
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
   
-  
-  console.log(month); // 👉️ 09
-  console.log(day); // 👉️ 24
-  console.log(year); // 👉️ 2022
-  return (year+"/"+month+"/"+day);
-  
+  today = yyyy + '-' + mm + '-' + dd;
+
+  return today;
+ 
       
   }
+
+  

@@ -379,7 +379,7 @@ return (
 
   </div>
   <div className="col-md-3 mb-3">
-<a href="/Solution">
+<a href="/Transaction">
   <button type="button" className="btn btn-secondary btn-sm   w-100"  >Next</button></a>
   </div>
 

@@ -65,6 +65,7 @@ const FooterSocial = ({
         <a href="#" class="fa fa-linkedin" style={{fontSize: 16,width: 16,color:"#23b347"}}></a> 
       </li>
       </ul>
+ 
     </div>
   );
 }

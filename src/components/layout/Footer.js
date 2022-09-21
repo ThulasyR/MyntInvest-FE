@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Logo from './partials/Logo';
 import FooterNav from './partials/FooterNav';
 import FooterSocial from './partials/FooterSocial';
+import FooterContact from './partials/FooterContact';
 import Paragraph from './partials/Paragraph';
 import footerLogo from '../../assets/images/MyntInvest-f.png'
 
@@ -45,11 +46,13 @@ const Footer = ({
           <div style={{backgroundColor:""}}>
             <Logo />
             <Paragraph/>
-            <FooterSocial/>
-            </div>
+            <FooterSocial/> 
+            <FooterContact/> 
+            </div> 
             <div  style={{backgroundColor:""}}>
-            <FooterNav />
+            <FooterNav /> 
           </div>
+           
           
           </div>
         </div>

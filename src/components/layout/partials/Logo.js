@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Image from '../../elements/Image';
-import footerLogo from '../../../assets/images/MyntInvest-f.png';
+import footerLogo from '../../../assets/images/mynt1.png';
 const Logo = ({
   className,
   ...props

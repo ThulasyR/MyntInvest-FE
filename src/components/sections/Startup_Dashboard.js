@@ -159,15 +159,15 @@ DataService.findByTitle(campaignquerySet)
  
   campaignAllDets = response.data;
   console.log(campaignAllDets);
-
+   $(".campaignset").html("");
+      $(".addnewcampaign").css("display","block");
  
   $.each(campaignAllDets, function (index, value) { 
 
 
     if(value.length == 0){
 
-      $(".campaignset").html("");
-      $(".addnewcampaign").css("display","block");
+   
 
 
     }else{

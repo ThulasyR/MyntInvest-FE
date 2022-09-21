@@ -25,6 +25,7 @@ class Welcome extends React.Component {
          
         this.handleLogChange = this.handleLogChange.bind(this); 
         this.validateLogin = this.validateLogin.bind(this);
+        this.openAdminPanel = this.openAdminPanel.bind(this);
       }
          
       handleLogChange(event) {
@@ -36,6 +37,10 @@ class Welcome extends React.Component {
           EMAIL :this.state.input.logemail,
           PASSWORD : this.state.input.logpassword,
         });
+      }
+      openAdminPanel(event) {
+        event.preventDefault();
+        window.showAlert("Welcome to Admin Panel",window.mt_backend_url+"/admin"); 
       }
           
     validateLogin(event) {
@@ -201,7 +206,7 @@ render() {
                   <span className="text-success text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
                     Sign Up Now</b></span>
                 </a>&nbsp;
-                <a href="/Login" className="text-right"> 
+                <a  onClick={this.openAdminPanel} className="text-right"> 
                   <span className="text-success  text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
                   <i className='fa fa-user'></i>
                   &nbsp;Admin Login </b></span>

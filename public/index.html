@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/mynt2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created using create-react-app" />
@@ -64,6 +64,7 @@
   <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.responsive.js"></script>
   
   <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/mt.tables.js"></script>
+  <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
   <!-- /FILE */ -->
   <script  type="text/javascript" src="%PUBLIC_URL%/file/aks-fileupload.js"></script>
@@ -94,7 +95,126 @@
       </div> 
 	</div>
 
- 
+  
+  <div class="modal fade"  id="OpenWishListInvestdiv"  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header"> 
+         <h3 >Invest </h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">
+            <span aria-hidden="true">&times;</span></button> 
+          
+        </div>
+        <div class="modal-body" style="height:300px;overflow-y:scroll">
+          <div class="container">
+
+
+            <div class="card">
+
+                <div class="card-body">
+                <table class="table table-borderless table-striped table-hover">
+                  <tbody>
+                    <tr class="border-0">
+                      <td colspan="2">
+                        <label>Enter the Amount</label>
+                        <input type="text" class="form-control"/> 
+                      </td> 
+                      </tr>
+
+                      <tr class="border-0">
+                        <td colspan="2">
+                          <p><span class="para bg-light p-1 b">Rs.1,000</span>
+                          <span class="para bg-light p-1 b">Rs.5,000</span> 
+                          <span class="para bg-light p-1 b">Rs.5,500</span> 
+                          <span class="para bg-light p-1 b">Rs.7,000</span></p>
+                        </td> 
+                        </tr> 
+                  </tbody>
+
+
+                  </table>
+
+
+                  <table class="table table-borderless table-striped table-hover">
+                    <tbody>
+                      <tr class="border-0">
+                        <td> Particulars
+                        </td> 
+                        <td> Amount
+                        </td> 
+                        </tr>
+  
+                        <tr class="border-0">
+                          <td>Investment Amount (Inclusive of GST 18%)</td> 
+                          <td>Rs.00</td> 
+                          </tr>
+                          <tr class="border-0">
+                            <td>Convenience Fee  (Inclusive of GST 18%)</td> 
+                            <td>Rs.00</td> 
+                            </tr>
+                            
+                            <tr class="border-0">
+                              <td> GST 18%</td> 
+                              <td>Rs.00</td> 
+                              </tr>
+
+                              <tr class="border-0">
+                                <td>Total</td> 
+                                <td>Rs.00</td> 
+                                </tr>
+                                <tr class="border-0">
+                                  <td>Total Amount to be paid</td> 
+                                  <td class="text-success b">Rs.00</td> 
+                                  </tr>
+
+
+                                  <tr class="border-0">
+                                    <td colspan="2">
+                                      <p>&nbsp;&nbsp;<input type="checkbox"/> &nbsp;&nbsp; Creating a account means
+                                      you are okay with our Terms of service,Privacy policy and our default 
+                                    Notification settings.</p>
+                                    </td> 
+                                      </tr>
+
+
+                                      <tr class="border-0">
+                                        <td colspan="2">
+                                          <button type="button" class="btn btn-success">Pay Online</button>
+
+                                        </td> 
+                                          </tr>
+                    </tbody>
+  
+  
+                    </table>
+                            
+
+                          </div>
+            </div>
+          </div>
+
+
+
+           
+          <!-- <h4 class="modal-title text-left" id="gridSystemModalLabel"></h4>
+            <div id="alertmsg"  class="text-success" style="display: inline-block;"></div>  -->
+        </div>
+         <div class="modal-footer d-flex justify-content-center text-center" > 
+          <button type="button" class="btn btn-success btn-sm" >Ok</button> 
+          <button type="button" class="btn btn-secondary btn-sm"  data-dismiss="modal" aria-label="Close">Cancel</button> 
+        </div>
+        </div>
+        </div>
+        </div> 
+    </div>
+
+
+
+
+
+
+
+
 
   <div class="modal fade"  id="chooseStartupSecdiv"  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -112,7 +232,9 @@
               <tbody>
               <tr class="border-0"> 
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector1" name="chooseSector" value="Ed Tech" />
+                  <input type="hidden"  name="secid" id="secid"   />
+                  <input type="hidden"  name="choosesectorhid" id="choosesectorhid" value='{"VirtualReality":"N","Entertainment":"N","ECommerce":"N","CryptoCurrency":"N","AgriTech":"N","FoodAndBeverage":"N","AugmentedReality":"N","FinTech":"N","InsurReality":"N","ElectricVehicle":"N","BlockChain":"N","HealthTech":"N","EdTech":"N"}' />
+                  <input class="quiz_checkbox" type="checkbox" id="sector1" name="chooseSector" value="Ed Tech" data-attr="EdTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -124,7 +246,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector2" name="chooseSector" value="Health Tech"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector2" name="chooseSector" value="Health Tech"  data-attr="HealthTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -136,7 +258,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Virtual Reality"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Virtual Reality"   data-attr="VirtualReality"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -148,7 +270,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td> 
               <td><div class="quiz_card_area">
-                <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Blockchain"  />
+                <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Blockchain"    data-attr="BlockChain"/>
                 <div class="single_quiz_card">
                     <div class="quiz_card_content">
                         <div class="quiz_card_icon">
@@ -162,7 +284,7 @@
               </tr>
               <tr  class="border-0">
                 <td><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Augmented Reality"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Augmented Reality"    data-attr="AugmentedReality"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -174,7 +296,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector6" name="chooseSector" value="Fin Tech"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector6" name="chooseSector" value="Fin Tech"   data-attr="FinTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -186,7 +308,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Virtual Reality"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Insur Reality" data-attr="InsurReality"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -198,7 +320,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Blockchain"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Electric Vehicle"   data-attr="ElectricVehicle"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -212,7 +334,7 @@
               </tr>
               <tr  class="border-0">
                 <td><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Augmented Reality"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Food and Beverage"     data-attr="FoodAndBeverage"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -224,7 +346,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector6" name="chooseSector" value="Fin Tech"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector6" name="chooseSector" value="Cryptocurrency"   data-attr="CryptoCurrency"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -236,7 +358,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td class="border-0"><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Virtual Reality"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Entertainment"   data-attr="Entertainment"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -248,7 +370,7 @@
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
                 <td><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Blockchain"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="E-Commerce"   data-attr="ECommerce"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
@@ -262,7 +384,7 @@
               </tr>
               <tr  class="border-0">
                 <td><div class="quiz_card_area">
-                  <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Augmented Reality"  />
+                  <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Agri Tech"    data-attr="AgriTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">

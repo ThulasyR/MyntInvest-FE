@@ -24,14 +24,14 @@ const extractFilename = (path) => {
 };
 
 
- 
+  
 /*Campaign information*/
 
 var campaignAllDets=[]; 
 var bannerUnique="";
 var bannerImg =[];
-var bannerName =[];
-var pressImg="";
+var bannerId=[];
+var bannerName =[]; 
 var pressHeader="";
 var pressBody="";
 var pressImg="";
@@ -42,6 +42,10 @@ var memDesc=[];
 var memPosition=[];
 var original =[];
 var output=[];
+
+
+
+
 var campaignquerySet = "/campaignAllDets";
 DataService.findByTitle(campaignquerySet)
 .then(response => {
@@ -67,6 +71,7 @@ DataService.findByTitle(campaignquerySet)
             uniqueEmail.push(value.EMAIL);
           }
           bannerImg.push(window.mt_backend_url+value.CAM_BAN_IMAGE); 
+          bannerId.push(value.EMAIL);
           bannerUnique=value.MODULE;
           original.push(value.EMAIL);
         }); 
@@ -134,8 +139,9 @@ DataService.findByTitle(campaignquerySet)
 
 // alert(uniqueEmail);
     for (let iterval in original){
+     
       // alert(teaminfo)
-      $(".campaignDealsArrange").append('<div class=" col-md-4"  ><div class="card"><a href="/Campaign">'+
+      $(".campaignDealsArrange").append('<div class=" col-md-4"  ><div class="card"><a id="'+bannerId[iterval]+'" href="/Deals_Realm/'+bannerId[iterval]+'">'+
         // '<div className="card-header text-right"><a href="/Campaign"><button className="btn btn-warning"><i className="fa fa-edit"></i></button></a>'+
         // '<a href="/CampaigndeleteAll?MODULE='+bannerUnique+'"><button className="btn btn-danger"  data-attr="+value.ID+" ><i className="fa fa-trash"></i></button></a></div>'+
         '<img src="'+bannerImg[iterval]+'" class="card-img-top" alt="..." style="height: 40vh;"/>'+
@@ -149,6 +155,7 @@ DataService.findByTitle(campaignquerySet)
         '<h6 align="center" class="font20"><small  class="text-secondary  text-center  font20">'+memName[iterval]+'</small></h6>'+memDesc[iterval]+'&nbsp;'+
         '</div></a>'+
         '</div></div>');
+       
     }
       
  
@@ -159,7 +166,7 @@ DataService.findByTitle(campaignquerySet)
    });
   
 
-
+   
 
 const Livedeals = ({
   className,

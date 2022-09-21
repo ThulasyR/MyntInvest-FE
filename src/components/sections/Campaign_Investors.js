@@ -70,7 +70,7 @@ class Campaign_Investors extends React.Component {
          
         if(index != 0){
           $("#caminvestAddmem").click();  
-          $("#caminvestAddmem").trigger('click');
+          // $("#caminvestAddmem").trigger('click');
 
         } 
 
