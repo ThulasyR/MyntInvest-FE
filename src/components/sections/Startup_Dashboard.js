@@ -1,45 +1,38 @@
-import React from "react";
-import classNames from 'classnames';
-import Image from "../elements/Image";
-import Button from '../elements/Button';
-import ButtonGroup from "../elements/ButtonGroup";
-import imgCard from './../../assets/images/Strategy.jpg';
-import '../Css/styles.css';
-import $ from 'jquery';
-import DataService from '../../service/DataService'; 
-import {
-    Card   
-  } from "@material-ui/core";
+import React, {Component} from "react"; 
+import './../../components/Css/styles.css';
+import {NavLink,Link} from "react-router-dom"; 
+import DataService from './../../service/DataService'; 
+import UploadService from "./../../service/file-upload.service";
 
-const Color = {
-    color:"grey"
-}
+
+import Moment from 'moment';
+import $ from "jquery";
+const current = new Date();
+const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;//mysql insert date format
+const formatDate = Moment("12/09/2002").format('YYYY-MM-DD')//2002-12-09
+
 
 const extractFilename = (path) => {
   const pathArray = path.split("/");
   const lastIndex = pathArray.length - 1;
-  return pathArray[lastIndex].replace(/\.[^/.]+$/, "");
+  return pathArray[lastIndex];
 };
 
-
-const Startup_Dashboard = ({
-    className,
-    topOuterDivider,
-    bottomOuterDivider,
-    topDivider,
-    bottomDivider,
-    hasBgColor,
-    invertColor,
-    pushLeft,
-    ...props
-  }) => {
  
-const tilesClasses = classNames(
-'tiles-wrap',
-pushLeft && 'push-left'
-); 
 
+class Startup_Dashboard extends React.Component {
+  constructor() {
+   super(); 
+   this.retriveLiveDeals = this.retriveLiveDeals.bind(this);
+  }
 
+componentDidMount() { 
+
+  this.retriveLiveDeals();
+}
+
+retriveLiveDeals(){
+  
 /*Company information*/
 var companyAllDets=[]; 
 var cdquerySet = "/company_info?EMAIL="+sessionStorage.getItem("sessEmail");
@@ -240,6 +233,11 @@ DataService.findByTitle(campaignquerySet)
      console.log(e);
    });
   
+}
+
+
+
+render() {
      
 return (
  
@@ -262,7 +260,7 @@ return (
                 </div>
                         <h3 align="left" >Raise with MyntInvest</h3>
                         <p className="para"
-                          align="left" style={Color}>We collect and determine the purposes and means of the processing of certainin formation that may also receive,and process Personal Information controlled and stored by third parties with your consent </p>
+                          align="left"  >We collect and determine the purposes and means of the processing of certainin formation that may also receive,and process Personal Information controlled and stored by third parties with your consent </p>
                      <div className="col-md-12 bg-white p-3">
                      
                       <div className="row">
@@ -481,8 +479,9 @@ return (
                 </div> 
            </div>
 
-) ;       
-};
+) ; 
+          }      
+} 
 
 
 

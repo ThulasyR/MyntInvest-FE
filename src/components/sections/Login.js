@@ -120,7 +120,7 @@ class Welcome extends React.Component {
 render() {
     return( 
       <body className='bg-white'>
-      <nav className="bg-White navbar-dark navbar" style={{paddingLeft:500,paddingTop:50}}>
+      <nav className="bg-White navbar-dark navbar" style={{paddingLeft:500,}}>
       <div className="row col-12 d-flex justify-content-center text-white">
       <h3></h3>
       </div>
@@ -200,17 +200,27 @@ render() {
 
                       
             <form name="Loginform" id="Loginform" method="POST" className="row m-5 g-3"  > 
-              <div className="col-12" style={{fontSize:"14px",textAlign:"right"}}>
-              <div className="d-grid gap-2 mx-auto">
-                <a href="/Signup" className="text-right">Not a member ?
-                  <span className="text-success text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
-                    Sign Up Now</b></span>
-                </a>&nbsp;
-                <a  onClick={this.openAdminPanel} className="text-right"> 
-                  <span className="text-success  text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
+              <div className="col-12" style={{fontSize:"14px",textAlign:"right"}}> 
+              <div class="btn-group" role="group" aria-label="Basic example">
+              <a href="/" className="text-right">
+                <span className="btn btn-dark btn-sm text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
+                  <i className='fa fa-home'></i>
+                  &nbsp;Home</b></span></a>
+              <a  onClick={this.openAdminPanel} className="text-right"> 
+                  <span className="btn btn-dark  btn-sm  text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
                   <i className='fa fa-user'></i>
                   &nbsp;Admin Login </b></span>
                 </a>
+            </div>
+
+             
+              <div className="d-grid gap-2 mx-auto">
+              
+                <a href="/Signup" className="text-right">Not a member ?
+                  <span className="text-success text-sm "  style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
+                    Sign Up Now</b></span>
+                </a>&nbsp; 
+                
                 
                 </div>
                 
@@ -266,7 +276,7 @@ render() {
 
 
                 <div className="col-12 d-flex justify-content-center">
-                <a href="#" className="text-success point"  style={{fontSize:"14px",textAlign:"center"}}> 
+                <a href="/Founders" className="text-success point"  style={{fontSize:"14px",textAlign:"center"}}> 
                     <b>
                     Log In as Startup</b> 
                 </a>

@@ -95,12 +95,12 @@ const Investors_Tiles = ({
   </div>
   
   </div>
-{/*  card body */}
+    {/*  card body */}
 
      
       
 
-<div class=" flex-shrink-0"> 
+  <div class=" flex-shrink-0"> 
     <div  className="row"> 
     <table className="table table-borderless table-hover table-sm" border="0">
       <tbody>

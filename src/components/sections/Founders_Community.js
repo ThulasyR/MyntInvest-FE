@@ -44,27 +44,27 @@ const Founders_Community= ({
     bottomDivider && 'has-bottom-divider',
     split && 'cta-split'
   );  
-  var raiseDets=[]; 
-  let status="";
-  var raisequerySet = "/raise?EMAIL="+sessionStorage.getItem("sessEmail");
-  DataService.findByTitle(raisequerySet)
-  .then(response => {
-    raiseDets = response.data 
-    $.each(raiseDets, function (index, value) {
-      status=value.STATUS;
-      console.log("LENGTH OF COMPANY INFO"+value.STATUS);
-      if(status == "Dormant"){
-        $(".founderpage .statusbtn").html('<a href="/Raise"><button type="button" class="btn btn-success btn-sm" id="applytoraise"> APPLY TO RAISE</button></a>')
-      }else{
-        $(".founderpage .statusbtn").html('<a href="/Startup_Dashboard"><button type="button" class="btn btn-success btn-sm" id="startupdashboard"> STARTUP DASHBOARD  </button></a>');
+  // var raiseDets=[]; 
+  // let status="";
+  // var raisequerySet = "/raise?EMAIL="+sessionStorage.getItem("sessEmail");
+  // DataService.findByTitle(raisequerySet)
+  // .then(response => {
+  //   raiseDets = response.data 
+  //   $.each(raiseDets, function (index, value) {
+  //     status=value.STATUS;
+  //     console.log("LENGTH OF COMPANY INFO"+value.STATUS);
+  //     if(status == "Dormant"){
+  //       $(".founderpage .statusbtn").html('<a href="/Raise"><button type="button" class="btn btn-success btn-sm" id="applytoraise"> APPLY TO RAISE</button></a>')
+  //     }else{
+  //       $(".founderpage .statusbtn").html('<a href="/Startup_Dashboard"><button type="button" class="btn btn-success btn-sm" id="startupdashboard"> STARTUP DASHBOARD  </button></a>');
 
-      }
-    });
+  //     }
+  //   });
       
-     })
-     .catch(e => {
-       console.log(e);
-     });
+  //    })
+  //    .catch(e => {
+  //      console.log(e);
+  //    });
   return (
 
     <section
@@ -94,13 +94,7 @@ Leverage the community and use it to grow your customer base. </p>
 {/* <img src="..." class="card-img-top" alt="..."/> */}
 <div class="card-body text-center">
 <h6 class="card-title"><span className="profile-card-2"><i className="fa fa-cloud text-primary"></i></span>&nbsp;Your Startup</h6>
-
-
-
-{/* <p class="card-text para"  ><span className="text-secondary font12">COMMUNITY</span>&nbsp;
-<a href="#"><span className="text-primary font12">+100 Members</span></a></p> */}
-
-
+ 
 <div  class="row">
   <div class="col-md-6">
   <span className="text-secondary font12">COMMUNITY</span>

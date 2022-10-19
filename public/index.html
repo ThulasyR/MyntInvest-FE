@@ -19,13 +19,16 @@
      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link href="%PUBLIC_URL%/file/aksFileUpload.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/file/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
     <!-- Datatable styles -->  
-    <link rel='stylesheet' href='//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css'>
-  
+<link rel='stylesheet' href='//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css'>
 <link href="%PUBLIC_URL%/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="%PUBLIC_URL%/datatable/css/fixedColumns.dataTables.min.css" rel="stylesheet">
 <link href="%PUBLIC_URL%/datatable/css/keyTable.dataTables.min.css" rel="stylesheet">
-<link href="%PUBLIC_URL%/datatable/css/responsive.bootstrap.css" rel="stylesheet">
+<link href="%PUBLIC_URL%/datatable/css/responsive.bootstrap.css" rel="stylesheet"> 
+ 
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -48,29 +51,6 @@
   <img  src="%PUBLIC_URL%/loading-circle.gif" class="imageloader">
 </div>
   
-<!-- 	End   Loader -->
-
-  <script  type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>   
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Datatable plugins -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
-  <script src='//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
-  
-  <script type="text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>  
-  <script type="text/javascript"  src="%PUBLIC_URL%/datatable/js/dataTables.fixedColumns.min.js"></script>
-  <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.keyTable.min.js"></script>
-  <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.select.min.js"></script>
-  <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.responsive.js"></script>
-  
-  <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/mt.tables.js"></script>
-  <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-  <!-- /FILE */ -->
-  <script  type="text/javascript" src="%PUBLIC_URL%/file/aks-fileupload.js"></script>
-  <script  type="text/javascript" src="%PUBLIC_URL%/common.js"></script>
- 
-
   
 <div class="modal fade"  id="alertmsgdiv"  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -420,14 +400,63 @@
 
   
   
+<!-- /FILE */ -->
 
- <script>
+
+
+<script  type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Datatable plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+<script src='//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
+
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>  
+<script type="text/javascript"  src="%PUBLIC_URL%/datatable/js/dataTables.fixedColumns.min.js"></script>
+<script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.keyTable.min.js"></script>
+<script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.select.min.js"></script>
+<script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/dataTables.responsive.js"></script>
+
+<script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/mt.tables.js"></script>
+<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> 
+ 
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/owl.carousel.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/owl.theme.default.min.css">
+
+     <!-- javascript -->
+     <script src="%PUBLIC_URL%/jquery.min.js"></script>
+     <script src="%PUBLIC_URL%/owl.carousel.js"></script>
+
+
+
+<script  type="text/javascript" src="%PUBLIC_URL%/file/aks-fileupload.js"></script>
+<script  type="text/javascript" src="%PUBLIC_URL%/file/wow.min.js"></script>
+<script  type="text/javascript" src="%PUBLIC_URL%/common.js"></script> 
+<script>
   $(document).ready(function(){ 
    
-    initPage();	 
-   
-}); 
+    initPage();
+     
+}); 	
+
+$(window).on('load', function(e){
+      
+ 
+    $(".owl-carousel").owlCarousel({
+      items:2,
+      itemsDesktop:[1399,2],
+      itemsDesktopSmall:[1280,2],
+      itemsMobile:[500,1],
+      loop:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,  
+  }); 
+});
+
  </script>
+<!-- 	End   Loader -->
 
 </body>
 

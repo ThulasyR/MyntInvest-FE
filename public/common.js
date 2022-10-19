@@ -1,8 +1,9 @@
-mt_backend_url = "http://ec2-3-110-136-186.ap-south-1.compute.amazonaws.com:8000";
+mt_backend_url = "http://localhost:8000";
+//mt_backend_url = "http://ec2-15-207-254-24.ap-south-1.compute.amazonaws.com:8000";
 const current = new Date();
 const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;//mysql insert date format
 
-
+ 
 function showLoader(){   
 	$(".loading").show();  
 }
@@ -14,54 +15,54 @@ function hideLoader(){
 
 function initPage(){
     hideLoader();
+     
+
+   
+  
     // alert("inside");
-    sessionSetting(sessionStorage);  
-  // if($("#logemail").val().length > 0 && $("#logpassword").val().length > 0){
-  //     $("#rememberme").checked = true;
-  //   }
-// ----------multiplefile-upload---------
+    sessionSetting(sessionStorage);   
 
-    $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw(false);   
+  //   $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw(false);   
 
-   var adminStartupTable = $('#adminStartupTable').DataTable( {
-    destroy: true,
-    responsive: false,     
-    scrollY:  "40vh",
-    scrollX: true,
-    scroller: false,
-    scrollCollapse:true,
-    paging:false, 
-    filter:false,   
-    columnDefs: [], 
-    dom: '<<"top" ip>flt>', 
-			columnDefs: [  { width: '20px', targets: [0,1]},
-								{"className": "dt-head-center text-center",targets: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],"orderable": false,"searchable": false}],		 
-			 fnDrawCallback: function(oSettings) {
-					if (oSettings._iDisplayLength > oSettings.fnRecordsDisplay()) { 
-					} 
-			 }
-		}).draw();
+  //  var adminStartupTable = $('#adminStartupTable').DataTable( {
+  //   destroy: true,
+  //   responsive: false,     
+  //   scrollY:  "40vh",
+  //   scrollX: true,
+  //   scroller: false,
+  //   scrollCollapse:true,
+  //   paging:false, 
+  //   filter:false,   
+  //   columnDefs: [], 
+  //   dom: '<<"top" ip>flt>', 
+	// 		columnDefs: [  { width: '20px', targets: [0,1]},
+	// 							{"className": "dt-head-center text-center",targets: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],"orderable": false,"searchable": false}],		 
+	// 		 fnDrawCallback: function(oSettings) {
+	// 				if (oSettings._iDisplayLength > oSettings.fnRecordsDisplay()) { 
+	// 				} 
+	// 		 }
+	// 	}).draw();
 
-    var companyInfoTable= $('#companyInfoTable').DataTable( {
-      destroy: true,
-      responsive: false,          
-       ordering: false,
-       searching: false,    
-       scrollY:  "40vh",
-       scrollX: true,
-       scroller: false,
-       scrollCollapse:true,
-       paging:false, 
-       filter:false,   
-       columnDefs: [], 
-       dom: '<<"top" ip>flt>', 
-         columnDefs: [  { width: '20px', targets: [0,1]},
-                   {"className": "dt-head-center text-center",targets: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"orderable": false,"searchable": false}],		 
-          fnDrawCallback: function(oSettings) {
-             if (oSettings._iDisplayLength > oSettings.fnRecordsDisplay()) { 
-             } 
-          }
-       }).draw();
+  //   var companyInfoTable= $('#companyInfoTable').DataTable( {
+  //     destroy: true,
+  //     responsive: false,          
+  //      ordering: false,
+  //      searching: false,    
+  //      scrollY:  "40vh",
+  //      scrollX: true,
+  //      scroller: false,
+  //      scrollCollapse:true,
+  //      paging:false, 
+  //      filter:false,   
+  //      columnDefs: [], 
+  //      dom: '<<"top" ip>flt>', 
+  //        columnDefs: [  { width: '20px', targets: [0,1]},
+  //                  {"className": "dt-head-center text-center",targets: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"orderable": false,"searchable": false}],		 
+  //         fnDrawCallback: function(oSettings) {
+  //            if (oSettings._iDisplayLength > oSettings.fnRecordsDisplay()) { 
+  //            } 
+  //         }
+  //      }).draw();
 
 
        $("#aks-file-upload").aksFileUpload({
@@ -71,7 +72,8 @@ function initPage(){
         // Multiple
         maxSize: "1 GB",
       });
-     
+
+      
 
 //REMENER ME
 
@@ -125,7 +127,7 @@ slider.oninput = function() {
     // event.preventDefault(); 
 
 
-    setTimeout(window.location.reload(false), 1000);
+    // setTimeout(window.location.reload(false), 1000);
 
 
     
@@ -533,9 +535,9 @@ for (var i = 0; i <= passwordLength; i++) {
       sessionStorage.setItem("sessEmail","");
     }
 
-    $(".profile_header").css("display","block");//visible
-    $(".profile_header2").css("display","none");//not visible
-    $("#controlpanel").css("display","none");
+    $(".profile_header").attr("style","display:block !important");//visible
+    $(".profile_header2").attr("style","display:none !important");//not visible
+    $("#controlpanel").attr("style","display:none !important");//not visible
     if(!isEmpty(emailVal)){
         $("span[id=profilename]").html(Firstnameval);
         $("span[id=profileuname]").html(emailVal);
@@ -547,8 +549,8 @@ for (var i = 0; i <= passwordLength; i++) {
         $("#mtuser_fname").val(Firstnameval);
         // $("#campModule").val(campModule);
 // console.log("inside"+userId)
-        $(".profile_header").css("display","none");
-        $(".profile_header2").css("display","block");
+        $(".profile_header").attr("style","display:none !important");//not visible
+        $(".profile_header2").attr("style","display:block !important");//not visible
         // $("#controlpanel").css("display","block");
     }else{
     
@@ -560,14 +562,14 @@ for (var i = 0; i <= passwordLength; i++) {
         $("#mtuser_module").val("");
         $("#mtuser_email").val("");
         $("#mtuser_fname").val(""); 
-        $(".profile_header").css("display","block");
-        $(".profile_header2").css("display","none");
+        $(".profile_header").attr("style","display:block !important");//not visible
+        $(".profile_header2").attr("style","display:none !important");//not visible
     }
     
     if(Roleval == "Admin"){
-        $("#controlpanel").css("display","block");
+        $("#controlpanel").attr("style","display:block !important");//not visible
     }else{
-        $("#controlpanel").css("display","none");
+        $("#controlpanel").attr("style","display:none !important");//not visible
     }
    
  }
@@ -590,9 +592,9 @@ for (var i = 0; i <= passwordLength; i++) {
 
 function ctrlOverFlowDataTable(tblid){
 	 
-	$("#"+tblid+"_wrapper").css("width","98%");
-	$("#"+tblid+"_wrapper").find(".dataTables_scrollBody").css("width","101.6%");
-	$("#"+tblid+"_wrapper").find(".dataTables_scrollBody").css("overflow","scroll"); 
+	// $("#"+tblid+"_wrapper").css("width","98%");
+	// $("#"+tblid+"_wrapper").find(".dataTables_scrollBody").css("width","101.6%");
+	// $("#"+tblid+"_wrapper").find(".dataTables_scrollBody").css("overflow","scroll"); 
 }
 
 
@@ -744,7 +746,7 @@ function showAlert(content,redirect) {
               });
 
               
-              $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw(false); 
+              // $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw(false); 
           
 
             }); 
@@ -930,3 +932,244 @@ function todayDate(){
   }
 
   
+
+
+  $(window).on('scroll', function () {
+
+    // fixedHeader on scroll
+    function fixedHeader() {
+      var headerTopBar = $('.top-bar').outerHeight();
+      var headerOneTopSpace = $('.header-one .logo-area').outerHeight();
+  
+      var headerOneELement = $('.header-one .site-navigation nav');
+      var headerTwoELement = $('.header-two .site-navigation nav');
+  
+      if ($(window).scrollTop() > headerTopBar + headerOneTopSpace) {
+        $(headerOneELement).addClass('fixed-top').attr("style","box-shadow:0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%)");
+        $('.header-one').css('margin-bottom', headerOneELement.outerHeight());
+      } else {
+        $(headerOneELement).removeClass('fixed-top').attr("style","box-shadow:none");
+        $('.header-one').css('margin-bottom', '-38px');
+      }
+      if ($(window).scrollTop() > headerTopBar) {
+        $(headerTwoELement).addClass('fixed-top').attr("style","box-shadow:0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%)");
+        
+        $('.header-two').css('margin-bottom', headerTwoELement.outerHeight());
+      } else {
+        $(headerTwoELement).removeClass('fixed-top').attr("style","box-shadow:none");
+        $('.header-two').css('margin-bottom', '-38px');
+      }
+    }
+    fixedHeader();
+  
+  });
+
+
+
+
+
+
+
+  /*Animate*/
+  (function() {
+    var Util,
+      __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  
+    Util = (function() {
+      function Util() {}
+  
+      Util.prototype.extend = function(custom, defaults) {
+        var key, value;
+        for (key in custom) {
+          value = custom[key];
+          if (value != null) {
+            defaults[key] = value;
+          }
+        }
+        return defaults;
+      };
+  
+      Util.prototype.isMobile = function(agent) {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(agent);
+      };
+  
+      return Util;
+  
+    })();
+  
+    this.WOW = (function() {
+      WOW.prototype.defaults = {
+        boxClass: 'wow',
+        animateClass: 'animated',
+        offset: 0,
+        mobile: true
+      };
+  
+      function WOW(options) {
+        if (options == null) {
+          options = {};
+        }
+        this.scrollCallback = __bind(this.scrollCallback, this);
+        this.scrollHandler = __bind(this.scrollHandler, this);
+        this.start = __bind(this.start, this);
+        this.scrolled = true;
+        this.config = this.util().extend(options, this.defaults);
+      }
+  
+      WOW.prototype.init = function() {
+        var _ref;
+        this.element = window.document.documentElement;
+        if ((_ref = document.readyState) === "interactive" || _ref === "complete") {
+          return this.start();
+        } else {
+          return document.addEventListener('DOMContentLoaded', this.start);
+        }
+      };
+  
+      WOW.prototype.start = function() {
+        var box, _i, _len, _ref;
+        this.boxes = this.element.getElementsByClassName(this.config.boxClass);
+        if (this.boxes.length) {
+          if (this.disabled()) {
+            return this.resetStyle();
+          } else {
+            _ref = this.boxes;
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              box = _ref[_i];
+              this.applyStyle(box, true);
+            }
+            window.addEventListener('scroll', this.scrollHandler, false);
+            window.addEventListener('resize', this.scrollHandler, false);
+            return this.interval = setInterval(this.scrollCallback, 50);
+          }
+        }
+      };
+  
+      WOW.prototype.stop = function() {
+        window.removeEventListener('scroll', this.scrollHandler, false);
+        window.removeEventListener('resize', this.scrollHandler, false);
+        if (this.interval != null) {
+          return clearInterval(this.interval);
+        }
+      };
+  
+      WOW.prototype.show = function(box) {
+        this.applyStyle(box);
+        return box.className = "" + box.className + " " + this.config.animateClass;
+      };
+  
+      WOW.prototype.applyStyle = function(box, hidden) {
+        var delay, duration, iteration;
+        duration = box.getAttribute('data-wow-duration');
+        delay = box.getAttribute('data-wow-delay');
+        iteration = box.getAttribute('data-wow-iteration');
+        return box.setAttribute('style', this.customStyle(hidden, duration, delay, iteration));
+      };
+  
+      WOW.prototype.resetStyle = function() {
+        var box, _i, _len, _ref, _results;
+        _ref = this.boxes;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          box = _ref[_i];
+          _results.push(box.setAttribute('style', 'visibility: visible;'));
+        }
+        return _results;
+      };
+  
+      WOW.prototype.customStyle = function(hidden, duration, delay, iteration) {
+        var style;
+        style = hidden ? "visibility: hidden; -webkit-animation-name: none; -moz-animation-name: none; animation-name: none;" : "visibility: visible;";
+        if (duration) {
+          style += "-webkit-animation-duration: " + duration + "; -moz-animation-duration: " + duration + "; animation-duration: " + duration + ";";
+        }
+        if (delay) {
+          style += "-webkit-animation-delay: " + delay + "; -moz-animation-delay: " + delay + "; animation-delay: " + delay + ";";
+        }
+        if (iteration) {
+          style += "-webkit-animation-iteration-count: " + iteration + "; -moz-animation-iteration-count: " + iteration + "; animation-iteration-count: " + iteration + ";";
+        }
+        return style;
+      };
+  
+      WOW.prototype.scrollHandler = function() {
+        return this.scrolled = true;
+      };
+  
+      WOW.prototype.scrollCallback = function() {
+        var box;
+        if (this.scrolled) {
+          this.scrolled = false;
+          this.boxes = (function() {
+            var _i, _len, _ref, _results;
+            _ref = this.boxes;
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              box = _ref[_i];
+              if (!(box)) {
+                continue;
+              }
+              if (this.isVisible(box)) {
+                this.show(box);
+                continue;
+              }
+              _results.push(box);
+            }
+            return _results;
+          }).call(this);
+          if (!this.boxes.length) {
+            return this.stop();
+          }
+        }
+      };
+  
+      WOW.prototype.offsetTop = function(element) {
+        var top;
+        top = element.offsetTop;
+        while (element = element.offsetParent) {
+          top += element.offsetTop;
+        }
+        return top;
+      };
+  
+      WOW.prototype.isVisible = function(box) {
+        var bottom, offset, top, viewBottom, viewTop;
+        offset = box.getAttribute('data-wow-offset') || this.config.offset;
+        viewTop = window.pageYOffset;
+        viewBottom = viewTop + this.element.clientHeight - offset;
+        top = this.offsetTop(box);
+        bottom = top + box.clientHeight;
+        return top <= viewBottom && bottom >= viewTop;
+      };
+  
+      WOW.prototype.util = function() {
+        return this._util || (this._util = new Util());
+      };
+  
+      WOW.prototype.disabled = function() {
+        return !this.config.mobile && this.util().isMobile(navigator.userAgent);
+      };
+  
+      return WOW;
+  
+    })();
+  
+  }).call(this);
+  
+  
+  wow = new WOW(
+    {
+      animateClass: 'animated',
+      offset: 100
+    }
+  );
+  wow.init();
+
+/********** */  
+function truncateText(truncated, maxLength) { 
+
+  if (truncated.length > maxLength) {
+      truncated = truncated.substr(0,maxLength) + '...';
+  }
+  return truncated;
+} 

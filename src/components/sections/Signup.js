@@ -264,7 +264,7 @@ class Registration extends React.Component {
   render() {
     return (
             <body className='bg-white'>
-            <nav className="bg-White navbar-dark navbar" style={{paddingLeft:500,paddingTop:50}}>
+            <nav className="bg-White navbar-dark navbar" style={{paddingLeft:500}}>
             <div className="row col-12 d-flex justify-content-center text-white">
             <h3></h3>
             </div>

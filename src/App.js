@@ -5,6 +5,7 @@ import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga'; 
 import $ from 'jquery';
+ 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault'; 
 
@@ -176,7 +177,7 @@ const App = () => {
           <AppRoute exact path="/Risks" component={Risks} layout={LayoutDefault} /> 
           <AppRoute exact path="/Terms_Condition" component={Terms_Condition} layout={LayoutDefault} /> 
 
-          <AppRoute exact path="/Login" component={Login} layout={LayoutDefault} />
+          <AppRoute exact path="/Login" component={Login}  />
           <AppRoute exact path="/Investor_Signup" component={Investor_Signup} layout={LayoutDefault} />
           <AppRoute exact path="/Investors_Terms" component={Investors_Terms} layout={LayoutDefault} />
           <AppRoute exact path="/Invest_Now" component={Invest_Now} layout={LayoutDefault} /> 
@@ -200,7 +201,7 @@ const App = () => {
           
           <AppRoute exact path="/Inv_Signup" component={Inv_Signup} layout={LayoutDefault} />
          
-          <AppRoute exact path="/Signup" component={Signup} layout={LayoutDefault} />
+          <AppRoute exact path="/Signup" component={Signup} />
           <AppRoute exact path="/Startup_Login" component={Startup_Login} layout={LayoutDefault} />
           <AppRoute exact path="/Startup_Dashboard" component={Startup_Dashboard} layout={LayoutDefault} />
           <AppRoute exact path="/Company_Info" component={Company_Info} layout={LayoutDefault} />
