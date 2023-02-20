@@ -110,7 +110,7 @@ pushLeft && 'push-left'
                  <br/>
                <div className="row">
                 <div className="col-md-12">
-              <div className="table-responsive-xxl" >
+               <div className="table-responsive-xxl" >
                 <table className="table">
                   <thead>
                     <tr>

@@ -73,7 +73,7 @@ class Business_Model extends React.Component {
   
 
         $("#PtBSModelform #ptbsmodelid").attr("value", value.ID).val(value.ID);
-        $("#PtBSModelform #ptbsmodelheader").attr("value", value.PIT_BSMODEL_HEADER).val(value.PIT_BSMODEL_HEADER);
+        $("#PtBSModelform #ptbsmodelheader").attr("value", value.PIT_BSMODEL_HEADER).val(value.PIT_BSMODEL_HEADER).prop("readonly","true");
         $("#PtBSModelform").find("label[for=createpitchbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_BSMODEL_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

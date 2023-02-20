@@ -73,7 +73,7 @@ class Usage extends React.Component {
   
 
         $("#PtUsageform #ptusageid").attr("value", value.ID).val(value.ID);
-        $("#PtUsageform #ptusageheader").attr("value", value.PIT_USAGE_HEADER).val(value.PIT_USAGE_HEADER);
+        $("#PtUsageform #ptusageheader").attr("value", value.PIT_USAGE_HEADER).val(value.PIT_USAGE_HEADER).prop("readonly","true");
         $("#PtUsageform").find("label[for=ptusagebody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_USAGE_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

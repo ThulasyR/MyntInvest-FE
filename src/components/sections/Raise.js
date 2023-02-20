@@ -31,6 +31,7 @@ class Raise extends React.Component {
       MODULE: null,
       RAISE_NAME: "",
       RAISE_EMAIL: "",
+      RAISE_PHONENO:"",
       RAISE_FOUNDER_URL1: "",
       RAISE_FOUNDER_URL2: "",
       RAISE_COMPANY_NAME: "",
@@ -102,6 +103,8 @@ class Raise extends React.Component {
         $("#Raiseform #raiseid").attr("value", value.ID).val(value.ID);
         $("#Raiseform #rsName").attr("value", value.RAISE_NAME).val(value.RAISE_NAME);
         $("#Raiseform #rsemail").attr("value", value.RAISE_EMAIL).val(value.RAISE_EMAIL);
+        $("#Raiseform #rsphone").attr("value", value.RAISE_PHONENO).val(value.RAISE_PHONENO);
+       
         $("#Raiseform #rsfounderurl1").attr("value", value.RAISE_FOUNDER_URL1).val(value.RAISE_FOUNDER_URL1);
         $("#Raiseform #rsfounderurl2").attr("value", value.RAISE_FOUNDER_URL2).val(value.RAISE_FOUNDER_URL2);
         $("#Raiseform #rsRegCompanyname").attr("value", value.RAISE_COMPANY_NAME).val(value.RAISE_COMPANY_NAME);
@@ -173,6 +176,7 @@ class Raise extends React.Component {
         rsformData.append("MODULE",$("#mtuser_module").val());
         rsformData.append("RAISE_NAME",$("#Raiseform #rsName").val());
         rsformData.append("RAISE_EMAIL",$("#Raiseform #rsemail").val());
+        rsformData.append("RAISE_PHONENO",$("#Raiseform #rsphone").val());
         rsformData.append("RAISE_FOUNDER_URL1",$("#Raiseform #rsfounderurl1").val());
         rsformData.append("RAISE_FOUNDER_URL2",$("#Raiseform #rsfounderurl2").val());
         rsformData.append("RAISE_COMPANY_NAME",$("#Raiseform #rsRegCompanyname").val());
@@ -263,6 +267,13 @@ class Raise extends React.Component {
       isValid = false;
       errors["rsemail"] = "Please enter your Company email Address.";
       $("#rsemail").focus();
+    }
+
+
+    if (window.isEmpty($("#Raiseform #rsphone").val())) {
+      isValid = false;
+      errors["rsphone"] = "Please enter your Phone number.";
+      $("#rsphone").focus();
     }
 
 
@@ -370,11 +381,9 @@ class Raise extends React.Component {
         <body className='bg-white' >
           <div className='container'>
 
-            <div className='row' style={{ height: 'auto', marginTop: 100 }}>
+            <div className='row' style={{ height: 'auto',   }}>
               <div className='row'>
-                <div className="hero-content">
-
-
+                <div className="hero-content"> 
                   <div className='container'>
                     <form name="Raiseform" id="Raiseform" method="POST" className="row m-5 g-3"  >
 
@@ -431,6 +440,21 @@ class Raise extends React.Component {
                                   <div className="text-danger errors" style={{ fontSize: 15 }}>{this.state.errors.rsemail}</div>
                                 </div>
 
+
+                                <div className="col-md-6 mb-3">
+                                  <label for="rsphone" className="form-label">Phone Number<span className='maroon'>*</span></label>
+                                  <input
+                                    name="rsphone"
+                                    value={this.state.input.rsphone}
+                                    onChange={this.handleChange}
+                                    type="text"
+                                    className="form-control"
+                                    maxlength="15"
+                                    placeholder="Enter Your Phone number"
+                                    id="rsphone"
+                                  />
+                                  <div className="text-danger errors" style={{ fontSize: 15 }}>{this.state.errors.rsphone}</div>
+                                </div>
 
 
 

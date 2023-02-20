@@ -73,7 +73,7 @@ class Product extends React.Component {
          $.each(this.state.ptProductAllDets, function (index, value) { 
         
         $("#ptProductform #ptproductid").attr("value", value.ID).val(value.ID);
-        $("#ptProductform #ptproductheader").attr("value", value.PIT_PROD_HEADER).val(value.PIT_PROD_HEADER);
+        $("#ptProductform #ptproductheader").attr("value", value.PIT_PROD_HEADER).val(value.PIT_PROD_HEADER).prop("readonly","true");
         $("#ptProductform").find("label[for=ptproductbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_PROD_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

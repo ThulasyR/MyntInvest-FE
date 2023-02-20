@@ -93,12 +93,12 @@ render() {
         </button>
         </NavLink>
       </div>
-
+      {/* dropdown-toggle   data-bs-toggle="dropdown"*/}
       <div className="dropdown profile_header2">
-    <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown">
-      <i className='fa fa-user userbgcircle'></i>&nbsp;<span id="profilename"></span>
-    </button>
-    <ul className="dropdown-menu">
+      <NavLink to="/Investors_Dashboard"><button type="button" className="btn btn-default btn-sm ">
+      <i className='fa userbgcircle'><span id="logname"></span></i>&nbsp;
+    </button></NavLink>
+    {/* <ul className="dropdown-menu" stype={{display:"none"}}>
     <li><a className="dropdown-item text-center" id="controlpanel" >
         <button type="button" className=' btn btn-dark btn-sm'>Control Panel</button></a></li>
       <li className='p-2'><table className='table  table-hover  table-stripped' border="0">
@@ -109,7 +109,7 @@ render() {
         
       <li align="center"><a className="dropdown-item logout" >
         <button type="button" className=' btn btn-success btn-sm'>Logout</button></a></li>
-    </ul>
+    </ul> */}
   </div>  
 
     </div>

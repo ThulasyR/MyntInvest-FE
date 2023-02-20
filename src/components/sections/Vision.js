@@ -73,7 +73,7 @@ class Vision extends React.Component {
   
 
         $("#PtVisionform #ptvisionid").attr("value", value.ID).val(value.ID);
-        $("#PtVisionform #ptvisionheader").attr("value", value.PIT_VSN_HEADER).val(value.PIT_VSN_HEADER);
+        $("#PtVisionform #ptvisionheader").attr("value", value.PIT_VSN_HEADER).val(value.PIT_VSN_HEADER).prop("readonly","true");
         $("#PtVisionform").find("label[for=ptvisionbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_VSN_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

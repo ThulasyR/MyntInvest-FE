@@ -57,7 +57,8 @@ class Founders extends React.Component {
         $.each(raiseDets, function (index, value) {
           status = value.STATUS;
           console.log("LENGTH OF COMPANY INFO" + value.STATUS);
-          if (status == "Dormant") {
+          if( !window.isEmpty( sessionStorage.getItem("sessEmail"))){
+          if (status == "Dormant" ) {
             $(".founderpage .statusbtn").html(
               '<a href="/Raise"><button type="button" class="btn btn-dark btn-sm" id="applytoraise"> APPLY TO RAISE</button></a>'
             );
@@ -68,6 +69,7 @@ class Founders extends React.Component {
             );
             linkRaise = "/Startup_Dashboard";
           }
+        }
         });
       })
       .catch((e) => {
@@ -484,12 +486,12 @@ class Founders extends React.Component {
                   </div>
                   <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
-                      <img
-                        className="img-fluid   p-3"
-                        src={Mob1}
-                        alt=""
-                        style={{ width: "300px" }}
-                      />
+                    <img
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-7.gif")}
+                      alt=""
+                      style={{ width: "500px" }}
+                    />
                     </div>
                   </div>
                 </div>
@@ -497,12 +499,12 @@ class Founders extends React.Component {
                 <div className="row g-5">
                   <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
-                      <img
-                        className="img-fluid   p-3"
-                        src={Mob2}
-                        alt=""
-                        style={{ width: "300px" }}
-                      />
+                    <img
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-8.gif")}
+                      alt=""
+                      style={{ width: "500px" }}
+                    />
                     </div>
                   </div>
 
@@ -561,12 +563,12 @@ class Founders extends React.Component {
 
                   <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
-                      <img
-                        className="img-fluid  p-3"
-                        src={Mob4}
-                        alt=""
-                        style={{ width: "242px" }}
-                      />
+                    <img
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-9.gif")}
+                      alt=""
+                      style={{ width: "500px" }}
+                    />
                     </div>
                   </div>
                 </div>
@@ -574,12 +576,12 @@ class Founders extends React.Component {
                 <div className="row g-5">
                   <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
-                      <img
-                        className="img-fluid   p-3"
-                        src={Mob2}
-                        alt=""
-                        style={{ width: "300px" }}
-                      />
+                    <img
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-6.gif")}
+                      alt=""
+                      style={{ width: "500px" }}
+                    />
                     </div>
                   </div>
 
@@ -655,8 +657,6 @@ class Founders extends React.Component {
           </div>
         </div>
 
-        <Founders_Community split />
-        <Founders_Tiles topDivider />
         <Founders_Calender />
         <Founders_Process />
         {/* <Founders_Raising/> */}

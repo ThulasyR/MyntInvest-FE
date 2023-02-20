@@ -8,7 +8,7 @@ import Investors_Thousand from '../components/sections/Investors_Thousand';
 import Investors_Invest from '../components/sections/Investors_Invest';
 import Investors_Tiles from '../components/sections/Investors_Tiles';
 // import sections
-import Livedeals from '../components/sections/Livedeals';
+import Livedeals from '../views/Deals';
 
 const Investors = () => {
 

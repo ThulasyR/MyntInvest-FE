@@ -73,7 +73,7 @@ class Transaction extends React.Component {
   
 
         $("#Transactionform #pttransid").attr("value", value.ID).val(value.ID);
-        $("#Transactionform #pttransheader").attr("value", value.PIT_TRANS_HEADER).val(value.PIT_TRANS_HEADER);
+        $("#Transactionform #pttransheader").attr("value", value.PIT_TRANS_HEADER).val(value.PIT_TRANS_HEADER).prop("readonly","true");
         $("#Transactionform").find("label[for=pttransbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_TRANS_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

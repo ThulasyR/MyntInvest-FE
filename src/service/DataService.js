@@ -7,7 +7,7 @@ class DataService {
     return http.get(`/mt_user/${id}`);
   }
   create(url,data) {
-    return http.post(url, data);//localhost:8000/api/mt_user(data)
+    return http.post(url, data);// /api/employee(data)
   }
   update(url, data) {
     return http.put(url, data);//`/mt_user/${id}`

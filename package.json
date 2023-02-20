@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.11.3",
     "@material-ui/styles": "^4.11.5",
     "@react-google-maps/api": "^2.12.0",
+    "add": "^2.0.6",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "build": "^0.1.4",
@@ -17,9 +18,11 @@
     "draft-js": "^0.11.7",
     "google-map-react": "^2.1.10",
     "google-maps-react": "^2.0.6",
-    "jquery": "^3.6.0",
+    "jquery": "^3.6.1",
     "lodash": "^4.17.15",
     "moment": "^2.29.4",
+    "or": "^0.2.0",
+    "owl.carousel": "^2.3.4",
     "react": "^16.13.1",
     "react-accessible-accordion": "^5.0.0",
     "react-accessible-dropdown-menu-hook": "^3.2.0",
@@ -43,7 +46,8 @@
     "react-select-country-list": "^2.2.3",
     "react-switch": "^7.0.0",
     "sass": "^1.49.7",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "yarn": "^1.22.19"
   },
   "repository": {
     "type": "git",

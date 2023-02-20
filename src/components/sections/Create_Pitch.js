@@ -73,7 +73,7 @@ class Create_Pitch extends React.Component {
   
 
         $("#CreatePitchform #createpitchid").attr("value", value.ID).val(value.ID);
-        $("#CreatePitchform #createpitchheader").attr("value", value.CRT_PITCH_HEADER).val(value.CRT_PITCH_HEADER);
+        $("#CreatePitchform #createpitchheader").attr("value", value.CRT_PITCH_HEADER).val(value.CRT_PITCH_HEADER).prop("readonly","true");
         $("#CreatePitchform").find("label[for=createpitchbody]").closest("div").find("div").find("span[data-offset-key]").text(value.CRT_PITCH_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

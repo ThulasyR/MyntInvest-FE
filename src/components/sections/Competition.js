@@ -73,7 +73,7 @@ class Competition extends React.Component {
   
 
         $("#PtCompform #ptcomid").attr("value", value.ID).val(value.ID);
-        $("#PtCompform #ptcompheader").attr("value", value.PIT_COMPT_HEADER).val(value.PIT_COMPT_HEADER);
+        $("#PtCompform #ptcompheader").attr("value", value.PIT_COMPT_HEADER).val(value.PIT_COMPT_HEADER).prop("readonly","true");
         $("#PtCompform").find("label[for=ptcompbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_COMPT_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

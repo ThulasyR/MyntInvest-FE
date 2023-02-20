@@ -73,7 +73,7 @@ class Customer extends React.Component {
   
 
         $("#PtCustomerform #ptcustid").attr("value", value.ID).val(value.ID);
-        $("#PtCustomerform #ptcustheader").attr("value", value.PIT_CUST_HEADER).val(value.PIT_CUST_HEADER);
+        $("#PtCustomerform #ptcustheader").attr("value", value.PIT_CUST_HEADER).val(value.PIT_CUST_HEADER).prop("readonly","true");
         $("#PtCustomerform").find("label[for=ptcustbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_CUST_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

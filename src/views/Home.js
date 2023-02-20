@@ -302,25 +302,25 @@ class Home extends React.Component {
                   <img className="img-fluid" src={line} alt="line " />
                 </div>
                 <div className="mb-5">
-                  <div className="d-flex justify-content-center row ">
-                    <div className="col-md-2 col-lg-2">
+                  <div className="d-flex justify-content-center align-items-center row ">
+                    <div className="col-md-1 col-lg-1">
                       <div className="thumbnail">
-                        <img src={brand1} className="d-block w-100" alt="..." />
+                        <img src={brand1} className="d-block " alt="..." />
                       </div>
                     </div>
                     <div className="col-md-2 col-lg-2">
                       <div className="thumbnail">
-                        <img src={brand4} className="d-block w-100" alt="..." />
+                        <img src={brand4} className="d-block" alt="..."  style={{width:"200px"}}/>
                       </div>
                     </div>
                     <div className="col-md-2 col-lg-2">
                       <div className="thumbnail">
-                        <img src={brand2} className="d-block w-100" alt="..." />
+                        <img src={brand2} className="d-block" alt="..."   style={{width:"250px"}}/>
                       </div>
                     </div>
                     <div className="col-md-2 col-lg-2">
                       <div className="thumbnail">
-                        <img src={brand3} className="d-block w-100" alt="..." />
+                        <img src={brand3} className="d-block" alt="..."   style={{width:"200px"}}/>
                       </div>
                     </div>
                   </div>
@@ -343,31 +343,37 @@ class Home extends React.Component {
                     </p>
                   </div>
                 </div>
-                <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
+                <div
+                  className="col-lg-6 wow fadeInUp  m-0 p-0"
+                  data-wow-delay="0.1s"
+                >
+                  <div className="row d-flex justify-content-center ">
                     <img
-                      className="img-fluid   p-3"
-                      src={Mob1}
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-1.gif")}
                       alt=""
-                      style={{ width: "300px" }}
+                      style={{ width: "500px" }}
                     />
                   </div>
                 </div>
               </div>
 
               <div className="row g-5">
-                <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
+                <div
+                  className="col-lg-6 wow fadeInUp  m-0 p-0"
+                  data-wow-delay="0.1s"
+                >
+                  <div className="row d-flex justify-content-center ">
                     <img
-                      className="img-fluid   p-3"
-                      src={Mob2}
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-2.gif")}
                       alt=""
-                      style={{ width: "300px" }}
+                      style={{ width: "500px" }}
                     />
                   </div>
                 </div>
 
-                <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div className="col-lg-6 wow fadeInUp  " data-wow-delay="0.5s">
                   <div className="h-100">
                     <h5 className="text-start font20">Track and Monitor</h5>
                     {/* <h1 className="display-6 mb-4">We Are Creative And Professional Photographer</h1> */}
@@ -393,13 +399,16 @@ class Home extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div className="row g-3  d-flex justify-content-center  img-twice position-relative h-100">
+                <div
+                  className="col-lg-6 wow fadeInUp  m-0 p-0"
+                  data-wow-delay="0.1s"
+                >
+                  <div className="row d-flex justify-content-center">
                     <img
-                      className="img-fluid  p-3"
-                      src={Mob4}
+                      className="img-fluid"
+                      src={require("./../assets/blurimages/MYNT-GIF-3.gif")}
                       alt=""
-                      style={{ width: "242px" }}
+                      style={{ width: "500px" }}
                     />
                   </div>
                 </div>
@@ -431,7 +440,7 @@ class Home extends React.Component {
                         <div className="thumbnail">
                           <img
                             src={News1}
-                            className="d-block w-100"
+                            className="d-block"   style={{width:"200px"}}
                             alt="..."
                           />
                         </div>
@@ -440,7 +449,7 @@ class Home extends React.Component {
                         <div className="thumbnail">
                           <img
                             src={News4}
-                            className="d-block w-100"
+                            className="d-block"   style={{width:"200px"}}
                             alt="..."
                           />
                         </div>
@@ -449,7 +458,7 @@ class Home extends React.Component {
                         <div className="thumbnail">
                           <img
                             src={News2}
-                            className="d-block w-100"
+                            className="d-block"   style={{width:"200px"}}
                             alt="..."
                           />
                         </div>
@@ -458,7 +467,7 @@ class Home extends React.Component {
                         <div className="thumbnail">
                           <img
                             src={News3}
-                            className="d-block w-100"
+                            className="d-block"   style={{width:"200px"}}
                             alt="..."
                           />
                         </div>
@@ -516,9 +525,10 @@ class Home extends React.Component {
                         <div className="card-body d-flex flex-column">
                           <div className="text-center">
                             <img
-                              src={Mob1}
-                              className="img-fluid  mb-5"
-                              alt="Websearch"
+                              className="img-fluid"
+                              src={require("./../assets/blurimages/MYNT-GIF-4.gif")}
+                              alt=""
+                              style={{ width: "500px" }}
                             />
                           </div>
 
@@ -553,9 +563,10 @@ class Home extends React.Component {
                         <div className="card-body d-flex flex-column">
                           <div className="text-center">
                             <img
-                              src={Mob2}
-                              className="img-fluid  mb-5"
-                              alt="Websearch"
+                              className="img-fluid"
+                              src={require("./../assets/blurimages/MYNT-GIF-7.gif")}
+                              alt=""
+                              style={{ width: "500px" }}
                             />
                           </div>
 
@@ -594,9 +605,10 @@ class Home extends React.Component {
                         <div className="card-body d-flex flex-column">
                           <div className="text-center">
                             <img
-                              src={Mob4}
-                              className="img-fluid  mb-5"
-                              alt="Websearch"
+                              className="img-fluid"
+                              src={require("./../assets/blurimages/MYNT-GIF-5.gif")}
+                              alt=""
+                              style={{ width: "500px" }}
                             />
                           </div>
 

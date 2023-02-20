@@ -73,7 +73,7 @@ class Protential_returns extends React.Component {
   
 
         $("#PtPotReturnsform #potreturnsid").attr("value", value.ID).val(value.ID);
-        $("#PtPotReturnsform #ptpotretheader").attr("value", value.PIT_POTRET_HEADER).val(value.PIT_POTRET_HEADER);
+        $("#PtPotReturnsform #ptpotretheader").attr("value", value.PIT_POTRET_HEADER).val(value.PIT_POTRET_HEADER).prop("readonly","true");
         $("#PtPotReturnsform").find("label[for=ptpotretbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_POTRET_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

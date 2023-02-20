@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/mynt2.png" />
@@ -28,6 +27,7 @@
 <link href="%PUBLIC_URL%/datatable/css/fixedColumns.dataTables.min.css" rel="stylesheet">
 <link href="%PUBLIC_URL%/datatable/css/keyTable.dataTables.min.css" rel="stylesheet">
 <link href="%PUBLIC_URL%/datatable/css/responsive.bootstrap.css" rel="stylesheet"> 
+<link href="%PUBLIC_URL%/file/toastr.min.css" rel="stylesheet"> 
  
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -48,7 +48,7 @@
      
 <!-- 		  Loader -->
 <div class="loading" >   
-  <img  src="%PUBLIC_URL%/loading-circle.gif" class="imageloader">
+  <!-- <img  src="%PUBLIC_URL%/loading-circle.gif" class="imageloader"> -->
 </div>
   
   
@@ -67,7 +67,7 @@
           <div id="alertmsg"  class="text-success" style="display: inline-block;"></div> 
       </div>
        <div class="modal-footer d-flex justify-content-center text-center" > 
-        <button type="button" class="btn btn-success btn-sm" >Ok</button> 
+        <button type="button" class="btn btn-warning btn-sm" >Ok</button> 
         <button type="button" class="btn btn-secondary btn-sm"  data-dismiss="modal" aria-label="Close">Cancel</button> 
       </div>
       </div>
@@ -77,7 +77,7 @@
 
   
   <div class="modal fade"  id="OpenWishListInvestdiv"  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog  modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header"> 
          <h3 >Invest </h3>
@@ -85,39 +85,33 @@
             <span aria-hidden="true">&times;</span></button> 
           
         </div>
-        <div class="modal-body" style="height:300px;overflow-y:scroll">
-          <div class="container">
-
-
-            <div class="card">
-
-                <div class="card-body">
-                <table class="table table-borderless table-striped table-hover">
+        <div class="modal-body">
+          <div class="container"> 
+            <div class="card col-md-12"> 
+                <div class="card-body para ">
+                  <form>
+                <table class="table table-borderless table-striped table-hover para">
                   <tbody>
                     <tr class="border-0">
+                      <input type="hidden"  name="investorPaymentId" id="investorPaymentId"   />
                       <td colspan="2">
                         <label>Enter the Amount</label>
-                        <input type="text" class="form-control"/> 
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-inr"></i></span>
+                          <input name="invAmountPay" id="invAmountPay" placeholder="Enter the Amount that you are going to invest" maxlength="50" aria-describedby="basic-addon1" type="text" class="form-control"/> 
+                        </div> 
                       </td> 
                       </tr>
 
                       <tr class="border-0">
                         <td colspan="2">
-                          <p><span class="para bg-light p-1 b">Rs.1,000</span>
+                          <p style="margin-bottom: 0px"><span class="para bg-light p-1 b"><i class="fa fa-inr"></i> 1,000</span>
                           <span class="para bg-light p-1 b">Rs.5,000</span> 
                           <span class="para bg-light p-1 b">Rs.5,500</span> 
                           <span class="para bg-light p-1 b">Rs.7,000</span></p>
                         </td> 
                         </tr> 
-                  </tbody>
-
-
-                  </table>
-
-
-                  <table class="table table-borderless table-striped table-hover">
-                    <tbody>
-                      <tr class="border-0">
+                        <tr class="border-0">
                         <td> Particulars
                         </td> 
                         <td> Amount
@@ -125,49 +119,82 @@
                         </tr>
   
                         <tr class="border-0">
-                          <td>Investment Amount (Inclusive of GST 18%)</td> 
-                          <td>Rs.00</td> 
+                          <td class="para">Investment Amount (Inclusive of GST 18%)</td> 
+                          <td class="para">
+                            <div class="input-group input-group-sm">
+                              <span class="input-group-text" id="basic-addon2"><i class="fa fa-inr"></i></span>
+                              <input name="invPartAmt" id="invPartAmt" type="text"  aria-describedby="basic-addon2"  maxlength="50" class="form-control"/> 
+                            </div>
+                          </td> 
                           </tr>
                           <tr class="border-0">
-                            <td>Convenience Fee  (Inclusive of GST 18%)</td> 
-                            <td>Rs.00</td> 
+                            <td class="para">Convenience Fee  (Inclusive of GST 18%)</td> 
+                            <td class="para">
+                              <div class="input-group input-group-sm">
+                          <span class="input-group-text" id="basic-addon3"><i class="fa fa-inr"></i></span>
+                          <input name="invPartConFee" id="invPartConFee" type="text"   aria-describedby="basic-addon3"  maxlength="50" class="form-control"/> 
+                        </div>
+                         </td> 
                             </tr>
                             
                             <tr class="border-0">
-                              <td> GST 18%</td> 
-                              <td>Rs.00</td> 
+                              <td class="para"> GST 18%</td> 
+                              <td class="para">
+                                <div class="input-group input-group-sm">
+                                  <span class="input-group-text" id="basic-addon4"><i class="fa fa-inr"></i></span>
+                                <input name="invPartGST" id="invPartGST" type="text"    aria-describedby="basic-addon4" maxlength="50" class="form-control"/>
+                                </div>
+                                </td> 
                               </tr>
 
                               <tr class="border-0">
-                                <td>Total</td> 
-                                <td>Rs.00</td> 
+                                <td class="para">Total</td> 
+                                <td class="para">
+                                  <div class="input-group input-group-sm">
+                          <span class="input-group-text" id="basic-addon5"><i class="fa fa-inr"></i></span>
+                          <input name="invPartAmtTotal" id="invPartAmtTotal" type="text"   aria-describedby="basic-addon5"  maxlength="50"  class="form-control"/>
+                        </div>
+                         </td> 
                                 </tr>
                                 <tr class="border-0">
-                                  <td>Total Amount to be paid</td> 
-                                  <td class="text-success b">Rs.00</td> 
-                                  </tr>
-
-
+                                  <td class="para">Total Amount to be paid</td> 
+                                  <td class="text-success para b">
+                                    <div class="input-group input-group-sm">
+                          <span class="input-group-text" id="basic-addon6"><i class="fa fa-inr"></i></span>
+                          <input name="invPartAmtTotalTobePaid" id="invPartAmtTotalTobePaid" aria-describedby="basic-addon6" maxlength="50" type="text" class="form-control"/>
+                        </div>
+                         </td> 
+                                  </tr> 
                                   <tr class="border-0">
-                                    <td colspan="2">
-                                      <p>&nbsp;&nbsp;<input type="checkbox"/> &nbsp;&nbsp; Creating a account means
-                                      you are okay with our Terms of service,Privacy policy and our default 
-                                    Notification settings.</p>
+                                    <td class="para" colspan="2">
+                                      <div class="col-12">
+                                      <div class="form-check">
+                                        <input
+                                          class="form-check-input"
+                                          type="checkbox"
+                                          name="invPartAgreechk"
+                                          id="invPartAgreechk" 
+                                          value="yes"
+                                        />
+                                        <label class="form-label" for="invPartAgreechk">
+                                          <span class="font14">
+                                            Creating a account means
+                                            you are okay with our Terms of service,Privacy policy and our default 
+                                          Notification settings.
+                                          </span>
+                                        </label>
+                                      </div> </div>
                                     </td> 
                                       </tr>
 
 
-                                      <tr class="border-0">
-                                        <td colspan="2">
-                                          <button type="button" class="btn btn-success">Pay Online</button>
+                                      
+                  </tbody> 
+                  </table>
 
-                                        </td> 
-                                          </tr>
-                    </tbody>
-  
-  
-                    </table>
-                            
+
+                  
+                  </form>
 
                           </div>
             </div>
@@ -180,7 +207,7 @@
             <div id="alertmsg"  class="text-success" style="display: inline-block;"></div>  -->
         </div>
          <div class="modal-footer d-flex justify-content-center text-center" > 
-          <button type="button" class="btn btn-success btn-sm" >Ok</button> 
+          <button type="button" class="btn btn-warning">Pay Online</button>
           <button type="button" class="btn btn-secondary btn-sm"  data-dismiss="modal" aria-label="Close">Cancel</button> 
         </div>
         </div>
@@ -199,19 +226,23 @@
   <div class="modal fade"  id="chooseStartupSecdiv"  tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header"> 
+        <!-- <div class="modal-header"> 
          <h3>Please Choose Startup Sectors<br/>
         You're <span class="text-success">Interested in</span></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal">
             <span aria-hidden="true">&times;</span></button> 
           
-        </div>
-        <div class="modal-body" style="height:300px;overflow-y:scroll">
+        </div> -->
+        <div class="modal-body" >
           <div class="container">
-            <table class="table table-borderless table-hover table-stripped table-sm"> 
+            <table class="table table-borderless table-stripped table-sm"> 
+              <thead>
+                <tr class="border-0"><td colspan="4"> <h3>Please Choose Startup Sectors<br/>
+                  You're <span class="text-warning">Interested in</span></h3></td></tr>
+                </thead>
               <tbody>
               <tr class="border-0"> 
-                <td class="border-0"><div class="quiz_card_area">
+                <td class="border-0 p-0"><div class="quiz_card_area">
                   <input type="hidden"  name="secid" id="secid"   />
                   <input type="hidden"  name="choosesectorhid" id="choosesectorhid" value='{"VirtualReality":"N","Entertainment":"N","ECommerce":"N","CryptoCurrency":"N","AgriTech":"N","FoodAndBeverage":"N","AugmentedReality":"N","FinTech":"N","InsurReality":"N","ElectricVehicle":"N","BlockChain":"N","HealthTech":"N","EdTech":"N"}' />
                   <input class="quiz_checkbox" type="checkbox" id="sector1" name="chooseSector" value="Ed Tech" data-attr="EdTech"/>
@@ -225,7 +256,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td class="border-0"><div class="quiz_card_area">
+                <td class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector2" name="chooseSector" value="Health Tech"  data-attr="HealthTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -237,7 +268,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td class="border-0"><div class="quiz_card_area">
+                <td class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Virtual Reality"   data-attr="VirtualReality"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -249,7 +280,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td> 
-              <td><div class="quiz_card_area">
+              <td  class="border-0  p-1"><div class="quiz_card_area">
                 <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Blockchain"    data-attr="BlockChain"/>
                 <div class="single_quiz_card">
                     <div class="quiz_card_content">
@@ -263,7 +294,7 @@
             </div><!-- end of quiz_card_area --> </td>
               </tr>
               <tr  class="border-0">
-                <td><div class="quiz_card_area">
+                <td  class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Augmented Reality"    data-attr="AugmentedReality"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -275,7 +306,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td class="border-0"><div class="quiz_card_area">
+                <td  class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector6" name="chooseSector" value="Fin Tech"   data-attr="FinTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -287,7 +318,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td class="border-0"><div class="quiz_card_area">
+                <td  class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Insur Reality" data-attr="InsurReality"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -299,7 +330,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td><div class="quiz_card_area">
+                <td class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="Electric Vehicle"   data-attr="ElectricVehicle"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -313,7 +344,7 @@
               </div><!-- end of quiz_card_area --> </td>
               </tr>
               <tr  class="border-0">
-                <td><div class="quiz_card_area">
+                <td  class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Food and Beverage"     data-attr="FoodAndBeverage"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -325,7 +356,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td class="border-0"><div class="quiz_card_area">
+                <td   class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector6" name="chooseSector" value="Cryptocurrency"   data-attr="CryptoCurrency"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -337,7 +368,7 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td class="border-0"><div class="quiz_card_area">
+                <td  class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector3" name="chooseSector" value="Entertainment"   data-attr="Entertainment"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -349,21 +380,21 @@
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
-                <td><div class="quiz_card_area">
+                <td class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector4" name="chooseSector" value="E-Commerce"   data-attr="ECommerce"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
                           <div class="quiz_card_icon">
                             <img src='icons/L.png' alt="..." width="50px"/>&nbsp;E-Commerce
                           <!-- <div class="quiz_card_title">
-                                  <h3><i class="fa fa-check" aria-hidden="true"></i> Title gose Here</h3>
+                 border-0  p-1                 <h3><i class="fa fa-check" aria-hidden="true"></i> Title gose Here</h3>
                           </div>end of quiz_card_title -->
                       </div><!-- end of quiz_card_content -->
                   </div><!-- end of single_quiz_card -->
               </div><!-- end of quiz_card_area --> </td>
               </tr>
               <tr  class="border-0">
-                <td><div class="quiz_card_area">
+                <td class="border-0  p-1"><div class="quiz_card_area">
                   <input class="quiz_checkbox" type="checkbox" id="sector5" name="chooseSector" value="Agri Tech"    data-attr="AgriTech"/>
                   <div class="single_quiz_card">
                       <div class="quiz_card_content">
@@ -377,6 +408,15 @@
               </div><!-- end of quiz_card_area --> </td> 
               </tr>
             </tbody>
+
+            <tfoot>
+              <tr  class="border-0">
+                <td  class="border-0" colspan="4" align="right">
+                  <button type="button" class="btn btn-dark btn-sm col-md-4" >Submit</button> 
+                  <button type="button" class="btn btn-light btn-sm col-md-4">Cancel</button> 
+                </td>
+              </tr>
+              </tfoot>
             </table>
    
 </div>
@@ -387,10 +427,10 @@
           <!-- <h4 class="modal-title text-left" id="gridSystemModalLabel"></h4>
             <div id="alertmsg"  class="text-success" style="display: inline-block;"></div>  -->
         </div>
-         <div class="modal-footer d-flex justify-content-center text-center" > 
-          <button type="button" class="btn btn-success btn-sm" >Ok</button> 
+         <!-- <div class="modal-footer d-flex justify-content-center text-center" > 
+          <button type="button" class="btn btn-warning btn-sm" >Ok</button> 
           <button type="button" class="btn btn-secondary btn-sm"  data-dismiss="modal" aria-label="Close">Cancel</button> 
-        </div>
+        </div> -->
         </div>
         </div>
         </div> 
@@ -419,20 +459,27 @@
 <script  type="text/javascript" src="%PUBLIC_URL%/datatable/js/mt.tables.js"></script>
 <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> 
  
+<script  type="text/javascript" src="%PUBLIC_URL%/file/toastr.min.js"></script>
+
 
     <!-- Owl Stylesheets -->
     <link rel="stylesheet" href="%PUBLIC_URL%/owl.carousel.min.css">
     <link rel="stylesheet" href="%PUBLIC_URL%/owl.theme.default.min.css">
-
+    <link rel="stylesheet" href="%PUBLIC_URL%/rangestyles.css">
      <!-- javascript -->
      <script src="%PUBLIC_URL%/jquery.min.js"></script>
      <script src="%PUBLIC_URL%/owl.carousel.js"></script>
 
-
-
+     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+     
+     <script src="https://unpkg.com/range-slider-element@latest"></script>
 <script  type="text/javascript" src="%PUBLIC_URL%/file/aks-fileupload.js"></script>
 <script  type="text/javascript" src="%PUBLIC_URL%/file/wow.min.js"></script>
 <script  type="text/javascript" src="%PUBLIC_URL%/common.js"></script> 
+<script  type="text/javascript" src="%PUBLIC_URL%/config_mail.js"></script> 
+
+
 <script>
   $(document).ready(function(){ 
    
@@ -453,6 +500,9 @@ $(window).on('load', function(e){
       autoplayTimeout:5000,
       autoplayHoverPause:true,  
   }); 
+
+
+  
 });
 
  </script>

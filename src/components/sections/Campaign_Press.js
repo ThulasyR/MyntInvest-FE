@@ -77,7 +77,7 @@ class Campaign_Press extends React.Component {
    
 
         $("#CampPressform #campressid").attr("value", value.ID).val(value.ID);
-        $("#CampPressform #campressheader").attr("value", value.CAMP_PRESS_HEADER).val(value.CAMP_PRESS_HEADER);
+        $("#CampPressform #campressheader").attr("value", value.CAMP_PRESS_HEADER).val(value.CAMP_PRESS_HEADER).prop("readonly","true");
         $("#CampPressform").find("label[for=campressbody]").closest("div").find("div").find("span:eq(2)").text(value.CAMP_PRESS_BODY);
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");

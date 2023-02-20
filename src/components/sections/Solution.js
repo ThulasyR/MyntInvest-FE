@@ -73,7 +73,7 @@ class Solution extends React.Component {
   
 
         $("#Solutionform #solutionid").attr("value", value.ID).val(value.ID);
-        $("#Solutionform #solutionheader").attr("value", value.PIT_SOL_HEADER).val(value.PIT_SOL_HEADER);
+        $("#Solutionform #solutionheader").attr("value", value.PIT_SOL_HEADER).val(value.PIT_SOL_HEADER).prop("readonly","true");
         $("#Solutionform").find("label[for=solutionbody]").closest("div").find("div").find("span[data-offset-key]").text(value.PIT_SOL_BODY)
         // $($(".imagePreview")[index]).css("background-image","url("+window.mt_backend_url+value.PROFILE_PIC+")");
         // $($("#TeamInfoform #tmuploadprofile")[index]).closest("label").css("visibility","hidden");
