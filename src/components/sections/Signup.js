@@ -8,6 +8,16 @@ import DataService from "../../service/DataService";
 import MyntInvestLogo from "../../assets/images/MyntInvest.png";
 import Google from "../../assets/images/google.png";
 import $ from "jquery";
+import BoyImage from "../../assets/da_img/login1.png";
+import Image from "../elements/Image";
+
+const boyImageCom = {
+  backgroundImage: `url(${BoyImage}`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+  // backgroundR
+};
+
 const tilesClasses = classNames("tiles-wrap center-content");
 
 const current = new Date();
@@ -254,186 +264,11 @@ class Registration extends React.Component {
 
   render() {
     return (
-      <body className="bg-white">
+      <body className="bg_dtheme">
         <div className="row ">
-          <div className="col-md-1"></div>
-          <div className="col-md-5 frambg">
-            <div className="row" align="Left" style={{ paddingLeft: 70 }}>
-              <h4 className="text-light" style={{ marginTop: 70 }}>
-                <img src={MyntInvestLogo} style={{ width: 200 }} />
-              </h4>
-              <p className="text-white">
-                <strong>Invest</strong> In The Best <strong>Startups</strong>
-                <br />
-                Raised Right From Their
-                <br />
-                <strong>Community</strong>
-              </p>
-              <a
-                href="#"
-                className="fa fa-google"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-              <a
-                href="#"
-                className="fa fa-twitter"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-              <a
-                href="#"
-                className="fa fa-instagram"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-              <a
-                href="#"
-                className="fa fa-linkedin"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-            </div>
-            &nbsp;
-            <div className={tilesClasses} align="center">
-              <div className="col-sm-4">
-                <h5 className="text-white" align="Right">
-                  <strong>$700M+</strong>
-                  <p
-                    className="text-white"
-                    align="Right"
-                    style={{ fontSize: 9 }}
-                  >
-                    Invested Since 2022
-                  </p>
-                </h5>
-              </div>
+          <div className="col-md-6" style={boyImageCom}></div>
 
-              <div className="col-sm-4">
-                <h5 className="text-white">
-                  <strong>1.5Million+</strong>
-                  <p className="text-white" style={{ fontSize: 10 }}>
-                    Members
-                  </p>
-                </h5>
-              </div>
-
-              <div className="col-sm-4">
-                <h5 className="text-white" align="left">
-                  <strong>600K+</strong>
-                  <p className="text-white" style={{ fontSize: 10 }}>
-                    Deals Done
-                  </p>
-                </h5>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <p
-                  className="text-white"
-                  style={{ paddingLeft: 70, fontSize: 20 }}
-                >
-                  Trusted By Hundreds
-                  <br /> Of Companies
-                </p>
-              </div>
-            </div>
-            <div className={tilesClasses}>
-              <div className="col-md-12">
-                <div className="reveal-from-bottom" data-reveal-delay="600">
-                  <ButtonGroup className="align-item-center">
-                    <Button
-                      tag="a"
-                      className="text-white"
-                      style={{
-                        backgroundColor: "#000",
-                        borderRadius: 5,
-                        color: "grey",
-                      }}
-                      wideMobile
-                      href=""
-                    >
-                      9UNICORNS
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "white", color: "#000" }}
-                      wideMobile
-                      href=""
-                    >
-                      Better
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="secondary"
-                      style={{
-                        backgroundColor: "#000",
-                        borderRadius: 5,
-                        color: "white",
-                      }}
-                      wideMobile
-                      href=""
-                    >
-                      L I V W E L L
-                    </Button>
-                  </ButtonGroup>
-                  <br />
-                  <ButtonGroup>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "#000", color: "white" }}
-                      wideMobile
-                      href=""
-                    >
-                      Microsoft
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "#000", color: "white" }}
-                      wideMobile
-                      href=""
-                    >
-                      teradata
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "#000", color: "white" }}
-                      wideMobile
-                      href=""
-                    >
-                      Google
-                    </Button>
-                  </ButtonGroup>
-
-                  <br />
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 framrightbg">
+          <div className="col-md-6 ">
             <form
               autocomplete="off"
               name="Signupform"
@@ -442,18 +277,21 @@ class Registration extends React.Component {
               className="row m-5 g-3"
             >
               <div className="col-12 text-center">
-                <div className="col-12 text-end ">
-                  <a href="/Login" className="font14">
-                    Already User?
-                    <span
-                      className="text-success text-sm "
-                      style={{ fontSize: "14px", textAlign: "right" }}
-                    >
-                      &nbsp;<b>Sign In</b>
-                    </span>
-                  </a>
+                <div className="col-12 text-center ">
+                  <img
+                    src={require("./../../assets/da_img/logo1.png")}
+                    width={100}
+                    height={50}
+                    alt="DoAram_Logo"
+                    className="rounded mx-auto d-block"
+                  />
                 </div>
-
+                <br />
+                <br />
+                <small className="text-muted font20 text-sm ">
+                  Let's Do Aram
+                </small>
+                <br />
                 <br />
                 <button
                   type="button"
@@ -463,127 +301,70 @@ class Registration extends React.Component {
                   <span className="googleIcon"></span>
                   <p>&nbsp;Sign up with Google</p>
                 </button>
-
-                <br />
-                <small className="text-muted font12 text-sm">
-                  -------------- OR LOG IN WITH EMAIL --------------
-                </small>
               </div>
 
-              <div className="col-md-6">
-                <label for="firstname" className="form-label">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="firstname"
-                  name="firstname"
-                  value={this.state.input.firstname}
-                  onChange={this.handleChange}
-                  placeholder="Enter your First Name"
-                  maxlength="150"
-                  autocomplete="off"
-                />
-                <div className="text-danger errors" style={{ fontSize: 15 }}>
-                  {this.state.errors.firstname}
+              <div className="row"></div>
+              <div class="input-group">
+                <span class="d-input-group-text">
+                  <i
+                    class="fa fa-envelope  themeCol-pink"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+                <div class="form-floating  border-0">
+                  <input
+                    type="text"
+                    className="form-control w-100  border-0"
+                    id="logemail"
+                    name="logemail"
+                    value={this.state.input.logemail}
+                    onChange={this.handleLogChange}
+                    placeholder="example@gmail.com"
+                  />
+                  <label for="logemail">Email</label>
                 </div>
               </div>
-              <div className="col-md-6">
-                <label for="lastname" className="form-label">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="lastname"
-                  name="lastname"
-                  value={this.state.input.lastname}
-                  onChange={this.handleChange}
-                  placeholder="Enter your Last Name"
-                  maxlength="150"
-                  autocomplete="off"
-                />
-                <div className="text-danger errors" style={{ fontSize: 15 }}>
-                  {this.state.errors.lastname}
+
+              <div class="input-group">
+                <span class="d-input-group-text">
+                  <i class="fa fa-key themeCol-pink" aria-hidden="true"></i>
+                </span>
+                <div class="form-floating  border-0">
+                  <input
+                    type="password"
+                    className="form-control w-100  border-0"
+                    id="logpassword"
+                    name="logpassword"
+                    value={this.state.input.logpassword}
+                    onChange={this.handleLogChange}
+                    placeholder="*************"
+                  />
+                  <label for="logpassword">Password</label>
                 </div>
+                <span class="d-input-group-text border-0">
+                  <i class="fa fa-eye themeCol-orange" aria-hidden="true"></i>
+                </span>
               </div>
-              <div className="col-12">
-                <label for="email" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="text"
-                  className="form-control emailsignup"
-                  id="email"
-                  name="email"
-                  autocomplete="off"
-                  value={this.state.input.email}
-                  onChange={this.handleChange}
-                  placeholder="Enter your Email"
-                  maxlength="250"
-                />
-                <div className="text-danger errors" style={{ fontSize: 15 }}>
-                  {this.state.errors.email}
+
+              <div class="input-group">
+                <span class="d-input-group-text">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                </span>
+                <div class="form-floating  border-0">
+                  <input
+                    type="password"
+                    className="form-control w-100  border-0"
+                    id="logconpassword"
+                    name="logconpassword"
+                    value={this.state.input.logpassword}
+                    onChange={this.handleLogChange}
+                    placeholder="*************"
+                  />
+                  <label for="logpassword">Confirm Password</label>
                 </div>
-              </div>
-              <div className="col-12" style={{ display: "none" }}>
-                <label for="school" className="form-label">
-                  School
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="schoolname"
-                  name="schoolname"
-                  value="Live"
-                  onChange={this.handleChange}
-                  placeholder="Enter your School Name"
-                  maxlength="500"
-                />
-                <div className="text-danger errors" style={{ fontSize: 15 }}>
-                  {this.state.errors.schoolname}
-                </div>
-              </div>
-              <div className="col-md-6">
-                <label for="password" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  value={this.state.input.password}
-                  onChange={this.handleChange}
-                  placeholder="Enter your Password"
-                  maxlength="12"
-                />
-                <div className="text-danger errors" style={{ fontSize: 15 }}>
-                  {this.state.errors.password}
-                </div>
-              </div>
-              <div className="col-md-6">
-                <label for="confirm_password" className="form-label">
-                  Confirm Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="confirm_password"
-                  name="confirm_password"
-                  value={this.state.input.confirm_password}
-                  onChange={this.handleChange}
-                  placeholder="Enter your Confirm Password"
-                  maxlength="12"
-                />
-                <div
-                  className="text-danger errors"
-                  style={{ fontSize: 15 }}
-                  id="conpassdiv"
-                >
-                  {this.state.errors.confirm_password}
-                </div>
+                <span class="d-input-group-text border-0">
+                  <i class="fa fa-eye themeCol-orange" aria-hidden="true"></i>
+                </span>
               </div>
 
               <div className="col-12">
@@ -596,10 +377,23 @@ class Registration extends React.Component {
                     onChange={this.handleChkChange}
                   />
                   <label className="form-label" for="agreechk">
+                    <span class="font14">I accept all Terms & Conditions</span>
+                  </label>
+                  <div className="text-danger errors" style={{ fontSize: 15 }}>
+                    {this.state.errors.agreechk}
+                  </div>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="agreechk"
+                    id="agreechk"
+                    onChange={this.handleChkChange}
+                  />
+                  <label className="form-label" for="agreechk">
                     <span class="font14">
-                      Creating an account means you're okay with our Terms of
-                      Service, Privacy Policy and our default Notification
-                      Settings.
+                      Keep me posted on updates from DoAram
                     </span>
                   </label>
                   <div className="text-danger errors" style={{ fontSize: 15 }}>
@@ -607,16 +401,16 @@ class Registration extends React.Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-12">
                 <p className="font16 text-danger b" id="signupmessage"></p>
-                <div className="d-grid gap-2 mx-auto">
+                <div className="d-flex  justify-content-center">
                   <button
                     type="button"
-                    className="btn btn-dark btn-sm w-100"
-                    wideMobile
-                    onClick={this.saveUser}
+                    className="btn col-md-5  logbtn"
+                    // onClick={this.saveUser}
                   >
-                    Sign Up
+                    Create Account
                   </button>
                 </div>
               </div>

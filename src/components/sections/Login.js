@@ -2,12 +2,21 @@ import React, { useState, setState } from "react";
 import "../Css/styles.css";
 import ButtonGroup from "../elements/ButtonGroup";
 import Button from "../elements/Button";
+import Image from "../elements/Image";
 import classNames from "classnames";
-import MyntInvestLogo from "../../assets/images/MyntInvest.png";
+import BoyImage from "../../assets/da_img/login1.png";
 import Google from "../../assets/images/google.png";
 import DataService from "../../service/DataService";
 import Moment from "moment";
 import $ from "jquery";
+
+const boyImageCom = {
+  backgroundImage: `url(${BoyImage}`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+  // backgroundR
+};
+
 const tilesClasses = classNames("tiles-wrap center-content");
 class Welcome extends React.Component {
   constructor() {
@@ -46,7 +55,7 @@ class Welcome extends React.Component {
 
   validateLogin(event) {
     event.preventDefault();
-
+    // window.location.href = "/"
     var loginstatus = false;
     //alert("status======loginstatus====>>>>>>>>>>>>>" + loginstatus);
     var data = {
@@ -152,295 +161,136 @@ class Welcome extends React.Component {
 
   render() {
     return (
-      <body className="bg-white">
-        <div className="row mb-5">
-          <div className="col-md-1"></div>
-          <div className="col-md-5 frambg">
-            <div className="row" align="Left" style={{ paddingLeft: 70 }}>
-              <h4 className="text-light" style={{ marginTop: 70 }}>
-                <img src={MyntInvestLogo} style={{ width: 200 }} />
-              </h4>
-              <p className="text-white">
-                <strong>Invest</strong> In The Best <strong>Startups</strong>
-                <br />
-                Raised Right From Their
-                <br />
-                <strong>Community</strong>
-              </p>
-              <a
-                href="#"
-                class="fa fa-google"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-              <a
-                href="#"
-                class="fa fa-twitter"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-              <a
-                href="#"
-                class="fa fa-instagram"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-              <a
-                href="#"
-                class="fa fa-linkedin"
-                style={{
-                  fontSize: 20,
-                  width: 30,
-                  borderRadius: 50,
-                  color: "white",
-                }}
-              ></a>
-            </div>
-            &nbsp;
-            <div className={tilesClasses} align="center">
-              <div className="col-sm-4">
-                <h5 className="text-white" align="Right">
-                  <strong>$700M+</strong>
-                  <p
-                    className="text-white"
-                    align="Right"
-                    style={{ fontSize: 9 }}
-                  >
-                    Invested Since 2022
-                  </p>
-                </h5>
-              </div>
+      <body className="bg_dtheme">
+        <div className="row ">
+          <div className="col-md-6" style={boyImageCom}></div>
 
-              <div className="col-sm-4">
-                <h5 className="text-white">
-                  <strong>1.5Million+</strong>
-                  <p className="text-white" style={{ fontSize: 10 }}>
-                    Members
-                  </p>
-                </h5>
-              </div>
-
-              <div className="col-sm-4">
-                <h5 className="text-white" align="left">
-                  <strong>600K+</strong>
-                  <p className="text-white" style={{ fontSize: 10 }}>
-                    Deals Done
-                  </p>
-                </h5>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <p
-                  className="text-white"
-                  style={{ paddingLeft: 70, fontSize: 20 }}
-                >
-                  Trusted By Hundreds
-                  <br /> Of Companies
-                </p>
-              </div>
-            </div>
-            <div className={tilesClasses}>
-              <div className="col-md-12">
-                <div className="reveal-from-bottom" data-reveal-delay="600">
-                  <ButtonGroup className="align-item-center">
-                    <Button
-                      tag="a"
-                      className="text-white"
-                      style={{
-                        backgroundColor: "#000",
-                        borderRadius: 5,
-                        color: "grey",
-                      }}
-                      wideMobile
-                      href=""
-                    >
-                      9UNICORNS
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "white", color: "#000" }}
-                      wideMobile
-                      href=""
-                    >
-                      Better
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="secondary"
-                      style={{
-                        backgroundColor: "#000",
-                        borderRadius: 5,
-                        color: "white",
-                      }}
-                      wideMobile
-                      href=""
-                    >
-                      L I V W E L L
-                    </Button>
-                  </ButtonGroup>
-                  <br />
-                  <ButtonGroup>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "#000", color: "white" }}
-                      wideMobile
-                      href=""
-                    >
-                      Microsoft
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "#000", color: "white" }}
-                      wideMobile
-                      href=""
-                    >
-                      teradata
-                    </Button>
-                    <Button
-                      tag="a"
-                      color="primary"
-                      style={{ backgroundColor: "#000", color: "white" }}
-                      wideMobile
-                      href=""
-                    >
-                      Google
-                    </Button>
-                  </ButtonGroup>
-
-                  <br />
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 framrightbg" style={{ paddingLeft: 50 }}>
+          <div className="col-md-6 ">
             <form
-              name="Loginform"
-              id="Loginform"
+              autocomplete="off"
+              name="Signupform"
+              id="Signupform"
               method="POST"
               className="row m-5 g-3"
             >
-              <div
-                className="col-md-12  text-center"
-                style={{ fontSize: "14px" }}
-              >
-                {" "}
-                <h3 align="Center">Welcome Back!</h3>
+              <div className="col-12 text-center">
+                <div className="col-12 text-center ">
+                  <img
+                    src={require("./../../assets/da_img/logo1.png")}
+                    width={100}
+                    height={50}
+                    alt="DoAram_Logo"
+                    className="rounded mx-auto d-block"
+                  />
+                </div>
+                <br />
+                <br />
+                <small className="text-muted font20 text-sm ">
+                  Let's Do Aram
+                </small>
+                <br />
+                <br />
                 <button
                   type="button"
-                  className="btn button-white button-shadow btnG btn-sm w-100"
+                  className="btn button-white button-shadow m w-100  btnG googleintrgration"
                   wideMobile
-                  id="authorize_button"
-                  onclick="handleAuthClick()"
                 >
-                  <span class="googleIcon"></span>
-                  <p>&nbsp;Sign up with Google</p>
+                  <span className="googleIcon"></span>
+                  <p>&nbsp;Login with Google</p>
                 </button>
-                <small className="text-muted font12 text-sm">
-                  -------------- OR LOG IN WITH EMAIL --------------
-                </small>
-              </div>
-              <div className="col-12">
-                <label for="logemail" className="form-label">
-                  E-mail
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="logemail"
-                  name="logemail"
-                  value={this.state.input.logemail}
-                  onChange={this.handleLogChange}
-                  placeholder="Enter your Email"
-                />
               </div>
 
-              <div className="col-12">
-                <label for="logpassword" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="logpassword"
-                  name="logpassword"
-                  value={this.state.input.logpassword}
-                  onChange={this.handleLogChange}
-                  placeholder="Enter your Password"
-                  maxlength="12"
-                />
+              <div className="row"></div>
+              <div class="input-group">
+                <span class="d-input-group-text">
+                  <i
+                    class="fa fa-envelope  themeCol-pink"
+                    aria-hidden="true"
+                  ></i>
+                </span>
+                <div class="form-floating  border-0">
+                  <input
+                    type="text"
+                    className="form-control w-100  border-0"
+                    id="logemail"
+                    name="logemail"
+                    value={this.state.input.logemail}
+                    onChange={this.handleLogChange}
+                    placeholder="example@gmail.com"
+                  />
+                  <label for="logemail">Email</label>
+                </div>
               </div>
 
-              {/* <div className="col-md-8"> 
+              <div class="input-group">
+                <span class="d-input-group-text">
+                  <i class="fa fa-key themeCol-pink" aria-hidden="true"></i>
+                </span>
+                <div class="form-floating  border-0">
+                  <input
+                    type="password"
+                    className="form-control w-100  border-0"
+                    id="logpassword"
+                    name="logpassword"
+                    value={this.state.input.logpassword}
+                    onChange={this.handleLogChange}
+                    placeholder="*************"
+                  />
+                  <label for="logpassword">Password</label>
+                </div>
+                <span class="d-input-group-text border-0">
+                  <i class="fa fa-eye themeCol-orange" aria-hidden="true"></i>
+                </span>
+              </div>
+
+              <div className="row g-3">
+                <div class="col">
                   <div className="form-check">
-                    <input className="form-check-input" type="checkbox" name="rememberme" id="rememberme"  />
-                    <label  className="form-label" for="rememberme">
-                        <span>Remember me</span> 
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="agreechk"
+                      id="agreechk"
+                      onChange={this.handleChkChange}
+                    />
+                    <label className="form-label" for="agreechk">
+                      <span class="font14">Remember me</span>
                     </label>
+                    <div
+                      className="text-danger errors"
+                      style={{ fontSize: 15 }}
+                    >
+                      {this.state.errors.agreechk}
+                    </div>
                   </div>
-                </div> */}
-
-              {/* <div className="col-md-4 text-right"> 
-                <a href="#" > 
-                  <span className="text-success " 
-                   style={{fontSize:"14px",textAlign:"right"}}>&nbsp;<b>
-                   Forgot Password?</b></span>
-                </a>
-                </div> */}
+                </div>
+                <div class="col text-end">
+                  <a class="link-light font14 " href="">
+                    Forgot Password?
+                  </a>
+                </div>
+              </div>
 
               <div className="col-12">
-                <p className="font16 text-danger b" id="loginmessage"></p>
-                <div className="d-grid gap-2 mx-auto">
+                <p className="font16 text-danger b" id="signupmessage"></p>
+                <div className="d-flex justify-content-center">
                   <button
                     type="button"
-                    className="btn btn-dark btn-sm w-100g"
-                    wideMobile
-                    onClick={this.validateLogin}
+                    className="btn col-md-5  logbtn"
+                    onClick={this.saveUser}
                   >
-                    Log In
+                    Log in
                   </button>
                 </div>
               </div>
 
-              <div className="col-12 d-flex justify-content-start">
-                <a
-                  href="/Founders"
-                  className="text-success point"
-                  style={{ fontSize: "14px" }}
-                >
-                  <b>Log in as founder</b>
-                </a>
-              </div>
-
-              <div className="mx-auto">
-                <a href="/Signup" className="font14 text-right">
-                  Not a member ?
-                  <span
-                    className="text-dark text-sm "
-                    style={{ fontSize: "14px", textAlign: "right" }}
-                  >
-                    &nbsp;<b>Sign up</b>
-                  </span>
-                </a>
-                &nbsp;
+              <div className="row g-3">
+                <div class="col text-center">
+                  <span class="link-light font14 ">Not a member yet?</span>
+                  <a class="link-warning font14 " href="/Signup">
+                    &nbsp; Sign up Now
+                  </a>
+                </div>
               </div>
             </form>
           </div>

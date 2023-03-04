@@ -28,7 +28,7 @@ C:\WINDOWS\system32>npm install -g create-react-app
 C:\WINDOWS\system32>mkdir workspace
 >cd workspace
 >npx create-react-app first-app
-
+npx browserslist@latest --update-db
 
 npm install --save moment
 npm install bootstrap

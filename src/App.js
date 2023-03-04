@@ -9,106 +9,107 @@ import $ from "jquery";
 // Layouts
 import LayoutDefault from "./layouts/LayoutDefault";
 
-// Views
-import Home from "./views/Home";
-import Deals from "./views/Deals";
-import Pitch from "./views/Pitch";
-import Reviews from "./views/Reviews";
-import Investors from "./views/Investors";
-import Realestate from "./views/Realestate";
-import Founders from "./views/Founders";
 import Login from "./components/sections/Login";
 import Signup from "./components/sections/Signup";
-import Privacy_Policy from "./components/sections/Privacy_Policy";
-import Blog from "./views/Blog";
-import FAQ from "./components/sections/FAQ";
-import Learn from "./views/Learn";
-import How_It_Works from "./components/sections/How_It_Works";
-import Private_Deals from "./views/Private_Deals";
+
+// Views
+// import Home from "./views/Home";
+// import Deals from "./views/Deals";
+// import Pitch from "./views/Pitch";
+// import Reviews from "./views/Reviews";
+// import Investors from "./views/Investors";
+// import Realestate from "./views/Realestate";
+// import Founders from "./views/Founders";
+// import Privacy_Policy from "./components/sections/Privacy_Policy";
+// import Blog from "./views/Blog";
+// import FAQ from "./components/sections/FAQ";
+// import Learn from "./views/Learn";
+// import How_It_Works from "./components/sections/How_It_Works";
+// import Private_Deals from "./views/Private_Deals";
 
 //Investors
-import Investor_Signup from "./components/sections/Investor_Signup";
-import Investors_Terms from "./components/sections/Investors_Terms";
-import Investors_PaymentDets from "./components/sections/Investors_PaymentDets";
-import Invest_Now from "./components/sections/Invest_Now";
-import Investors_Dashboard from "./components/sections/Investors_Dashboards";
-import Portfolio from "./components/sections/Portfolio";
-import Investors_Analytics from "./components/sections/Investors_Analystics";
-import Investors_Details from "./components/sections/Investors_Details";
-import Investors_Verification from "./components/sections/Investors_Verification";
-import Pancard_Details from "./components/sections/Pancard_Details";
-import Payment_Details from "./components/sections/Payment_Details";
-import Inv_Signup from "./components/sections/Inv_Signup";
-import Deals_Realm from "./components/sections/Deals_Realm";
-import Deals_Community from "./components/sections/Deals_Community";
-import Deals_About from "./components/sections/Deals_About";
-import Deals_Company from "./components/sections/Deals_Company";
-import Deals_Cta from "./components/sections/Deals_Cta";
-import Deals_Press from "./components/sections/Deals_Press";
-import Deals_Review from "./components/sections/Deals_Review";
-import Deals_Sta from "./components/sections/Deals_Sta";
-import Deals_Team from "./components/sections/Deals_Team";
-import Investor_Realestate from "./components/sections/Investor_Realestate";
+// import Investor_Signup from "./components/sections/Investor_Signup";
+// import Investors_Terms from "./components/sections/Investors_Terms";
+// import Investors_PaymentDets from "./components/sections/Investors_PaymentDets";
+// import Invest_Now from "./components/sections/Invest_Now";
+// import Investors_Dashboard from "./components/sections/Investors_Dashboards";
+// import Portfolio from "./components/sections/Portfolio";
+// import Investors_Analytics from "./components/sections/Investors_Analystics";
+// import Investors_Details from "./components/sections/Investors_Details";
+// import Investors_Verification from "./components/sections/Investors_Verification";
+// import Pancard_Details from "./components/sections/Pancard_Details";
+// import Payment_Details from "./components/sections/Payment_Details";
+// import Inv_Signup from "./components/sections/Inv_Signup";
+// import Deals_Realm from "./components/sections/Deals_Realm";
+// import Deals_Community from "./components/sections/Deals_Community";
+// import Deals_About from "./components/sections/Deals_About";
+// import Deals_Company from "./components/sections/Deals_Company";
+// import Deals_Cta from "./components/sections/Deals_Cta";
+// import Deals_Press from "./components/sections/Deals_Press";
+// import Deals_Review from "./components/sections/Deals_Review";
+// import Deals_Sta from "./components/sections/Deals_Sta";
+// import Deals_Team from "./components/sections/Deals_Team";
+// import Investor_Realestate from "./components/sections/Investor_Realestate";
 
 //Startup
-import Startup_Login from "./components/sections/Startup_Login";
-import Startup_Dashboard from "./components/sections/Startup_Dashboard";
-import Company_Info from "./components/sections/Company_Info";
-import Team_Info from "./components/sections/Team_Info";
-import Upload_Pitch from "./components/sections/Upload_Pitch";
-import Create_Pitch from "./components/sections/Create_Pitch";
-import Solution from "./components/sections/Solution";
-import Product from "./components/sections/Product";
-import Transaction from "./components/sections/Transaction";
-import Business_Model from "./components/sections/Business_Model";
-import Competition from "./components/sections/Competition";
-import Customer from "./components/sections/Customer";
-import Usage from "./components/sections/Usage";
-import Vision from "./components/sections/Vision";
-import Potential_Returns from "./components/sections/Potential_Returns";
+// import Startup_Login from "./components/sections/Startup_Login";
+// import Startup_Dashboard from "./components/sections/Startup_Dashboard";
+// import Company_Info from "./components/sections/Company_Info";
+// import Team_Info from "./components/sections/Team_Info";
+// import Upload_Pitch from "./components/sections/Upload_Pitch";
+// import Create_Pitch from "./components/sections/Create_Pitch";
+// import Solution from "./components/sections/Solution";
+// import Product from "./components/sections/Product";
+// import Transaction from "./components/sections/Transaction";
+// import Business_Model from "./components/sections/Business_Model";
+// import Competition from "./components/sections/Competition";
+// import Customer from "./components/sections/Customer";
+// import Usage from "./components/sections/Usage";
+// import Vision from "./components/sections/Vision";
+// import Potential_Returns from "./components/sections/Potential_Returns";
 
-// Analystics
-import Analystics from "./components/sections/Analystics";
-import Analystics_Chart from "./components/sections/Analystics_Chart";
+// // Analystics
+// import Analystics from "./components/sections/Analystics";
+// import Analystics_Chart from "./components/sections/Analystics_Chart";
 
-// Campaign
-import Campaign from "./components/sections/Campaign";
-import Campaign_Investors from "./components/sections/Campaign_Investors";
-import Campaign_Banner from "./components/sections/Campaign_Banner";
-import Campaign_FAQ from "./components/sections/Campaign_FAQ";
-import Campaign_Press from "./components/sections/Campaign_Press";
+// // Campaign
+// import Campaign from "./components/sections/Campaign";
+// import Campaign_Investors from "./components/sections/Campaign_Investors";
+// import Campaign_Banner from "./components/sections/Campaign_Banner";
+// import Campaign_FAQ from "./components/sections/Campaign_FAQ";
+// import Campaign_Press from "./components/sections/Campaign_Press";
 
-import Risks from "./components/sections/Risks";
-import Raise from "./components/sections/Raise";
-import Terms_Condition from "./components/sections/Terms_Condition";
+// import Risks from "./components/sections/Risks";
+// import Raise from "./components/sections/Raise";
+// import Terms_Condition from "./components/sections/Terms_Condition";
 
-// Admin
-import Admin_Login from "./components/sections/Admin_Login";
-import Admin_Dashboard from "./components/sections/Admin_Dashboard";
-import Admin_Startup from "./components/sections/Admin_Startup";
-import Admin_ChooseSector from "./components/sections/Admin_ChooseSector";
-import Admin_Standards from "./components/sections/Admin_Standards";
-import Admin_Nationality from "./components/sections/Admin_Nationality";
-import Admin_Kyc from "./components/sections/Admin_Kyc";
-import Admin_Payment from "./components/sections/Admin_Payment";
-import Admin_FAQs from "./components/sections/Admin_FAQs";
-import Admin_Startup_Investors from "./components/sections/Admin_Startup_Investors";
-import Admin_Pressinfo from "./components/sections/Admin_Pressinfo";
-import Admin_Teaminfo from "./components/sections/Admin_Teaminfo";
-import Admin_Companyinfo from "./components/sections/Admin_Companyinfo";
-import Admin_Agreement from "./components/sections/Admin_Agreement";
-import Admin_Businessinfo from "./components/sections/Admin_Businessinfo";
-import Admin_Analystics from "./components/sections/Admin_Analystics";
-import Admin_Competitioninfo from "./components/sections/Admin_Competitioninfo";
-import Admin_Banner from "./components/sections/Admin_Banner";
-import Admin_Probleminfo from "./components/sections/Admin_Probleminfo";
-import Admin_Customerinfo from "./components/sections/Admin_Customerinfo";
-import Admin_PotentialReturnsInfo from "./components/sections/Admin_PotentialReturnsinfo";
-import Admin_Usagefundsinfo from "./components/sections/Admin_Usagefundinfo";
-import Admin_Visioninfo from "./components/sections/Admin_Visioninfo";
-import Admin_Tractioinfo from "./components/sections/Admin_Tractioninfo";
-import Admin_Produtioninfo from "./components/sections/Admin_Productinfo";
-import Admin_Solution from "./components/sections/Admin_Solution";
+// // Admin
+// import Admin_Login from "./components/sections/Admin_Login";
+// import Admin_Dashboard from "./components/sections/Admin_Dashboard";
+// import Admin_Startup from "./components/sections/Admin_Startup";
+// import Admin_ChooseSector from "./components/sections/Admin_ChooseSector";
+// import Admin_Standards from "./components/sections/Admin_Standards";
+// import Admin_Nationality from "./components/sections/Admin_Nationality";
+// import Admin_Kyc from "./components/sections/Admin_Kyc";
+// import Admin_Payment from "./components/sections/Admin_Payment";
+// import Admin_FAQs from "./components/sections/Admin_FAQs";
+// import Admin_Startup_Investors from "./components/sections/Admin_Startup_Investors";
+// import Admin_Pressinfo from "./components/sections/Admin_Pressinfo";
+// import Admin_Teaminfo from "./components/sections/Admin_Teaminfo";
+// import Admin_Companyinfo from "./components/sections/Admin_Companyinfo";
+// import Admin_Agreement from "./components/sections/Admin_Agreement";
+// import Admin_Businessinfo from "./components/sections/Admin_Businessinfo";
+// import Admin_Analystics from "./components/sections/Admin_Analystics";
+// import Admin_Competitioninfo from "./components/sections/Admin_Competitioninfo";
+// import Admin_Banner from "./components/sections/Admin_Banner";
+// import Admin_Probleminfo from "./components/sections/Admin_Probleminfo";
+// import Admin_Customerinfo from "./components/sections/Admin_Customerinfo";
+// import Admin_PotentialReturnsInfo from "./components/sections/Admin_PotentialReturnsinfo";
+// import Admin_Usagefundsinfo from "./components/sections/Admin_Usagefundinfo";
+// import Admin_Visioninfo from "./components/sections/Admin_Visioninfo";
+// import Admin_Tractioinfo from "./components/sections/Admin_Tractioninfo";
+// import Admin_Produtioninfo from "./components/sections/Admin_Productinfo";
+// import Admin_Solution from "./components/sections/Admin_Solution";
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
@@ -135,20 +136,24 @@ const App = () => {
       ref={childRef}
       children={() => (
         <Switch>
-          {/* <Helmet> */}
+          <AppRoute exact path="/" component={Login} />
+          <AppRoute exact path="/Signup" component={Signup} />
 
-          {/* <script   type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
- 
-   
-  <script   type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script   type="text/javascript" src='//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js'></script>
-   
-  <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> */}
-          {/* <script  type="text/javascript" src="./assets/js./ocommon.js"></script>    */}
-          {/* </Helmet> */}
+          {/* <AppRoute
+            exact
+            path="/Investor_Signup"
+            component={Investor_Signup}
+            layout={LayoutDefault}
+          />
 
-          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute
+            exact
+            path="/Investors_Dashboard"
+            component={Investors_Dashboard}
+            layout={LayoutDefault}
+          /> */}
+
+          {/* <AppRoute
             exact
             path="/Deals"
             component={Deals}
@@ -271,18 +276,8 @@ const App = () => {
             layout={LayoutDefault}
           />
 
-          <AppRoute
-            exact
-            path="/Login"
-            component={Login}
-            layout={LayoutDefault}
-          />
-          <AppRoute
-            exact
-            path="/Investor_Signup"
-            component={Investor_Signup}
-            layout={LayoutDefault}
-          />
+         
+          
           <AppRoute
             exact
             path="/Investors_Terms"
@@ -301,12 +296,7 @@ const App = () => {
             component={Invest_Now}
             layout={LayoutDefault}
           />
-          <AppRoute
-            exact
-            path="/Investors_Dashboard"
-            component={Investors_Dashboard}
-            layout={LayoutDefault}
-          />
+         
           <AppRoute
             exact
             path="/Portfolio"
@@ -667,7 +657,7 @@ const App = () => {
             path="/Admin_Solution"
             component={Admin_Solution}
             layout={LayoutDefault}
-          />
+          /> */}
         </Switch>
       )}
     />

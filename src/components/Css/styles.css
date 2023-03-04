@@ -1,18 +1,77 @@
 body {
-  background: #bdc3c7; /* fallback for old browsers */
+  background: #2d1621 !important; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #2c3e50,
+    #2d1621,
     #bdc3c7
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #2c3e50,
+    #2d1621,
     #bdc3c7
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  font-family: "DM sans" !important;
+  font-family: "Montserrat" !important;
+}
+/* ---------------------------------DOARAM -------------------------------------------------------------- */
+.bg_dtheme {
+  background: #2d1621;
+  /* color: #ffffff; */
+}
+.form-floating > label {
+  color: #2d1621;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: normal;
 }
 
+.d-input-group-text {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  height: 72px;
+}
+
+.themeCol-pink {
+  color: #212529;
+}
+
+.themeCol-orange {
+  color: #d49732;
+}
+
+.form-check-input {
+  border: 1px solid rgb(255 255 255) !important;
+  background: none !important;
+}
+
+.logbtn {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #f8f9fa00;
+  border: 3px solid #f8f9fa;
+  border-radius: 5px;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #f4c03a;
+  --bs-btn-hover-border-color: #f3c03a;
+  --bs-btn-focus-shadow-rgb: 211, 212, 213;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #c6c7c8;
+  --bs-btn-active-border-color: #babbbc;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #f8f9fa;
+  --bs-btn-disabled-border-color: #f8f9fa;
+}
+
+/* ------------------------------------------------------------------------- */
 h1,
 h2,
 h3,
@@ -21,12 +80,12 @@ h5,
 h6,
 p,
 span {
-  font-family: "DM sans" !important;
+  font-family: "Montserrat" !important;
 }
 div,
 header,
 footer {
-  font-family: "DM sans" !important;
+  font-family: "Montserrat" !important;
 }
 
 .footer-social ul,
@@ -47,13 +106,13 @@ footer {
 }
 .accordion-header button {
   margin-top: 0px !important;
-  font-family: "DM sans" !important;
+  font-family: "Montserrat" !important;
   font-size: 18px !important;
   font-weight: bold !important;
 }
 
 .accordion-body {
-  font-family: "DM sans" !important;
+  font-family: "Montserrat" !important;
   font-size: 16px !important;
 }
 
@@ -151,7 +210,7 @@ a {
   object-position: center center;
 }
 .btn-default {
-  font-family: "DM Sans";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -175,7 +234,7 @@ a {
   border-radius: 0.25rem;
 }
 .headermenu {
-  font-family: "DM Sans";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: bold !important;
   font-size: 17px;
@@ -246,7 +305,7 @@ a {
 }
 
 .para {
-  font-family: "DM Sans";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -255,7 +314,7 @@ a {
 }
 
 .footerHeader {
-  font-family: "DM Sans";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -397,7 +456,7 @@ textarea {
 }
 
 .App {
-  font-family: "DM sans";
+  font-family: "Montserrat";
   text-align: center;
 }
 
@@ -732,10 +791,18 @@ marquee {
 .form-label,
 .form-switch,
 .form-slider {
-  font-weight: bold !important;
-  color: #1c1c1c !important;
+  /* font-weight: bold !important; */
+  color: #fff !important;
 }
 .form-control {
+  width: 454px;
+  height: 58px;
+  left: 864px;
+  top: 436px;
+
+  background: #ffffff;
+  box-shadow: 0px 6px 6px -1px rgba(0, 0, 0, 0.04);
+  border-radius: 10.0118px;
   font-size: 16px !important;
 }
 
@@ -756,7 +823,7 @@ marquee {
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
-  font-family: "DM Sans";
+  font-family: "Montserrat";
 }
 
 .modal-dialog {
@@ -1549,29 +1616,32 @@ The navbar toggle appears at this breakpoint */
   color: #58c479;
   font-weight: normal;
 }
-.btnG{
+.btnG {
   display: flex !important;
   justify-content: center;
 }
 
-.btnG p{
+.btnG p {
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.8;
+  font-size: 16px;
+}
+.btnG p :hover {
+  box-shadow: none;
 }
 
-
 .googleIcon {
-  background: url("../../assets/images/google.png"); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 21px 21px;
-    text-align: center;
-    height: 30px;
-    width: 30px;
-    padding-left: 6px;
-    line-height: 1.5;
-    left: 1rem;
-    display: grid;
+  background: url("../../assets/images/google.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 21px 21px;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  padding-left: 6px;
+  line-height: 1.5;
+  left: 1rem;
+  display: grid;
 }
 
 .rupeeIcon {
